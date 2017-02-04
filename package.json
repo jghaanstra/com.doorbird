@@ -1,0 +1,30 @@
+{
+  "name": "com.doorbird",
+  "version": "1.0.0",
+  "description": "Homey app for DoorBird Smart Doorbell",
+  "main": "api.js",
+  "dependencies": {
+    "nodemailer": "^2.7.0",
+    "request": "^2.79.0"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/jghaanstra/com.doorbird.git"
+  },
+  "keywords": [
+    "doorbird",
+    "homey",
+    "smart",
+    "doorbell"
+  ],
+  "author": "Jelger Haanstra",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/jghaanstra/com.doorbird/issues"
+  },
+  "homepage": "https://github.com/jghaanstra/com.doorbird#readme"
+}

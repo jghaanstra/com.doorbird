@@ -1,0 +1,214 @@
+{
+	"id": "com.doorbird",
+	"name": {
+		"en": "DoorBird",
+		"nl": "DoorBird"
+    },
+    "tags": {
+        "en": [ "smart doorbell", "IP camera", "DoorBird" ],
+        "nl": [ "slimme deurbel", "IP camera", "DoorBird" ]
+    },
+	"version": "1.0.0",
+	"compatibility": "0.x || 1.x",
+	"author": {
+		"name": "Jelger Haanstra",
+		"email": "homey@solidewebservices.com",
+        "website": "https://github.com/jghaanstra/com.doorbird"
+	},
+	"images": {
+		"large": "./assets/images/large.png",
+		"small": "./assets/images/small.png"
+	},
+	"category": "appliances",
+	"description": {
+		"en": "Control your DoorBird",
+		"nl": "Bestuur je DoorBird"
+	},
+	"dependencies": {
+		"net": "*"
+	},
+	"drivers": [
+		{
+			"id": "doorbird",
+			"name": {
+				"en": "DoorBird",
+				"nl": "DoorBird"
+			},
+			"images": {
+				"large": "drivers/doorbird/assets/images/large.jpg",
+				"small": "drivers/doorbird/assets/images/small.jpg"
+			},
+			"class": "other",
+			"capabilities": [],
+            "gtin": ["4260423860001"],
+			"pair": [
+				{
+					"id": "start"
+				}
+			],
+			"settings": [
+			    {
+                    "type": "group",
+                    "label": {
+                        "en": "DoorBird settings",
+						"nl": "DoorBird settings"
+                    },
+					"children": [
+				        {
+				            "id": "address",
+				            "type": "text",
+				            "value": "0.0.0.0",
+				            "label": {
+				                "en": "IP Address",
+				                "nl": "IP Adres"
+				            }
+				        },
+				        {
+					        "id": "username",
+					        "type": "text",
+					        "value": "",
+					        "label": {
+						        "en": "Username",
+						        "nl": "Gebruikersnaam"
+					        }
+				        },
+				        {
+					        "id": "password",
+					        "type": "password",
+                            "value": "",
+					        "label": {
+						        "en": "Password",
+						        "nl": "Wachtwoord"
+					        }
+				        }
+		            ]
+		        }
+		    ]
+		}
+	],
+	"flow": {
+        "triggers": [
+            {
+                "id": "doorbell",
+				"title": {
+					"en": "Doorbell rings",
+					"nl": "Aangebeld"
+				},
+                "hint": {
+                    "en": "Trigger a flow when somebody rings your DoorBird.",
+                    "nl": "Trigger een flow wanneer iemand aanbelt via je DoorBird."
+                },
+                "args": [
+					{
+						"name": "device",
+						"type": "device",
+						"placeholder": {
+						  "en": "Select DoorBird",
+						  "nl": "Selecteer DoorBird"
+						},
+						"filter": "driver_id=doorbird"
+					}
+				]
+            },
+            {
+                "id": "motionsensor",
+				"title": {
+					"en": "Motion detected",
+					"nl": "Beweging gedetecteerd"
+				},
+                "hint": {
+                    "en": "Trigger a flow when your DoorBird detects motion.",
+                    "nl": "Trigger een flow wanneer je DoorBird beweging detecteert."
+                },
+                "args": [
+					{
+						"name": "device",
+						"type": "device",
+						"placeholder": {
+						  "en": "Select DoorBird",
+						  "nl": "Selecteer DoorBird"
+						},
+						"filter": "driver_id=doorbird"
+					}
+				]
+            }
+
+        ],
+		"actions": [
+			{
+				"id": "emailsnapshot",
+				"title": {
+					"en": "Send email snapshot",
+					"nl": "Verstuur email snapshot"
+				},
+                "hint": {
+                    "en": "Take a snapshot and send it with email (make sure email is configured in the app settings).",
+                    "nl": "Maak een  snapshot en verstuur deze per email (zorg ervoor dat email is geconfigureerd in de app instellingen)."
+                },
+				"args": [
+                    {
+                        "name": "mailto",
+                        "type": "text",
+                        "placeholder": {
+                            "en": "Send mail to",
+                            "nl": "Verstuur mail aan"
+                        }
+                    },
+					{
+						"name": "device",
+						"type": "device",
+						"placeholder": {
+						  "en": "Select DoorBird",
+						  "nl": "Selecteer DoorBird"
+						},
+						"filter": "driver_id=doorbird"
+					}
+				]
+			},
+            {
+				"id": "light",
+				"title": {
+					"en": "Turn on IR light",
+					"nl": "IR licht aanzetten"
+				},
+                "hint": {
+                    "en": "Turn on the infrared light of your DoorBird for 3 minutes.",
+                    "nl": "Zet het infrarood licht van je DoorBird aan voor 3 minuten."
+                },
+				"args": [
+					{
+						"name": "device",
+						"type": "device",
+						"placeholder": {
+						  "en": "Select DoorBird",
+						  "nl": "Selecteer DoorBird"
+						},
+						"filter": "driver_id=doorbird"
+					}
+				]
+			},
+            {
+				"id": "door",
+				"title": {
+					"en": "Open the door",
+					"nl": "Open de deur"
+				},
+                "hint": {
+                    "en": "Open a connected door opener through the door opener / alarm output relay of the DoorBird.",
+                    "nl": "Open een verbonden deur opener via de deur opener / alarm relais van de DoorBird."
+                },
+				"args": [
+					{
+						"name": "device",
+						"type": "device",
+						"placeholder": {
+						  "en": "Select DoorBird",
+						  "nl": "Selecteer DoorBird"
+						},
+						"filter": "driver_id=doorbird"
+					}
+				]
+			}
+		]
+	}
+}
