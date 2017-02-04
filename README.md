@@ -1,6 +1,6 @@
 # DoorBird for Homey
 <div class="logo" style="float:right; padding:10px; max-width: 300px;">
-![Doorbird](/assets/readme/doorbird-logo.png?raw=true)
+<img src="https://github.com/jghaanstra/com.doorbird/blob/master/assets/readme/doorbird-logo.png" alt="DoorBird" border="0" style="width: 100%; height: auto;" />
 </div>
 Use [Homey](https://www.athom.com/) together with the [DoorBird IP Video Door Station](https://www.doorbird.com/). Let the DoorBird notify Homey when the doorbell is rang or when motion is detected or use Homey to control the DoorBird and trigger the IR light or send a snapshot through email.
 
