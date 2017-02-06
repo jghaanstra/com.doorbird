@@ -1,5 +1,5 @@
 # DoorBird for Homey
-<img src="https://github.com/jghaanstra/com.doorbird/blob/master/assets/readme/doorbird-logo.png" alt="DoorBird" border="0" style="width: 100%; height: auto;" align="right" />
+<img src="https://raw.githubusercontent.com/jghaanstra/com.doorbird/master/assets/readme/doorbird-logo.png" alt="DoorBird" border="0" style="width: 100%; height: auto;" align="right" />
 Use [Homey](https://www.athom.com/) together with the [DoorBird IP Video Door Station](https://www.doorbird.com/). Let the DoorBird notify Homey when the doorbell is rang or when motion is detected or use Homey to control the DoorBird and trigger the IR light or send a snapshot through email.
 
 **Supported Cards**
@@ -20,5 +20,5 @@ For the doorbell rang and motion detected trigger flow cards to work in Homey th
 To be able to send snapshots through email you will need to configure an email account which sends out the email. In the general settings of the DoorBird app there is a section to configure your email account. Please pay attention to the extra information when adding a Gmail account, this requires you to use a specific app password which needs to be setup within your Google account.
 
 ## Changelog
-### 2017-02-04 -- beta release v0.1
+### 2017-02-06 -- v1.0.0
 - Initial release
