@@ -39,6 +39,7 @@
         "success": "Einstellungen wurden erfolgreich gespeichert."
     },
     "This is a test email which confirms your email settings in the Homey DoorBird App are correct.": "Dies ist eine Test e-Mail best\u00e4tigt, dass Ihre e-Mail-Einstellungen in der heimeligen DoorBird App korrekt sind.",
-    "<h1>DoorBird Homey App</h1><p>This is a test email which confirms your email settings in the Homey DoorBird App are correct.</p>": "<h1> DoorBird gem\u00fctliche App </h1> <p> Dies ist eine Test e-Mail best\u00e4tigt, Ihre e-Mail-Einstellungen in der heimeligen DoorBird App korrekt sind. <\/p>",
-    "<h1>DoorBird Homey App</h1><p>This snapshot was taken at ": "<h1> DoorBird gem\u00fctliche App </h1> <p> dieser Momentaufnahme war am "
+    "<h1>DoorBird Homey App</h1><p>This is a test email which confirms your email settings in the Homey DoorBird App are correct.</p>": "<h1> DoorBird Homey App </h1> <p> Dies ist eine Test e-Mail best\u00e4tigt, Ihre e-Mail-Einstellungen in der heimeligen DoorBird App korrekt sind. <\/p>",
+    "<h1>DoorBird Homey App</h1><p>This snapshot was taken at ": "<h1> DoorBird Homey App </h1> <p> dieser Momentaufnahme war am ",
+    "<h1>DoorBird Homey App - History Snapshot</h1><p>This is history snapshot": "<h1>DoorBird Homey App - Geschichte Snapshot</h1><p>Das ist Geschichte Schnappschuss"
 }

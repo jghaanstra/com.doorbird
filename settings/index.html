@@ -20,8 +20,8 @@
     <body>
         <h1 data-i18n="settings.title">DoorBird Settings</h1>
         <fieldset class="doorbird-notification">
-            <legend data-i18n="settings.notificationsettings">Email Settings</legend>
-            <p data-i18n="settings.intro-notification">DoorBirds needs to be configured to send notifications to Homey for the doorbell and motionsensor triggers. You can set these manually or just click the button below to update your DoorBird(s).</p>
+            <legend data-i18n="settings.notificationsettings">Notification Settings</legend>
+            <p data-i18n="settings.intro-notification">DoorBirds needs to be configured to send notifications to Homey for the doorbell, motionsensor and door open triggers. You can set these manually or just click the button below to update your DoorBird(s).</p>
             <div class="form-group">
                 <label for="relaxationdb" data-i18n="settings.relaxationdoorbell">Relaxation doorbell (time between doorbell notification from DoorBird to Homey in seconds)</label>
                 <input type="text" class="form-control" id="relaxationdb" value="" placeholder="30">
@@ -29,6 +29,10 @@
             <div class="form-group">
                 <label for="relaxationms" data-i18n="settings.relaxationmotionsensor">Relaxation motionsensor (time between motionsensor notification from DoorBird to Homey in seconds)</label>
                 <input type="text" class="form-control" id="relaxationms" value="" placeholder="60">
+            </div>
+            <div class="form-group">
+                <label for="relaxationdo" data-i18n="settings.relaxationdooropen">Relaxation door opener (time between door open notification from DoorBird to Homey in seconds)</label>
+                <input type="text" class="form-control" id="relaxationdo" value="" placeholder="30">
             </div>
             <div class="form-group buttons">
                 <button id="set-notification" class="button" data-i18n="settings.setnotifications">Set DoorBird Notifications</button>
@@ -89,6 +93,11 @@
                    if( !relaxationms ) return console.log('Relaxation motionsensor has not been set yet');
     		       document.getElementById('relaxationms').value = relaxationms;
     		    });
+                Homey.get('notification_relaxationdo', function(err, relaxationdo) {
+    		       if( err ) return console.error('Could not get relaxationdo', err);
+                   if( !relaxationms ) return console.log('Relaxation door opener has not been set yet');
+    		       document.getElementById('relaxationdo').value = relaxationdo;
+    		    });
     	        Homey.get('email_username', function(err, username) {
     		       if( err ) return console.error('Could not get username', err);
     		       document.getElementById('username').value = username;
@@ -121,10 +130,12 @@
                 $('#set-notification').click(function() {
                     Homey.set('notification_relaxationdb', document.getElementById('relaxationdb').value);
                     Homey.set('notification_relaxationms', document.getElementById('relaxationms').value);
+                    Homey.set('notification_relaxationdo', document.getElementById('relaxationdo').value);
 
                     Homey.api( 'PUT', '/notifications/', {
                         "relaxationdb": document.getElementById('relaxationdb').value,
                         "relaxationms": document.getElementById('relaxationms').value,
+                        "relaxationdo": document.getElementById('relaxationdo').value
                     }, function( err, result ) {
                         if(err){
                             $('.doorbird-notifications-ok').hide();

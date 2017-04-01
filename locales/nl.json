@@ -23,6 +23,7 @@
         "intro-notification": "DoorBirds moet worden ingesteld om notificaties naar Homey te versturen om gebruik te kunnen maken van de deurbel en bewegingsensor tiggers. Je kan deze handmatig instellen of gebruik maken van onderstaande knop om dit automatisch te doen.",
         "relaxationdoorbell": "Relaxation deurbell (tijd tussen deurbel notificaties van DoorBird naar Homey in seconden)",
         "relaxationmotionsensor": "Relaxation motionsensor (tijd tussen bewegingsensor notificaties van DoorBird naar Homey in seconden)",
+        "relaxationdooropen": "Relaxation deur opener (tijd tussen bewegingsensor notificaties van DoorBird naar Homey in seconden)",
         "setnotifications": "Instellen DoorBird notificaties",
         "notificationssuccess": "Notificaties zijn succesvol ingesteld.",
         "intro-email": "Deze instellingen zijn nodig voor het versturen van snapshots via email. Indien je via Gmail SMTP servers wil versturen en je maakt gebruik van 2-traps authenticatie moet je eerst een <a href='https://support.google.com/accounts/answer/185833' target='_blank'>app wachtwoord</a> instellen in je Google Account.",
@@ -40,5 +41,6 @@
     },
     "This is a test email which confirms your email settings in the Homey DoorBird App are correct.": "Dit is een test email die bevestigd dat je instellingen voor email in de Homey DoorBird App correct zijn.",
     "<h1>DoorBird Homey App</h1><p>This is a test email which confirms your email settings in the Homey DoorBird App are correct.</p>": "<h1>DoorBird Homey App</h1><p>Dit is een test email die bevestigd dat je instellingen voor email in de Homey DoorBird App correct zijn.</p>",
-    "<h1>DoorBird Homey App</h1><p>This snapshot was taken at ": "<h1>DoorBird Homey App</h1><p>Deze snapshot is genomen op "
+    "<h1>DoorBird Homey App</h1><p>This snapshot was taken at ": "<h1>DoorBird Homey App</h1><p>Deze snapshot is genomen op ",
+    "<h1>DoorBird Homey App - History Snapshot</h1><p>This is history snapshot": "<h1>DoorBird Homey App - Geschiedenis Snapshot</h1><p>Dit is geschiedenis snapshot"
 }

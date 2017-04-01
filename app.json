@@ -10,7 +10,7 @@
 		"nl": [ "slimme deurbel", "IP camera", "DoorBird" ],
 		"de": [ "intelligente türklingel", "IP camera", "DoorBird" ]
 	},
-	"version": "1.1.0",
+	"version": "1.2.0",
 	"compatibility": "0.x || 1.x",
 	"author": {
 		"name": "Jelger Haanstra",
@@ -176,9 +176,9 @@
 			{
 				"id": "emailsnapshot",
 				"title": {
-					"en": "Send email snapshot",
-					"nl": "Verstuur email snapshot",
-					"de": "E-mail schnappschuss senden"
+					"en": "Email live snapshot",
+					"nl": "Email live snapshot",
+					"de": "Email live schnappschuss"
 				},
 				"hint": {
 					"en": "Take a snapshot and send it with email (make sure email is configured in the app settings).",
@@ -186,6 +186,230 @@
 					"de": "Nehmen Sie einen schnappschuss und senden Sie ihn per e-mail (stellen Sie sicher, dass die e-mail in den app einstellungen konfiguriert ist)."
 				},
 				"args": [
+					{
+						"name": "mailto",
+						"type": "text",
+						"placeholder": {
+							"en": "Send mail to",
+							"nl": "Verstuur mail aan",
+							"de": "Mail schicken an"
+						}
+					},
+					{
+						"name": "device",
+						"type": "device",
+						"placeholder": {
+							"en": "Select DoorBird",
+							"nl": "Selecteer DoorBird",
+							"de": "DoorBird wählen"
+						},
+						"filter": "driver_id=doorbird"
+					}
+				]
+			},
+            {
+				"id": "emailsnapshothistory",
+				"title": {
+					"en": "Email history snapshot",
+					"nl": "Email geschiedenis snapshot",
+					"de": "Email geschichte schnappschuss"
+				},
+				"hint": {
+					"en": "Send a history snaphot with email (make sure email is configured in the app settings).",
+					"nl": "Verstuur een geschiedenis snapshot per email (zorg ervoor dat email is geconfigureerd in de app instellingen).",
+					"de": "Senden einen geschichte schnappschuss per e-mail (stellen Sie sicher, dass die e-mail in den app einstellungen konfiguriert ist)."
+				},
+				"args": [
+                    {
+                        "name": "source",
+                        "type": "dropdown",
+                        "values": [
+                            {
+                                "id": "doorbell",
+                                "label": {
+                                    "en": "Doorbell",
+                                    "nl": "Deurbel",
+                                    "de": "Türklingel"
+                                }
+                            },
+                            {
+                                "id": "motionsensor",
+                                "label": {
+                                    "en": "Motionsensor",
+                                    "nl": "Bewegingssensor",
+                                    "de": "Bewegungssensor"
+                                }
+                            }
+
+                        ]
+                    },
+                    {
+                        "name": "history",
+                        "type": "dropdown",
+                        "values": [
+                            {
+                                "id": "1",
+                                "label": {
+                                    "en": "01 (latest)",
+                                    "nl": "01 (nieuwste)",
+                                    "de": "01 (neueste)"
+                                }
+                            },
+                            {
+                                "id": "2",
+                                "label": {
+                                    "en": "02",
+                                    "nl": "02",
+                                    "de": "02"
+                                }
+                            },
+                            {
+                                "id": "3",
+                                "label": {
+                                    "en": "03",
+                                    "nl": "03",
+                                    "de": "03"
+                                }
+                            },
+                            {
+                                "id": "4",
+                                "label": {
+                                    "en": "04",
+                                    "nl": "04",
+                                    "de": "04"
+                                }
+                            },
+                            {
+                                "id": "5",
+                                "label": {
+                                    "en": "05",
+                                    "nl": "05",
+                                    "de": "05"
+                                }
+                            },
+                            {
+                                "id": "6",
+                                "label": {
+                                    "en": "06",
+                                    "nl": "06",
+                                    "de": "06"
+                                }
+                            },
+                            {
+                                "id": "7",
+                                "label": {
+                                    "en": "07",
+                                    "nl": "07",
+                                    "de": "07"
+                                }
+                            },
+                            {
+                                "id": "8",
+                                "label": {
+                                    "en": "08",
+                                    "nl": "08",
+                                    "de": "08"
+                                }
+                            },
+                            {
+                                "id": "9",
+                                "label": {
+                                    "en": "09",
+                                    "nl": "09",
+                                    "de": "09"
+                                }
+                            },
+                            {
+                                "id": "10",
+                                "label": {
+                                    "en": "10",
+                                    "nl": "10",
+                                    "de": "10"
+                                }
+                            },
+                            {
+                                "id": "11",
+                                "label": {
+                                    "en": "11",
+                                    "nl": "11",
+                                    "de": "11"
+                                }
+                            },
+                            {
+                                "id": "12",
+                                "label": {
+                                    "en": "12",
+                                    "nl": "12",
+                                    "de": "12"
+                                }
+                            },
+                            {
+                                "id": "13",
+                                "label": {
+                                    "en": "13",
+                                    "nl": "13",
+                                    "de": "13"
+                                }
+                            },
+                            {
+                                "id": "14",
+                                "label": {
+                                    "en": "14",
+                                    "nl": "14",
+                                    "de": "14"
+                                }
+                            },
+                            {
+                                "id": "15",
+                                "label": {
+                                    "en": "15",
+                                    "nl": "15",
+                                    "de": "15"
+                                }
+                            },
+                            {
+                                "id": "16",
+                                "label": {
+                                    "en": "16",
+                                    "nl": "16",
+                                    "de": "16"
+                                }
+                            },
+                            {
+                                "id": "17",
+                                "label": {
+                                    "en": "17",
+                                    "nl": "17",
+                                    "de": "17"
+                                }
+                            },
+                            {
+                                "id": "18",
+                                "label": {
+                                    "en": "18",
+                                    "nl": "18",
+                                    "de": "18"
+                                }
+                            },
+                            {
+                                "id": "19",
+                                "label": {
+                                    "en": "19",
+                                    "nl": "19",
+                                    "de": "19"
+                                }
+                            },
+                            {
+                                "id": "20",
+                                "label": {
+                                    "en": "20 (oldest)",
+                                    "nl": "20 (oudste)",
+                                    "de": "20 (älteste)"
+                                }
+                            }
+
+                        ]
+                    },
 					{
 						"name": "mailto",
 						"type": "text",

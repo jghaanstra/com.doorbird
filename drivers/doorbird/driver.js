@@ -93,10 +93,10 @@ var self = {
     getDoorbirds: function() {
         return doorbirds;
     },
-    setNotifications: function(callback, relaxationdb, relaxationms) {
+    setNotifications: function(callback, relaxationdb, relaxationms, relaxationdo) {
         utils.getHomeyIp(function (homeyaddress) {
             if(homeyaddress) {
-                utils.updateNotifications(callback, homeyaddress, relaxationdb, relaxationms);
+                utils.updateNotifications(callback, homeyaddress, relaxationdb, relaxationms, relaxationdo);
             }
         })
     }
