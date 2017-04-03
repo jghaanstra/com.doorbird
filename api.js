@@ -7,7 +7,7 @@ module.exports = [
 		path       : '/doorbell/:mac',
 		requires_authorization: false,
 		fn: function( callback, args ) {
-			triggerDoorbird(callback, args, 'doorbell');
+            triggerDoorbird(callback, args, 'doorbell');
 		}
 	},
 	{
@@ -16,7 +16,7 @@ module.exports = [
 		path       : '/motionsensor/:mac',
 		requires_authorization: false,
 		fn: function( callback, args ) {
-			triggerDoorbird(callback, args, 'motionsensor');
+            triggerDoorbird(callback, args, 'motionsensor');
 		}
 	},
 	{
@@ -54,8 +54,26 @@ function triggerDoorbird(callback, args, trigger) {
 
 	Object.keys(doorbirds).forEach(function(key) {
 		if (doorbirds[key].settings.address == ipv4 && doorbirds[key].settings.id == args.params.mac) {
-			Homey.manager('flow').triggerDevice(trigger);
-			callback( null, 'OK' );
+            if (trigger == 'doorbell' || trigger == 'motionsensor') {
+                var device_data = {
+                    device: {
+                        address  : doorbirds[key].settings.address,
+                        username : doorbirds[key].settings.username,
+            			password : doorbirds[key].settings.password
+                    }
+                };
+                utils.createEmailSnapshot(device_data).then(image => {
+                    base64 = 'data:image/jpeg;base64,' + image;
+                    Homey.manager('flow').triggerDevice(trigger, {snapshot: base64});
+                }).then(() => {
+                    callback( null, 'OK' );
+                }).catch(error => {
+                    callback( error, false );
+                })
+            } else {
+                Homey.manager('flow').triggerDevice(trigger);
+                callback( null, 'OK' );
+            }
 		} else {
 			callback( null, 'Not authorised, incoming IP address ('+ ipv4 +') does not match DoorBird IP address ('+ doorbirds[key].settings.address +') or MAC address of incoming request does not match DoorBird MAC address.' );
 		}
