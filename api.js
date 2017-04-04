@@ -63,8 +63,7 @@ function triggerDoorbird(callback, args, trigger) {
                     }
                 };
                 utils.createEmailSnapshot(device_data).then(image => {
-                    base64 = 'data:image/jpeg;base64,' + image;
-                    Homey.manager('flow').triggerDevice(trigger, {snapshot: base64});
+                    Homey.manager('flow').triggerDevice(trigger, {snapshot: image});
                 }).then(() => {
                     callback( null, 'OK' );
                 }).catch(error => {
