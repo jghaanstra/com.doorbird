@@ -22,8 +22,9 @@ For the doorbell rang and motion detected trigger flow cards to work in Homey th
 To be able to send snapshots through email you will need to configure an email account which sends out the email. In the general settings of the DoorBird app there is a section to configure your email account. Please pay attention to the extra information when adding a Gmail account, this requires you to use a specific app password which needs to be setup within your Google account.
 
 ## Changelog
-### 2017-04-03 -- v1.3.0
-- NEW: Added token with base64 encoded snapshot image for doorbell and motionsensor trigger card which can be used in notification or email apps with action cards that support base64 encoded images
+### 2017-04-12 -- v1.3.0
+- NEW: Added token with base64 encoded snapshot image for doorbell and motionsensor trigger card which can be used in notification or email apps with action cards that support these kind of tokens (like Telegram app).
+- FIX: Updated some incorrect translations
 
 ### 2017-04-01 -- v1.2.0
 - NEW: Added an action card for sending history snapshots from both the doorbell and the motionsensor. The Doorbird keeps the latest 20 snapshots in memory.
