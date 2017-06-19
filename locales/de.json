@@ -41,5 +41,10 @@
     "This is a test email which confirms your email settings in the Homey DoorBird App are correct.": "Dies ist eine Test e-Mail best\u00e4tigt, dass Ihre e-Mail-Einstellungen in der heimeligen DoorBird App korrekt sind.",
     "<h1>DoorBird Homey App</h1><p>This is a test email which confirms your email settings in the Homey DoorBird App are correct.</p>": "<h1> DoorBird Homey App </h1> <p> Dies ist eine Test e-Mail best\u00e4tigt, Ihre e-Mail-Einstellungen in der heimeligen DoorBird App korrekt sind. <\/p>",
     "<h1>DoorBird Homey App</h1><p>This snapshot was taken at ": "<h1> DoorBird Homey App </h1> <p> dieser Momentaufnahme war am ",
-    "<h1>DoorBird Homey App - History Snapshot</h1><p>This is history snapshot": "<h1>DoorBird Homey App - Geschichte Snapshot</h1><p>Das ist Geschichte Schnappschuss"
+    "<h1>DoorBird Homey App - History Snapshot</h1><p>This is history snapshot": "<h1>DoorBird Homey App - Geschichte Snapshot</h1><p>Das ist Geschichte Schnappschuss",
+    "Do you want me to open the door?": "Willst du dass ich die tür öffne",
+    "Something went wrong": "Etwas ist schief gelaufen.",
+    "I did not understand you correctly, please try again": "Ich habe dich nicht richtig verstanden, bitte versuch es nochmal.",
+    "OK, the door relay has been triggered": "OK, das türrelais wurde ausgelöst.",
+    "No action has been taken": "Es wurden keine Maßnahmen ergriffen."
 }

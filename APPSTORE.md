@@ -9,6 +9,7 @@ Use Homey together with the [DoorBird IP Video Door Station](https://www.doorbir
 - [ACTION] Send history snapshot through email
 - [ACTION] Turn on IR light
 - [ACTION] Open door through relay
+- [ACTION] Let Homey ask you if you want to door opened through the door relay
 
 ## Instructions
 ### Adding the DoorBird as device
@@ -20,7 +21,15 @@ For the doorbell rang and motion detected trigger flow cards to work in Homey th
 ### Setting up email
 To be able to send snapshots through email you will need to configure an email account which sends out the email. In the general settings of the DoorBird app there is a section to configure your email account. Please pay attention to the extra information when adding a Gmail account, this requires you to use a specific app password which needs to be setup within your Google account.
 
+## Donate
+Donating is completely optional.
+[![Donate](https://www.paypalobjects.com/webstatic/en_US/i/btn/png/btn_donate_92x26.png)](https://paypal.me/jghaanstra)
+
 ## Changelog
+### 2017-06-19 -- v1.4.0
+- NEW: Added action card where Homey ask you to open the door through the door relay
+- FIX: Added field validation on relaxation fields in settings page (relaxation can not be lower as 10)
+
 ### 2017-04-12 -- v1.3.0
 - NEW: Added token with base64 encoded snapshot image for doorbell and motionsensor trigger card which can be used in notification or email apps with action cards that support these kind of tokens (like Telegram app).
 - FIX: Updated some incorrect translations

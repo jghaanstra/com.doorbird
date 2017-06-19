@@ -42,5 +42,10 @@
     "This is a test email which confirms your email settings in the Homey DoorBird App are correct.": "This is a test email which confirms your email settings in the Homey DoorBird App are correct.",
     "<h1>DoorBird Homey App</h1><p>This is a test email which confirms your email settings in the Homey DoorBird App are correct.</p>": "<h1>DoorBird Homey App</h1><p>This is a test email which confirms your email settings in the Homey DoorBird App are correct.</p>",
     "<h1>DoorBird Homey App</h1><p>This snapshot was taken at ": "<h1>DoorBird Homey App</h1><p>This snapshot was taken at ",
-    "<h1>DoorBird Homey App - History Snapshot</h1><p>This is history snapshot": "<h1>DoorBird Homey App - History Snapshot</h1><p>This is history snapshot"
+    "<h1>DoorBird Homey App - History Snapshot</h1><p>This is history snapshot": "<h1>DoorBird Homey App - History Snapshot</h1><p>This is history snapshot",
+    "Do you want me to open the door?": "Do you want me to open the door?",
+    "Something went wrong": "Something went wrong.",
+    "I did not understand you correctly, please try again": "I did not understand you correctly, please try again.",
+    "OK, the door relay has been triggered": "OK, the door relay has been triggered.",
+    "No action has been taken": "No action has been taken."
 }

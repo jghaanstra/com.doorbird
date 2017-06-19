@@ -24,15 +24,15 @@
             <p data-i18n="settings.intro-notification">DoorBirds needs to be configured to send notifications to Homey for the doorbell, motionsensor and door open triggers. You can set these manually or just click the button below to update your DoorBird(s).</p>
             <div class="form-group">
                 <label for="relaxationdb" data-i18n="settings.relaxationdoorbell">Relaxation doorbell (time between doorbell notification from DoorBird to Homey in seconds)</label>
-                <input type="text" class="form-control" id="relaxationdb" value="" placeholder="30">
+                <input type="text" class="form-control" id="relaxationdb" min="10" value="" placeholder="30">
             </div>
             <div class="form-group">
                 <label for="relaxationms" data-i18n="settings.relaxationmotionsensor">Relaxation motionsensor (time between motionsensor notification from DoorBird to Homey in seconds)</label>
-                <input type="text" class="form-control" id="relaxationms" value="" placeholder="60">
+                <input type="text" class="form-control" id="relaxationms" min="10" value="" placeholder="60">
             </div>
             <div class="form-group">
                 <label for="relaxationdo" data-i18n="settings.relaxationdooropen">Relaxation door opener (time between door open notification from DoorBird to Homey in seconds)</label>
-                <input type="text" class="form-control" id="relaxationdo" value="" placeholder="30">
+                <input type="text" class="form-control" id="relaxationdo" min="10" value="" placeholder="30">
             </div>
             <div class="form-group buttons">
                 <button id="set-notification" class="button" data-i18n="settings.setnotifications">Set DoorBird Notifications</button>

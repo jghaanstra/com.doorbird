@@ -10,7 +10,7 @@
 		"nl": [ "slimme deurbel", "IP camera", "DoorBird" ],
 		"de": [ "intelligente türklingel", "IP camera", "DoorBird" ]
 	},
-	"version": "1.3.0",
+	"version": "1.4.0",
 	"compatibility": "0.x || 1.x",
 	"author": {
 		"name": "Jelger Haanstra",
@@ -30,6 +30,10 @@
 	"dependencies": {
 		"net": "*"
 	},
+    "permissions": [
+        "homey:manager:speech-input",
+        "homey:manager:speech-output"
+    ],
 	"drivers": [
 		{
 			"id": "doorbird",
@@ -485,12 +489,37 @@
 				"title": {
 					"en": "Open the door",
 					"nl": "Open de deur",
-					"de": "Öffne die Tür"
+					"de": "Öffne die tür"
 				},
 				"hint": {
 					"en": "Open a connected door opener through the door opener / alarm output relay of the DoorBird.",
 					"nl": "Open een verbonden deur opener via de deur opener / alarm relais van de DoorBird.",
 					"de": "Öffnen Sie einen angeschlossenen türöffner über das Türöffner- / Alarmausgangsrelais der DoorBird."
+				},
+				"args": [
+					{
+						"name": "device",
+						"type": "device",
+						"placeholder": {
+							"en": "Select DoorBird",
+							"nl": "Selecteer DoorBird",
+							"de": "DoorBird wählen"
+						},
+						"filter": "driver_id=doorbird"
+					}
+				]
+			},
+            {
+				"id": "ask_door",
+				"title": {
+					"en": "Ask to open door",
+					"nl": "Vraag om deur te openen",
+					"de": "Frage die tür zu öffnen"
+				},
+				"hint": {
+					"en": "Let Homey ask you to open a connected door opener through the door opener / alarm output relay of the DoorBird.",
+					"nl": "Laat Homey vragen om een verbonden deur opener via de deur opener / alarm relais van de DoorBird te openen.",
+					"de": "Lass Homey fragen um einen angeschlossenen türöffner über das Türöffner- / Alarmausgangsrelais der DoorBird zu öffnen."
 				},
 				"args": [
 					{
