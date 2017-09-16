@@ -1,40 +1,20 @@
 "use strict";
 
-var utils = require('/lib/utils.js');
-var request = require('request');
-var doorbirds = {};
+const Homey = require('homey');
+const rp = require('request-promise-native');
+const util = require('/lib/util.js');
 
-/* HELPER FUNCTIONS */
-function initDevice(device_data) {
-    Homey.manager('drivers').getDriver('doorbird').getName(device_data, function (err, name) {
-        if (err) return
-        doorbirds[device_data.id] = {
-            name: name
-        }
-        module.exports.getSettings(device_data, function (err, settings) {
-            doorbirds[device_data.id].settings = settings;
-        });
-    });
-}
+class DoorbirdDriver extends Homey.Driver {
 
-/* SELF */
-var self = {
-    init: function (devices_data, callback) {
-        devices_data.forEach(function(device_data) {
-            initDevice(device_data);
-    	});
-
-    	callback (null, true);
-    },
-    pair: function (socket) {
+    onPair(socket) {
         socket.on('disconnect', function() {
             Homey.log ("User aborted pairing, or pairing is finished");
         });
 
-        socket.on('testConnection', function( device_data, callback ) {
-            var address = device_data.address;
-            var user    = device_data.username;
-            var pass    = device_data.password;
+        socket.on('testConnection', function(data, callback) {
+            var address = data.address;
+            var user    = data.username;
+            var pass    = data.password;
 
             var options = {
                 url: "http://"+ address +"/bha-api/info.cgi",
@@ -45,61 +25,29 @@ var self = {
                 timeout: 1000
             };
 
-            request(options, function (error, response, body) {
-                var code = 504;
-                if(response) {
+            var code = 504;
+            rp(options)
+                .then(function (response, body) {
                     var code = response.statusCode;
-                }
-
-                if (error) {
-                    callback( error, false );
-                } else if (code == 200) {
-                    var info = JSON.parse(body);
-                    utils.createSnapshot(device_data, function( error, image ) {
-                        if(error) {
-                            callback( error, false );
-                        } else {
-                            callback( false, { image: image, info: info.BHA.VERSION[0] } );
-                        }
-                    });
-                } else {
-                    callback( code, false );
-                }
-            });
-
+                    if(code == 200) {
+                        var info = JSON.parse(body);
+                        util.createSnapshot(data)
+                            .then(image => {
+                                callback( false, { image: image, info: info.BHA.VERSION[0] } );
+                            })
+                            .catch(error => {
+                                callback(error, false);
+                            })
+                    } else {
+                        callback(code, false);
+                    }
+                })
+                .catch(function (error) {
+                    callback(error, false);
+                });
         });
-
-        socket.on('add_device', function( device_data, callback ){
-            initDevice( device_data );
-            callback( null, true );
-        });
-    },
-    deleted: function (device_data, callback) {
-        delete doorbirds[ device_data.id ];
-        callback( null, true );
-    },
-    settings: function (device_data, newSettingsObj, oldSettingsObj, changedKeysArr, callback) {
-        Homey.log ('Doorbird changed settings: ' + JSON.stringify(device_data) + ' / ' + JSON.stringify(newSettingsObj) + ' / old = ' + JSON.stringify(oldSettingsObj));
-
-        try {
-            changedKeysArr.forEach(function (key) {
-                doorbirds[device_data.id].settings[key] = newSettingsObj[key]
-            })
-            callback(null, true)
-        } catch (error) {
-            callback(error)
-        }
-    },
-    getDoorbirds: function() {
-        return doorbirds;
-    },
-    setNotifications: function(callback, relaxationdb, relaxationms, relaxationdo) {
-        utils.getHomeyIp(function (homeyaddress) {
-            if(homeyaddress) {
-                utils.updateNotifications(callback, homeyaddress, relaxationdb, relaxationms, relaxationdo);
-            }
-        })
     }
+
 }
 
-module.exports = self
+module.exports = DoorbirdDriver;

@@ -1,11 +1,16 @@
 "use strict";
 
-var flowActions = require("../../lib/flow/actions.js")
+const Homey = require('homey');
+const flowActions = require("/lib/flow/actions.js");
 
-var self = module.exports = {
-    init: function () {
-        Homey.log("Initializing DoorBird app ...");
+class DoorbirdApp extends Homey.App {
+
+    onInit() {
+        this.log('Initializing DoorBird app ...');
 
         flowActions.init();
     }
+
 }
+
+module.exports = DoorbirdApp;

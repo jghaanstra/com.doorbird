@@ -21,17 +21,17 @@ $(function() {
     			password: inputpassword
             };
 
-            Homey.emit( 'testConnection', device_data, function( err, data ) {
-                if(err == 401) {
+            Homey.emit('testConnection', device_data, function(error, data) {
+                if(error == 401) {
                     $('.doorbird-error').show();
                     $('.doorbird-error-msg').html( __('pair.unauthorized') );
-                } else if(err == 408 || err == 504) {
+                } else if(error == 408 || error == 504) {
                     $('.doorbird-error').show();
                     $('.doorbird-error-msg').html( __('pair.timeout') );
-                } else if(err == 500) {
+                } else if(error == 500) {
                     $('.doorbird-error').show();
                     $('.doorbird-error-msg').html( __('pair.servererror') );
-                } else if(!err && !data) {
+                } else if(!error && !data) {
                     $('.doorbird-error').show();
                     $('.doorbird-error-msg').html( __('pair.unknownerror') );
                 } else if(data) {
@@ -39,7 +39,7 @@ $(function() {
 
                     var doorbirdinfo = "<div class='info-row'><span class='info-label' data-i18n='pair.firmware'>DoorBird Firmware:</span><span class='info-value'> "+ data.info.FIRMWARE +"</span></div><div class='info-row'><span class='info-label' data-i18n='pair.mac'>DoorBird MAC Address:</span><span class='info-value'> "+ data.info.WIFI_MAC_ADDR +"</span></div>";
                     $('.doorbird-info').show();
-                    $('.doorbird-info').html( doorbirdinfo );
+                    $('.doorbird-info').html(doorbirdinfo);
 
                     var snapshot = new Image();
                     snapshot.src = 'data:image/jpeg;base64,' + data.image;
@@ -82,18 +82,20 @@ $(function() {
                 name	: 'DoorBird',
                 data 	: device_data,
                 settings: device_data
-            }, function( err, result ) {
-                if ( err ) {
+            }, function(error, result ) {
+                if (error) {
                     $('.doorbird-error').show();
-                    $('.doorbird-error-msg').html( err.message || err.toString() );
+                    $('.doorbird-error-msg').html(error.message || error.toString() );
                 }
                 $('.doorbird-test').hide();
                 $('.doorbird-error').hide();
                 $('.doorbird-ok').show();
-                Homey.emit('add_device', device_data, function( err, result ){
-					if( err ) return Homey.alert(err.message || err.toString());
+                // TODO: do I still need to track doorbird in a seperate object or can this function be dropped?
+                /*Homey.emit('add_device', device_data, function(error, result ){
+					if(error) return Homey.alert(error.message || error.toString());
 					Homey.done();
-				})
+				})*/
+                Homey.done();
             })
 
         } else {

@@ -26,6 +26,10 @@ Donating is completely optional.
 [![Donate](https://www.paypalobjects.com/webstatic/en_US/i/btn/png/btn_donate_92x26.png)](https://paypal.me/jghaanstra)
 
 ## Changelog
+### 2017-08-31 -- v2.0.0
+- UPGRADE: Upgraded to SDK2
+- NEW: Implemented the new image token
+
 ### 2017-06-19 -- v1.4.0
 - NEW: Added action card where Homey ask you to open the door through the door relay
 - FIX: Added field validation on relaxation fields in settings page (relaxation can not be lower as 10)
