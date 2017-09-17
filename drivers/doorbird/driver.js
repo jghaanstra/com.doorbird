@@ -7,31 +7,28 @@ const util = require('/lib/util.js');
 class DoorbirdDriver extends Homey.Driver {
 
     onPair(socket) {
-        socket.on('disconnect', function() {
-            Homey.log ("User aborted pairing, or pairing is finished");
-        });
-
         socket.on('testConnection', function(data, callback) {
-            var address = data.address;
-            var user    = data.username;
-            var pass    = data.password;
+            var address  = data.address;
+            var username = data.username;
+            var password = data.password;
 
             var options = {
                 url: "http://"+ address +"/bha-api/info.cgi",
                 auth: {
-                    username: user,
-                    password: pass
+                    user: username,
+                    pass: password
                 },
-                timeout: 1000
+                resolveWithFullResponse: true,
+                timeout: 2000
             };
 
             var code = 504;
             rp(options)
-                .then(function (response, body) {
+                .then(function (response) {
                     var code = response.statusCode;
                     if(code == 200) {
-                        var info = JSON.parse(body);
-                        util.createSnapshot(data)
+                        var info = JSON.parse(response.body);
+                        util.createSnapshot(address, username, password)
                             .then(image => {
                                 callback( false, { image: image, info: info.BHA.VERSION[0] } );
                             })

@@ -202,7 +202,38 @@
 						"filter": "driver_id=doorbird"
 					}
 				]
-			}
+			},
+            {
+                "id": "doorbird_snapshot_trigger",
+                "title": {
+                    "en": "A Doorbird snapshot is made",
+					"nl": "Een Doorbird snapshot gemaakt",
+					"de": "A Doorbird snapshot is made"
+                },
+                "tokens": [
+                    {
+                        "name": "image_snapshot",
+                        "type": "image",
+                        "title": {
+                            "en": "snapshot",
+                            "nl": "snapshot",
+                            "de": "snapshot"
+                        }
+                    }
+                ],
+                "args": [
+					{
+						"name": "device",
+						"type": "device",
+						"placeholder": {
+							"en": "Select DoorBird",
+							"nl": "Selecteer DoorBird",
+							"de": "DoorBird wählen"
+						},
+						"filter": "driver_id=doorbird"
+					}
+				]
+            }
 		],
 		"actions": [
 			{
@@ -526,6 +557,26 @@
 					"de": "Lass Homey fragen um einen angeschlossenen türöffner über das Türöffner- / Alarmausgangsrelais der DoorBird zu öffnen."
 				},
 				"args": [
+					{
+						"name": "device",
+						"type": "device",
+						"placeholder": {
+							"en": "Select DoorBird",
+							"nl": "Selecteer DoorBird",
+							"de": "DoorBird wählen"
+						},
+						"filter": "driver_id=doorbird"
+					}
+				]
+			},
+            {
+				"id": "doorbird_snapshot_action",
+				"title": {
+					"en": "Create a Doorbird snapshot",
+					"nl": "Maak een Doorbird snapshot",
+					"de": "Create a Doorbird snapshot"
+				},
+                "args": [
 					{
 						"name": "device",
 						"type": "device",
