@@ -89,11 +89,7 @@ $(function() {
                 $('.doorbird-test').hide();
                 $('.doorbird-error').hide();
                 $('.doorbird-ok').show();
-                // TODO: do I still need to track doorbird in a seperate object or can this function be dropped?
-                /*Homey.emit('add_device', device_data, function(error, result ){
-					if(error) return Homey.alert(error.message || error.toString());
-					Homey.done();
-				})*/
+
                 Homey.done();
             })
 

@@ -4,8 +4,8 @@
   "description": "Homey app for DoorBird Smart Doorbell",
   "main": "api.js",
   "dependencies": {
-    "nodemailer": "^2.7.0",
-    "request": "^2.79.0",
+    "nodemailer": "^4.1.0",
+    "request": "^2.81.0",
     "request-promise-native": "^1.0.4"
   },
   "devDependencies": {},

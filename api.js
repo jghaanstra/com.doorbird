@@ -73,11 +73,10 @@ function triggerDoorbird(args, trigger, callback) {
 	var ipv4 = args.req.remoteAddress.match(/\b\d{1,3}\.\d{1,3}\.\d{1,3}\.\d{1,3}\b/g)[0];
 
 	Object.keys(doorbirds).forEach(function(key) {
-        // TODO: trigger alarm capabilities
-        doorbirds[key].setCapabilityValue('alarm_motion', true);
-
 		if (doorbirds[key].getSetting('address') == ipv4 && doorbirds[key].getSetting('id') == args.params.mac) {
             if (trigger == 'doorbell' || trigger == 'motionsensor') {
+
+                /* create snapshot */
                 const snapShot = async () => {
                     try {
                         const image = await util.createSnapshot(doorbirds[key].getSetting('address'), doorbirds[key].getSetting('username'), doorbirds[key].getSetting('password'))
@@ -95,6 +94,24 @@ function triggerDoorbird(args, trigger, callback) {
                     }
                 }
                 snapShot();
+
+                /* trigger alarms */
+                if (trigger == 'doorbell') {
+                    var timerdb = Homey.ManagerSettings.get('notification_relaxationdb');
+                    doorbirds[key].setCapabilityValue('alarm_generic', true);
+
+                    setTimeout(function(){
+                        doorbirds[key].setCapabilityValue('alarm_generic', false);
+                    }, timerdb * 1000);
+
+                } else if (trigger == 'motionsensor') {
+                    var timerms = Homey.ManagerSettings.get('notification_relaxationms');
+                    doorbirds[key].setCapabilityValue('alarm_motion', true);
+
+                    setTimeout(function(){
+                        doorbirds[key].setCapabilityValue('alarm_motion', false);
+                    }, timerms * 1000);
+                }
             } else {
                 Homey.ManagerFlow.getCard('trigger', trigger).trigger(doorbirds[key], {}, {})
                     .then(result => {
