@@ -21,31 +21,11 @@ For the doorbell alarm, motion alarm, doorbell rang and motion detected trigger 
 ### Setting up email
 To be able to send snapshots through email you will need to configure an email account which sends out the email. In the general settings of the DoorBird app there is a section to configure your email account. Please pay attention to the extra information when adding a Gmail account, this requires you to use a specific app password which needs to be setup within your Google account.
 
-## Donate
-Donating is completely optional.
-[![Donate](https://www.paypalobjects.com/webstatic/en_US/i/btn/png/btn_donate_92x26.png)](https://paypal.me/jghaanstra)
-
 ## Changelog
+### 2017-10-06 - v2.0.1
+- UPDATE: no functionality changes, made use of official donation button feature of Homey app store
+
 ### 2017-09-18 -- v2.0.0
 - UPDATE: rewritten app for SDK2
 - NEW: implemented the doorbell class and generic alarm and motion alarm capability
 - NEW: added ability to enable/disable event notifications from the Doorbird on the settings page
-
-### 2017-06-19 -- v1.4.0
-- NEW: Added action card where Homey ask you to open the door through the door relay
-- FIX: Added field validation on relaxation fields in settings page (relaxation can not be lower as 10)
-
-### 2017-04-12 -- v1.3.0
-- NEW: Added token with base64 encoded snapshot image for doorbell and motionsensor trigger card which can be used in notification or email apps with action cards that support these kind of tokens (like Telegram app).
-- FIX: Updated some incorrect translations
-
-### 2017-04-01 -- v1.2.0
-- NEW: Added an action card for sending history snapshots from both the doorbell and the motionsensor. The Doorbird keeps the latest 20 snapshots in memory.
-- IMPROVEMENT: Added extra validation for incoming requests to enhance security, incoming IP address has to match the IP address of an added Doorbird device.
-
-### 2017-02-19 -- v1.1.0
-- Added trigger card for door open (use the door open button from the DoorBird app and do anything you like within Homey, no need for a connected smart lock - this might require DoorBird firmware 102 which will be released sometime in february)
-- Added German translation (thanx QNimbus)
-
-### 2017-02-06 -- v1.0.0
-- Initial release

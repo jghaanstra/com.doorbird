@@ -18,6 +18,14 @@
 		"email": "homey@solidewebservices.com",
 		"website": "https://github.com/jghaanstra/com.doorbird"
 	},
+    "contributing": {
+        "donate": {
+            "paypal": {
+                "email": "paypal@solidewebservices.com",
+                "currency": "EUR"
+            }
+        }
+    },
 	"images": {
 		"large": "./assets/images/large.png",
 		"small": "./assets/images/small.png"
