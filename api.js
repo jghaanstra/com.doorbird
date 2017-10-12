@@ -81,7 +81,8 @@ function triggerDoorbird(args, trigger, callback) {
                     try {
                         const image = await util.createSnapshot(doorbirds[key].getSetting('address'), doorbirds[key].getSetting('username'), doorbirds[key].getSetting('password'))
                         if (image) {
-                            Homey.ManagerFlow.getCard('trigger', trigger).trigger(doorbirds[key], {snapshot: image}, {})
+                            var snapshot = image.toString('base64');
+                            Homey.ManagerFlow.getCard('trigger', trigger).trigger(doorbirds[key], {snapshot: snapshot}, {})
                                 .then(result => {
                                     callback(null, 'OK');
                                 })

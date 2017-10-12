@@ -50,5 +50,8 @@
     "Something went wrong": "Etwas ist schief gelaufen.",
     "I did not understand you correctly, please try again": "Ich habe dich nicht richtig verstanden, bitte versuch es nochmal.",
     "OK, the door relay has been triggered": "OK, das türrelais wurde ausgelöst.",
-    "No action has been taken": "Es wurden keine Maßnahmen ergriffen."
+    "No action has been taken": "Es wurden keine Maßnahmen ergriffen.",
+    "Live Snapshot": "Live Snapshot",
+    "Latest Doorbell Snapshot": "Latest Doorbell Snapshot",
+    "Latest Motionsensor Snapshot": "Latest Motionsensor Snapshot"
 }

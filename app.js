@@ -7,7 +7,7 @@ class DoorbirdApp extends Homey.App {
 
     onInit() {
         this.log('Initializing DoorBird app ...');
-        flowActions.init();
+        flowActions.init();        
     }
 }
 

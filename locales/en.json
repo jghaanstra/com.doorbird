@@ -50,5 +50,8 @@
     "Something went wrong": "Something went wrong.",
     "I did not understand you correctly, please try again": "I did not understand you correctly, please try again.",
     "OK, the door relay has been triggered": "OK, the door relay has been triggered.",
-    "No action has been taken": "No action has been taken."
+    "No action has been taken": "No action has been taken.",
+    "Live Snapshot": "Live Snapshot",
+    "Latest Doorbell Snapshot": "Latest Doorbell Snapshot",
+    "Latest Motionsensor Snapshot": "Latest Motionsensor Snapshot"
 }

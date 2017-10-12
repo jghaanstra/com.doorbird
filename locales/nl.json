@@ -50,5 +50,8 @@
     "Something went wrong": "Er is iets mis gegaan.",
     "I did not understand you correctly, please try again": "Ik heb je niet goed begrepen, probeer het nog eens.",
     "OK, the door relay has been triggered": "OK, de deur relais is getriggerd.",
-    "No action has been taken": "Er is geen actie ondernomen."
+    "No action has been taken": "Er is geen actie ondernomen.",
+    "Live Snapshot": "Live snapshot",
+    "Latest Doorbell Snapshot": "Laatste deurbel snapshot",
+    "Latest Motionsensor Snapshot": "Laatste bewegingsensor snapshot"
 }
