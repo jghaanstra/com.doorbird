@@ -4,7 +4,6 @@ Homey.setTitle( __('pair.title') );
 
 $(function() {
     $('#test-connection').click(function() {
-
         $('.doorbird-test').hide();
         $('.doorbird-ok').hide();
         $('.doorbird-error').hide();
@@ -69,7 +68,7 @@ $(function() {
 		var inputusername = $('#username').val();
         var inputpassword = $('#password').val();
 
-        if( inputmac != '' && inputaddress != '' && inputusername != '', inputpassword) {
+        if(inputmac != '' && inputaddress != '' && inputusername != '' && inputpassword != '') {
             var device_data = {
                 id       : inputmac,
                 address  : inputaddress,

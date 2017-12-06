@@ -11,7 +11,7 @@
 		"nl": [ "slimme deurbel", "IP camera", "DoorBird" ],
 		"de": [ "intelligente türklingel", "IP camera", "DoorBird" ]
 	},
-	"version": "2.1.0",
+	"version": "2.1.1",
 	"compatibility": "1.x >=1.5.0",
 	"author": {
 		"name": "Jelger Haanstra",
@@ -21,10 +21,12 @@
     "contributing": {
         "donate": {
             "paypal": {
-                "email": "paypal@solidewebservices.com",
-                "currency": "EUR"
+                "username": "jghaanstra"
             }
         }
+    },
+    "bugs": {
+        "url": "https://github.com/jghaanstra/com.doorbird/issues"
     },
 	"images": {
 		"large": "./assets/images/large.png",
@@ -457,12 +459,251 @@
                             {
                                 "id": "20",
                                 "label": {
-                                    "en": "20 (oldest)",
-                                    "nl": "20 (oudste)",
-                                    "de": "20 (älteste)"
+                                    "en": "20",
+                                    "nl": "20",
+                                    "de": "20"
+                                }
+                            },
+                            {
+                                "id": "21",
+                                "label": {
+                                    "en": "21",
+                                    "nl": "21",
+                                    "de": "21"
+                                }
+                            },
+                            {
+                                "id": "22",
+                                "label": {
+                                    "en": "22",
+                                    "nl": "22",
+                                    "de": "22"
+                                }
+                            },
+                            {
+                                "id": "23",
+                                "label": {
+                                    "en": "23",
+                                    "nl": "23",
+                                    "de": "23"
+                                }
+                            },
+                            {
+                                "id": "24",
+                                "label": {
+                                    "en": "24",
+                                    "nl": "24",
+                                    "de": "24"
+                                }
+                            },
+                            {
+                                "id": "25",
+                                "label": {
+                                    "en": "25",
+                                    "nl": "25",
+                                    "de": "25"
+                                }
+                            },
+                            {
+                                "id": "26",
+                                "label": {
+                                    "en": "26",
+                                    "nl": "26",
+                                    "de": "26"
+                                }
+                            },
+                            {
+                                "id": "27",
+                                "label": {
+                                    "en": "27",
+                                    "nl": "27",
+                                    "de": "27"
+                                }
+                            },
+                            {
+                                "id": "28",
+                                "label": {
+                                    "en": "28",
+                                    "nl": "28",
+                                    "de": "28"
+                                }
+                            },
+                            {
+                                "id": "29",
+                                "label": {
+                                    "en": "29",
+                                    "nl": "29",
+                                    "de": "29"
+                                }
+                            },
+                            {
+                                "id": "30",
+                                "label": {
+                                    "en": "30",
+                                    "nl": "30",
+                                    "de": "30"
+                                }
+                            },
+                            {
+                                "id": "31",
+                                "label": {
+                                    "en": "31",
+                                    "nl": "31",
+                                    "de": "31"
+                                }
+                            },
+                            {
+                                "id": "32",
+                                "label": {
+                                    "en": "32",
+                                    "nl": "32",
+                                    "de": "32"
+                                }
+                            },
+                            {
+                                "id": "33",
+                                "label": {
+                                    "en": "33",
+                                    "nl": "33",
+                                    "de": "33"
+                                }
+                            },
+                            {
+                                "id": "34",
+                                "label": {
+                                    "en": "34",
+                                    "nl": "34",
+                                    "de": "34"
+                                }
+                            },
+                            {
+                                "id": "35",
+                                "label": {
+                                    "en": "35",
+                                    "nl": "35",
+                                    "de": "35"
+                                }
+                            },
+                            {
+                                "id": "36",
+                                "label": {
+                                    "en": "36",
+                                    "nl": "36",
+                                    "de": "36"
+                                }
+                            },
+                            {
+                                "id": "37",
+                                "label": {
+                                    "en": "37",
+                                    "nl": "37",
+                                    "de": "37"
+                                }
+                            },
+                            {
+                                "id": "38",
+                                "label": {
+                                    "en": "38",
+                                    "nl": "38",
+                                    "de": "38"
+                                }
+                            },
+                            {
+                                "id": "39",
+                                "label": {
+                                    "en": "39",
+                                    "nl": "39",
+                                    "de": "39"
+                                }
+                            },
+                            {
+                                "id": "40",
+                                "label": {
+                                    "en": "40",
+                                    "nl": "40",
+                                    "de": "40"
+                                }
+                            },
+                            {
+                                "id": "41",
+                                "label": {
+                                    "en": "41",
+                                    "nl": "41",
+                                    "de": "41"
+                                }
+                            },
+                            {
+                                "id": "42",
+                                "label": {
+                                    "en": "42",
+                                    "nl": "42",
+                                    "de": "42"
+                                }
+                            },
+                            {
+                                "id": "43",
+                                "label": {
+                                    "en": "43",
+                                    "nl": "43",
+                                    "de": "43"
+                                }
+                            },
+                            {
+                                "id": "44",
+                                "label": {
+                                    "en": "44",
+                                    "nl": "44",
+                                    "de": "44"
+                                }
+                            },
+                            {
+                                "id": "45",
+                                "label": {
+                                    "en": "45",
+                                    "nl": "45",
+                                    "de": "45"
+                                }
+                            },
+                            {
+                                "id": "46",
+                                "label": {
+                                    "en": "46",
+                                    "nl": "46",
+                                    "de": "46"
+                                }
+                            },
+                            {
+                                "id": "47",
+                                "label": {
+                                    "en": "47",
+                                    "nl": "47",
+                                    "de": "47"
+                                }
+                            },
+                            {
+                                "id": "48",
+                                "label": {
+                                    "en": "48",
+                                    "nl": "48",
+                                    "de": "48"
+                                }
+                            },
+                            {
+                                "id": "49",
+                                "label": {
+                                    "en": "49",
+                                    "nl": "49",
+                                    "de": "49"
+                                }
+                            },
+                            {
+                                "id": "50",
+                                "label": {
+                                    "en": "50 (oldest)",
+                                    "nl": "50 (oudste)",
+                                    "de": "50 (älteste)"
                                 }
                             }
-
                         ]
                     },
 					{

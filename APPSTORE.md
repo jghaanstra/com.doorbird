@@ -21,7 +21,14 @@ For the doorbell alarm, motion alarm, doorbell rang and motion detected trigger 
 ### Setting up email
 To be able to send snapshots through email you will need to configure an email account which sends out the email. In the general settings of the DoorBird app there is a section to configure your email account. Please pay attention to the extra information when adding a Gmail account, this requires you to use a specific app password which needs to be setup within your Google account.
 
+## Support topic
+For support please use the official support topic on the forum [here](https://forum.athom.com/discussion/2713/).
+
 ## Changelog
+### 2017-12-06 - v2.1.1
+- NEW: extended email history doorbell and motion snapshots to latest 50 instead of 20
+- FIX: small fixes in pairing wizard
+
 ### 2017-10-12 - v2.1.0
 - NEW: added support for 3 new global image tokens: live snapshot, latest doorbell snapshot and latest motionsensor snapshot. In time these global image tokens will replace the current snapshot tokens from the trigger cards.
 

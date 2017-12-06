@@ -6,7 +6,7 @@ module.exports = [
 		description: 'Doorbell trigger',
 		method     : 'GET',
 		path       : '/doorbell/:mac',
-		public: true,
+		public     : true,
 		fn: function(args, callback) {
             triggerDoorbird(args, 'doorbell', callback);
 		}
@@ -15,7 +15,7 @@ module.exports = [
 		description: 'Motionsensor trigger',
 		method     : 'GET',
 		path       : '/motionsensor/:mac',
-		public: true,
+		public     : true,
 		fn: function(args, callback) {
             triggerDoorbird(args, 'motionsensor', callback);
 		}
@@ -24,7 +24,7 @@ module.exports = [
 		description: 'Door opener trigger',
 		method     : 'GET',
 		path       : '/dooropen/:mac',
-		public: true,
+		public     : true,
 		fn: function(args, callback) {
 			triggerDoorbird(args, 'dooropen', callback);
 		}
@@ -33,7 +33,7 @@ module.exports = [
 		description: 'Set Doorbird notification URLs',
 		method     : 'PUT',
 		path       : '/notifications/',
-		public: true,
+		public     : false,
 		fn: function(args, callback) {
             const setNotifications = async () => {
                 try {
@@ -61,7 +61,7 @@ module.exports = [
 		description: 'Test email',
 		method     : 'PUT',
 		path       : '/testemail/',
-		public: true,
+		public: false,
 		fn: function(args, callback) {
 			util.testEmail(args, callback);
 		}
