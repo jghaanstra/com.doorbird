@@ -67,19 +67,26 @@ $(function() {
         var inputaddress = $('#address').val();
 		var inputusername = $('#username').val();
         var inputpassword = $('#password').val();
+        var intercomid = inputpassword.substr(0, 6);
 
         if(inputmac != '' && inputaddress != '' && inputusername != '' && inputpassword != '') {
             var device_data = {
-                id       : inputmac,
+                id       : inputmac
+            };
+            var settings = {
                 address  : inputaddress,
                 username : inputusername,
     			password : inputpassword
             };
+            var store = {
+                intercomid: intercomid
+            };
 
             Homey.addDevice({
-                name	: 'DoorBird',
-                data 	: device_data,
-                settings: device_data
+                name	 : 'DoorBird',
+                data 	 : device_data,
+                settings : settings,
+                store    : store
             }, function(error, result ) {
                 if (error) {
                     $('.doorbird-error').show();

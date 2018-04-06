@@ -1,9 +1,10 @@
 {
   "name": "com.doorbird",
-  "version": "2.1.1",
+  "version": "2.2.0",
   "description": "Homey app for DoorBird Smart Doorbell",
   "main": "api.js",
   "dependencies": {
+    "libsodium-wrappers": "^0.7.3",
     "nodemailer": "^4.1.0",
     "request": "^2.81.0",
     "request-promise-native": "^1.0.4"
@@ -27,5 +28,5 @@
   "bugs": {
     "url": "https://github.com/jghaanstra/com.doorbird/issues"
   },
-  "homepage": "https://github.com/jghaanstra/com.doorbird#readme"
+  "homepage": "https://apps.athom.com/app/com.doorbird"
 }

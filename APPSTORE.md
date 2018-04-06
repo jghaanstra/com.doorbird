@@ -25,17 +25,5 @@ To be able to send snapshots through email you will need to configure an email a
 For support please use the official support topic on the forum [here](https://forum.athom.com/discussion/2713/).
 
 ## Changelog
-### 2017-12-06 - v2.1.1
-- NEW: extended email history doorbell and motion snapshots to latest 50 instead of 20
-- FIX: small fixes in pairing wizard
-
-### 2017-10-12 - v2.1.0
-- NEW: added support for 3 new global image tokens: live snapshot, latest doorbell snapshot and latest motionsensor snapshot. In time these global image tokens will replace the current snapshot tokens from the trigger cards.
-
-### 2017-10-06 - v2.0.1
-- UPDATE: no functionality changes, made use of official donation button feature of Homey app store
-
-### 2017-09-18 -- v2.0.0
-- UPDATE: rewritten app for SDK2
-- NEW: implemented the doorbell class and generic alarm and motion alarm capability
-- NEW: added ability to enable/disable event notifications from the Doorbird on the settings page
+### 2018-03-30 - v2.2.0
+- NEW: rewritten some parts to be compatible with the new Doorbird API (firmware 110 and higher)
