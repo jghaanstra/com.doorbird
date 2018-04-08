@@ -1,261 +1,198 @@
 <!doctype html>
 <html>
-    <head>
-        <script type="text/javascript" src="/homey.js" data-origin="settings"></script>
+  <head>
+    <script type="text/javascript" src="/homey.js" data-origin="settings"></script>
 		<style>
-            .doorbird-notification .table {
-                width: auto;
-            }
-            .doorbird-notification .table th, .doorbird-notification .table td {
-                padding: 2px 20px 2px 0;
-            }
-            .form-group {
-                padding-bottom: 10px;
-            }
-            .doorbird-notification .form-group input[type='text'], .doorbird-notification .form-group input[type='password'] {
-                width: 60px;
-            }
-            .doorbird-email .form-group input[type='text'], .doorbird-email .form-group input[type='password'] {
-                width: 220px;
-            }
-            .doorbird-status {
-        		display: none;
-        	}
-            .buttons, .messages {
-                padding-top: 10px;
-            }
+      .doorbird-notification .table {
+        width: auto;
+      }
+      .doorbird-notification .table th, .doorbird-notification .table td {
+        padding: 2px 20px 2px 0;
+      }
+      .form-group {
+        padding-bottom: 10px;
+      }
+      .doorbird-email .form-group input[type='text'], .doorbird-email .form-group input[type='password'] {
+        width: 220px;
+      }
+      .doorbird-status {
+    		display: none;
+    	}
+      .buttons, .messages {
+        padding-top: 10px;
+      }
 		</style>
-    </head>
-    <body>
-        <h1 data-i18n="settings.title">DoorBird Settings</h1>
-        <fieldset class="doorbird-notification">
-            <legend data-i18n="settings.notificationsettings">Notification Settings</legend>
-            <p data-i18n="settings.intro-notification">DoorBirds needs to be configured to send notifications to Homey for the doorbell, motionsensor and door open triggers. You can set these manually or just click the button below to update your DoorBird(s).</p>
-            <table class="table">
-                <thead>
-                    <tr>
-                        <th data-i18n="settings.notificationlabels">Relaxation time between notification from DoorBird to Homey</th>
-                        <th data-i18n="settings.seconds">Seconds</th>
-                        <th data-i18n="settings.enabled">Enabled?</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr class="form-group">
-                        <td><label for="relaxationdb" data-i18n="settings.relaxationdoorbell">Relaxation doorbell</label></td>
-                        <td><input type="text" class="form-control" id="relaxationdb" min="10" value="" placeholder="30"></td>
-                        <td><input type="checkbox" class="form-control" id="relaxationdbenable"></td>
-                    </tr>
-                    <tr class="form-group">
-                        <td><label for="relaxationms" data-i18n="settings.relaxationmotionsensor">Relaxation motionsensor</label></td>
-                        <td><input type="text" class="form-control" id="relaxationms" min="10" value="" placeholder="60"></td>
-                        <td><input type="checkbox" class="form-control" id="relaxationmsenable"></td>
-                    </tr>
-                    <tr class="form-group">
-                        <td><label for="relaxationdo" data-i18n="settings.relaxationdooropen">Relaxation door opener</label></td>
-                        <td><input type="text" class="form-control" id="relaxationdo" min="10" value="" placeholder="30"></td>
-                        <td><input type="checkbox" class="form-control" id="relaxationdoenable"></td>
-                    </tr>
-                    </tbody>
-            </table>
-            <div class="form-group buttons">
-              <button id="set-notification" class="button" data-i18n="settings.setnotifications">Set DoorBird Notifications</button>
-            </div>
-            <div class="messages messages-notifications">
-                <p class="doorbird-notifications-ok doorbird-status" style="color: #008C23;"><i class="fa fa-check"></i> <span class="doorbird-notifications-ok-msg" data-i18n="settings.notificationssuccess">Notifications have been set succesfully.</span></p>
-                <p class="doorbird-notifications-error doorbird-status" style="color: #ff6300;"><i class="fa fa-times"></i> <span class="doorbird-notifications-error-msg"></span></p>
-            </div>
-        </fieldset>
+  </head>
+  <body>
+    <h1 data-i18n="settings.title">DoorBird Settings</h1>
+    <fieldset class="doorbird-notification">
+      <legend data-i18n="settings.notificationsettings">Notification Settings</legend>
+      <p data-i18n="settings.intro-notification">DoorBirds needs to be configured to send notifications to Homey for the doorbell, motionsensor and door open triggers. Use the button below to add the HTTP favorite URLs to your DoorBird config and follow the instructions from the app store page on how to configure your DoorBird(s) to send notifications to Homey.</p>
+      <div class="form-group buttons">
+        <button id="set-notification" class="button" data-i18n="settings.setnotifications">Set DoorBird Notification HTTP URLs</button>
+      </div>
+      <div class="messages messages-notifications">
+        <p class="doorbird-notifications-ok doorbird-status" style="color: #008C23;"><i class="fa fa-check"></i> <span class="doorbird-notifications-ok-msg" data-i18n="settings.notificationssuccess">Notifications have been set succesfully.</span></p>
+        <p class="doorbird-notifications-error doorbird-status" style="color: #ff6300;"><i class="fa fa-times"></i> <span class="doorbird-notifications-error-msg"></span></p>
+      </div>
+      <p data-i18n="settings.intro-relay">Currently the latest DoorBird smartphone app does not offer an option to send the relay (door open) event to a HTTP favorite. The button below will use the API to directly configure your DoorBird to send relay (door open) events to Homey.</p>
+      <div class="form-group buttons">
+        <button id="set-relay" class="button" data-i18n="settings.setrelay">Set relay trigger events</button>
+      </div>
+      <div class="messages messages-relay">
+        <p class="doorbird-relay-ok doorbird-status" style="color: #008C23;"><i class="fa fa-check"></i> <span class="doorbird-relay-ok-msg" data-i18n="settings.relayssuccess">Relay trigger succesfully scheduled.</span></p>
+        <p class="doorbird-relay-error doorbird-status" style="color: #ff6300;"><i class="fa fa-times"></i> <span class="doorbird-relay-error-msg"></span></p>
+      </div>
+    </fieldset>
 
-        <fieldset class="doorbird-email">
-            <legend data-i18n="settings.emailsettings">Email Settings</legend>
-            <p data-i18n="settings.intro-email">These settings are needed for sending snapshot images through email. If you wish to send emails through Gmail SMTP servers and you are using 2-step authentication you first need to create an <a href='https://support.google.com/accounts/answer/185833' target='_blank'>app password</a> in your Google Account.</p>
-            <div class="form-group">
-                <label for="username" data-i18n="settings.username">Email Username</label>
-                <input type="text" class="form-control" id="username">
-            </div>
-            <div class="form-group">
-                <label for="password" data-i18n="settings.password">Email Password</label>
-                <input type="password" class="form-control" id="password">
-            </div>
-            <div class="form-group">
-                <label for="hostname" data-i18n="settings.hostname">SMTP Server</label>
-                <input type="text" class="form-control" id="hostname" placeholder="mail.yourdomain.com">
-            </div>
-            <div class="form-group">
-                <label for="port" data-i18n="settings.port">SMTP Port</label>
-                <input type="text" class="form-control" id="port" placeholder="25 or 587">
-            </div>
-            <div class="form-group">
-                <label for="sender" data-i18n="settings.sender">Sender Email Address</label>
-                <input type="text" class="form-control" id="sender" placeholder="name@yourdomain.com">
-            </div>
-            <div class="form-group">
-                <label for="secure" data-i18n="settings.secure">Encrypted Connection</label>
-                <input type="checkbox" class="form-control" id="secure">
-            </div>
-            <div class="form-group buttons">
-                <button id="test-email" class="button" data-i18n="settings.testemail">Test Email Settings</button>
-                <button id="save-email" class="button" data-i18n="settings.saveemail" disabled>Save Email Settings</button>
-            </div>
-            <div class="messages messages-email">
-                <p class="doorbird-email-test doorbird-status" style="color: #008C23;"><i class="fa fa-check"></i> <span class="doorbird-email-test-msg" data-i18n="settings.testing">Settings have been tested succesfully. You should have received a test email.</span></p>
-                <p class="doorbird-email-ok doorbird-status" style="color: #008C23;"><i class="fa fa-check"></i> <span class="doorbird-email-ok-msg" data-i18n="settings.success">Settings have been saved succesfully.</span></p>
-                <p class="doorbird-email-error doorbird-status" style="color: #ff6300;"><i class="fa fa-times"></i> <span class="doorbird-email-error-msg"></span></p>
-            </div>
-        </fieldset>
+    <fieldset class="doorbird-email">
+      <legend data-i18n="settings.emailsettings">Email Settings</legend>
+      <p data-i18n="settings.intro-email">These settings are needed for sending snapshot images through email. If you wish to send emails through Gmail SMTP servers and you are using 2-step authentication you first need to create an <a href='https://support.google.com/accounts/answer/185833' target='_blank'>app password</a> in your Google Account.</p>
+      <div class="form-group">
+        <label for="username" data-i18n="settings.username">Email Username</label>
+        <input type="text" class="form-control" id="username">
+      </div>
+      <div class="form-group">
+        <label for="password" data-i18n="settings.password">Email Password</label>
+        <input type="password" class="form-control" id="password">
+      </div>
+      <div class="form-group">
+        <label for="hostname" data-i18n="settings.hostname">SMTP Server</label>
+        <input type="text" class="form-control" id="hostname" placeholder="mail.yourdomain.com">
+      </div>
+      <div class="form-group">
+        <label for="port" data-i18n="settings.port">SMTP Port</label>
+        <input type="text" class="form-control" id="port" placeholder="25 or 587">
+      </div>
+      <div class="form-group">
+        <label for="sender" data-i18n="settings.sender">Sender Email Address</label>
+        <input type="text" class="form-control" id="sender" placeholder="name@yourdomain.com">
+      </div>
+      <div class="form-group">
+        <label for="secure" data-i18n="settings.secure">Encrypted Connection</label>
+        <input type="checkbox" class="form-control" id="secure">
+      </div>
+      <div class="form-group buttons">
+        <button id="test-email" class="button" data-i18n="settings.testemail">Test Email Settings</button>
+        <button id="save-email" class="button" data-i18n="settings.saveemail" disabled>Save Email Settings</button>
+      </div>
+      <div class="messages messages-email">
+        <p class="doorbird-email-test doorbird-status" style="color: #008C23;"><i class="fa fa-check"></i> <span class="doorbird-email-test-msg" data-i18n="settings.testing">Settings have been tested succesfully. You should have received a test email.</span></p>
+        <p class="doorbird-email-ok doorbird-status" style="color: #008C23;"><i class="fa fa-check"></i> <span class="doorbird-email-ok-msg" data-i18n="settings.success">Settings have been saved succesfully.</span></p>
+        <p class="doorbird-email-error doorbird-status" style="color: #ff6300;"><i class="fa fa-times"></i> <span class="doorbird-email-error-msg"></span></p>
+      </div>
+    </fieldset>
 
-        <script type="text/javascript">
-            function onHomeyReady(Homey) {
-                Homey.get('notification_relaxationdb', function(error, relaxationdb) {
-    		       if(error) return console.error('Could not get relaxation doorbell', error);
-                   if(!relaxationdb) return console.log('Relaxation doorbell has not been set yet');
-    		       document.getElementById('relaxationdb').value = relaxationdb;
-    		    });
-                Homey.get('notification_relaxationdbenable', function(error, relaxationdbenable) {
-    		       if(error) return console.error('Could not get relaxation doorbell enable', error);
-                   if(relaxationdbenable == 1) { document.getElementById('relaxationdbenable').checked = true; }
-    		    });
-    		    Homey.get('notification_relaxationms', function(error, relaxationms) {
-    		       if(error) return console.error('Could not get relaxation motion sensor', error);
-                   if(!relaxationms) return console.log('Relaxation motionsensor has not been set yet');
-    		       document.getElementById('relaxationms').value = relaxationms;
-    		    });
-                Homey.get('notification_relaxationmsenable', function(error, relaxationmsenable) {
-    		       if(error) return console.error('Could not get relaxation motion sensor enable', error);
-                   if(relaxationmsenable == 1) { document.getElementById('relaxationmsenable').checked = true; }
-    		    });
-                Homey.get('notification_relaxationdo', function(error, relaxationdo) {
-    		       if(error) return console.error('Could not get relaxationdo', error);
-                   if(!relaxationms) return console.log('Relaxation door opener has not been set yet');
-    		       document.getElementById('relaxationdo').value = relaxationdo;
-    		    });
-                Homey.get('notification_relaxationdoenable', function(error, relaxationdoenable) {
-    		       if(error) return console.error('Could not get relaxation motion sensor enable', error);
-                   if(relaxationdoenable == 1) { document.getElementById('relaxationdoenable').checked = true; }
-    		    });
-    	        Homey.get('email_username', function(error, username) {
-    		       if(error) return console.error('Could not get username', error);
-    		       document.getElementById('username').value = username;
-    		    });
-    		    Homey.get('email_password', function(error, password) {
-    		       if(error) return console.error('Could not get password', error);
-    		       document.getElementById('password').value = password;
-    		    });
-    		    Homey.get('email_hostname', function(error, hostname) {
-    		       if(error) return console.error('Could not get hostname', error);
-    		       document.getElementById('hostname').value = hostname;
-    		    });
-    		    Homey.get('email_port', function(error, port) {
-    		       if(error) return console.error('Could not get port', error);
-    		       document.getElementById('port').value = port;
-    		    });
-    		    Homey.get('email_sender', function(error, sender) {
-    		       if(error) return console.error('Could not get sender', error);
-    		       document.getElementById('sender').value = sender;
-    		    });
-    		    Homey.get('email_secure', function(error, secure) {
-    		       if(error) return console.error('Could not get secure connection setting', error);
-    		       document.getElementById('secure').checked = secure;
-    		    });
+    <script type="text/javascript">
+      function onHomeyReady(Homey) {
+  	    Homey.get('email_username', function(error, username) {
+  		     if(error) return console.error('Could not get username', error);
+  		     document.getElementById('username').value = username;
+  		  });
+  		  Homey.get('email_password', function(error, password) {
+  		     if(error) return console.error('Could not get password', error);
+  		     document.getElementById('password').value = password;
+  		  });
+  		  Homey.get('email_hostname', function(error, hostname) {
+  		     if(error) return console.error('Could not get hostname', error);
+  		     document.getElementById('hostname').value = hostname;
+  		  });
+  		  Homey.get('email_port', function(error, port) {
+  		     if(error) return console.error('Could not get port', error);
+  		     document.getElementById('port').value = port;
+  		  });
+  		  Homey.get('email_sender', function(error, sender) {
+  		     if(error) return console.error('Could not get sender', error);
+  		     document.getElementById('sender').value = sender;
+  		  });
+  		  Homey.get('email_secure', function(error, secure) {
+  		     if(error) return console.error('Could not get secure connection setting', error);
+  		     document.getElementById('secure').checked = secure;
+  		  });
 
-                document.getElementById("set-notification").addEventListener("click", function(elem) {
-                    setNotifications(Homey);
-                    return false;
-                });
-                document.getElementById("test-email").addEventListener("click", function(elem) {
-                    testEmail(Homey);
-                    return false;
-                });
-                document.getElementById("save-email").addEventListener("click", function(elem) {
-                    saveEmail(Homey);
-                    return false;
-                });
+        document.getElementById("set-notification").addEventListener("click", function(elem) {
+          setNotifications(Homey);
+          return false;
+        });
+        document.getElementById("set-relay").addEventListener("click", function(elem) {
+          setRelay(Homey);
+          return false;
+        });
+        document.getElementById("test-email").addEventListener("click", function(elem) {
+          testEmail(Homey);
+          return false;
+        });
+        document.getElementById("save-email").addEventListener("click", function(elem) {
+          saveEmail(Homey);
+          return false;
+        });
 
-                Homey.ready();
-            }
+        Homey.ready();
+      }
 
-            function setNotifications(Homey) {
-                Homey.set('notification_relaxationdb', document.getElementById('relaxationdb').value);
-                if (document.getElementById('relaxationdbenable').checked) {
-                    Homey.set('notification_relaxationdbenable', 1);
-                    var putrelaxationdbenable = 1;
-                } else {
-                    Homey.set('notification_relaxationdbenable', 0);
-                    var putrelaxationdbenable = 0;
-                }
-                Homey.set('notification_relaxationms', document.getElementById('relaxationms').value);
-                if (document.getElementById('relaxationmsenable').checked) {
-                    Homey.set('notification_relaxationmsenable', 1);
-                    var putrelaxationmsenable = 1;
-                } else {
-                    Homey.set('notification_relaxationmsenable', 0);
-                    var putrelaxationmsenable = 0;
-                }
-                Homey.set('notification_relaxationdo', document.getElementById('relaxationdo').value);
-                if (document.getElementById('relaxationdoenable').checked) {
-                    Homey.set('notification_relaxationdoenable', 1);
-                    var putrelaxationdoenable = 1;
-                } else {
-                    Homey.set('notification_relaxationdoenable', 0);
-                    var putrelaxationdoenable = 0;
-                }
+      function setNotifications(Homey) {
+        Homey.api('PUT', '/notifications/', {}, function(error, result) {
+          if(error){
+            document.getElementsByClassName('doorbird-notifications-ok')[0].style.display = 'none';
+            document.getElementsByClassName('doorbird-notifications-error')[0].style.display = 'block';
+            document.getElementsByClassName('doorbird-notifications-error-msg')[0].innerHTML = error;
+          } else if (result) {
+            document.getElementsByClassName('doorbird-notifications-ok')[0].style.display = 'block';
+            document.getElementsByClassName('doorbird-notifications-error')[0].style.display = 'none';
+          }
+        });
+      }
 
-                Homey.api('PUT', '/notifications/', {
-                    "relaxationdb": document.getElementById('relaxationdb').value,
-                    "relaxationdbenable": putrelaxationdbenable,
-                    "relaxationms": document.getElementById('relaxationms').value,
-                    "relaxationmsenable": putrelaxationmsenable,
-                    "relaxationdo": document.getElementById('relaxationdo').value,
-                    "relaxationdoenable": putrelaxationdoenable
-                }, function(error, result) {
-                    if(error){
-                        document.getElementsByClassName('doorbird-notifications-ok')[0].style.display = 'none';
-                        document.getElementsByClassName('doorbird-notifications-error')[0].style.display = 'block';
-                        document.getElementsByClassName('doorbird-notifications-error-msg')[0].innerHTML = error;
-                    } else if (result) {
-                        document.getElementsByClassName('doorbird-notifications-ok')[0].style.display = 'block';
-                        document.getElementsByClassName('doorbird-notifications-error')[0].style.display = 'none';
-                    }
-                });
-            }
+      function setRelay(Homey) {
+        Homey.api('PUT', '/relay/', {}, function(error, result) {
+          if(error){
+            document.getElementsByClassName('doorbird-relay-ok')[0].style.display = 'none';
+            document.getElementsByClassName('doorbird-relay-error')[0].style.display = 'block';
+            document.getElementsByClassName('doorbird-relay-error-msg')[0].innerHTML = error;
+          } else if (result) {
+            document.getElementsByClassName('doorbird-relay-ok')[0].style.display = 'block';
+            document.getElementsByClassName('doorbird-relay-error')[0].style.display = 'none';
+          }
+        });
+      }
 
-            function testEmail(Homey) {
-                document.getElementsByClassName('doorbird-email-test')[0].style.display = 'none';
-                document.getElementsByClassName('doorbird-email-error')[0].style.display = 'none';
+      function testEmail(Homey) {
+        document.getElementsByClassName('doorbird-email-test')[0].style.display = 'none';
+        document.getElementsByClassName('doorbird-email-error')[0].style.display = 'none';
 
-                Homey.api('PUT', '/testemail/', {
-                    "email_username": document.getElementById('username').value,
-                    "email_password": document.getElementById('password').value,
-                    "email_hostname": document.getElementById('hostname').value,
-                    "email_port": document.getElementById('port').value,
-                    "email_sender": document.getElementById('sender').value,
-                    "email_secure": document.getElementById('secure').checked
-                }, function(error, result) {
-                    if(error){
-                        document.getElementsByClassName('doorbird-email-error')[0].style.display = 'block';
-                        document.getElementsByClassName('doorbird-email-error-msg')[0].innerHTML = error;
-                    } else if (result) {
-                        document.getElementsByClassName('doorbird-email-error')[0].style.display = 'none';
-                        document.getElementsByClassName('doorbird-email-test')[0].style.display = 'block';
+        Homey.api('PUT', '/testemail/', {
+          "email_username": document.getElementById('username').value,
+          "email_password": document.getElementById('password').value,
+          "email_hostname": document.getElementById('hostname').value,
+          "email_port": document.getElementById('port').value,
+          "email_sender": document.getElementById('sender').value,
+          "email_secure": document.getElementById('secure').checked
+        }, function(error, result) {
+          if(error){
+            document.getElementsByClassName('doorbird-email-error')[0].style.display = 'block';
+            document.getElementsByClassName('doorbird-email-error-msg')[0].innerHTML = error;
+          } else if (result) {
+            document.getElementsByClassName('doorbird-email-error')[0].style.display = 'none';
+            document.getElementsByClassName('doorbird-email-test')[0].style.display = 'block';
 
-                        document.getElementById('save-email').disabled = false;
-                    }
-                });
-            };
+            document.getElementById('save-email').disabled = false;
+          }
+        });
+      };
 
-            function saveEmail(Homey) {
-                document.getElementsByClassName('doorbird-email-test')[0].style.display = 'none';
-                document.getElementsByClassName('doorbird-email-error')[0].style.display = 'none';
+      function saveEmail(Homey) {
+        document.getElementsByClassName('doorbird-email-test')[0].style.display = 'none';
+        document.getElementsByClassName('doorbird-email-error')[0].style.display = 'none';
 
-                Homey.set('email_username', document.getElementById('username').value);
-                Homey.set('email_password', document.getElementById('password').value);
-                Homey.set('email_hostname', document.getElementById('hostname').value);
-                Homey.set('email_port', document.getElementById('port').value);
-                Homey.set('email_sender', document.getElementById('sender').value);
-                Homey.set('email_secure', document.getElementById('secure').checked);
+        Homey.set('email_username', document.getElementById('username').value);
+        Homey.set('email_password', document.getElementById('password').value);
+        Homey.set('email_hostname', document.getElementById('hostname').value);
+        Homey.set('email_port', document.getElementById('port').value);
+        Homey.set('email_sender', document.getElementById('sender').value);
+        Homey.set('email_secure', document.getElementById('secure').checked);
 
-                document.getElementsByClassName('doorbird-email-ok')[0].style.display = 'block';
-            };
-        </script>
-    </body>
+        document.getElementsByClassName('doorbird-email-ok')[0].style.display = 'block';
+      };
+    </script>
+  </body>
 </html>

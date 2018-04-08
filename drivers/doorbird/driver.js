@@ -2,31 +2,9 @@
 
 const Homey = require('homey');
 const rp = require('request-promise-native');
-const dgram = require('dgram');
-const advertisements = dgram.createSocket('udp4');
 const util = require('/lib/util.js');
 
 class DoorbirdDriver extends Homey.Driver {
-
-    onInit() {
-        advertisements.bind(35344, function () {
-            advertisements.addMembership('239.255.255.250');
-            advertisements.setBroadcast(true);
-        });
-
-        advertisements.on('message', (message, address) => {
-            var doorbirds = this.getDevices();
-            Object.keys(doorbirds).forEach(function(key) {
-                process.nextTick(function() {
-                    doorbirds[key].handleBroadcastEvent(message);
-                });
-            });
-        });
-
-        advertisements.on('error', (error) => {
-            console.log(error);
-        });
-    }
 
     onPair(socket) {
         socket.on('testConnection', function(data, callback) {
