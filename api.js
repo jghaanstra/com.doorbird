@@ -89,7 +89,7 @@ function triggerDoorbird(args, trigger, callback) {
 	var ipv4 = args.req.remoteAddress.match(/\b\d{1,3}\.\d{1,3}\.\d{1,3}\.\d{1,3}\b/g)[0];
 
 	Object.keys(doorbirds).forEach(function(key) {
-		if (doorbirds[key].getSetting('address') == ipv4 && doorbirds[key].getSetting('id') == args.params.mac) {
+		if (doorbirds[key].getSetting('address') == ipv4 && doorbirds[key].getData().id == args.params.mac) {
       if (trigger == 'doorbell' || trigger == 'motionsensor') {
 
         /* create snapshot */

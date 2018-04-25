@@ -40,5 +40,8 @@ To be able to send snapshots through email you will need to configure an email a
 For support please use the official support topic on the forum [here](https://forum.athom.com/discussion/2713/).
 
 ## Changelog
+### 2018-04-25 - v2.2.1
+- FIX: fixed a bug which would cause issues with notifications for DoorBirds paired on v2.2.0
+
 ### 2018-04-08 - v2.2.0
 - UPDATE: rewritten some parts to be compatible with the new Doorbird API (DoorBird firmware 0110 and higher, read the app store description for more details)
