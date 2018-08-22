@@ -29,7 +29,9 @@ After these steps or when added a DoorBird for the first time follow these steps
 - Set the pause between alarm option to your preference (during the period no new events will be send to Homey)
 - After that select the the 'Schedule for actions' option
 - On this page select 'HTTP calls' from the top left icon pull down and select 'Homey Motion Trigger' from the top middle menu and click op the top left menu to fill the schedule (or configure it to your preference, this determines when the DoorBird will send motion events to Homey)
-- Go back and select the option 'Schedule for doorbell'
+- Go back twice and select the option 'Relays' and then the option 'Schedule'
+- On this page select 'HTTP calls' from the top left icon pull down and select 'Homey Relay Trigger' from the top middle menu and click op the top left menu to fill the schedule (or configure it to your preference, this determines when the DoorBird will send door open events to Homey)
+- Go back twice and select the option 'Schedule for doorbell'
 - On this page select 'HTTP calls' from the top left icon pull down and select 'Homey Doorbell Trigger' from the top middle menu and click op the top left menu to fill the schedule (or configure it to your preference, this determines when the DoorBird will send doorbell events to Homey)
 - Test your settings, everything should be setup now to receive events from your DoorBird within Homey
 
@@ -37,11 +39,10 @@ After these steps or when added a DoorBird for the first time follow these steps
 To be able to send snapshots through email you will need to configure an email account which sends out the email. In the general settings of the DoorBird app there is a section to configure your email account. Please pay attention to the extra information when adding a Gmail account, this requires you to use a specific app password which needs to be setup within your Google account.
 
 ## Support topic
-For support please use the official support topic on the forum [here](https://forum.athom.com/discussion/2713/).
+For support please use the official support topic on the forum [here](https://community.athom.com/t/115).
 
 ## Changelog
-### 2018-04-25 - v2.2.1
-- FIX: fixed a bug which would cause issues with notifications for DoorBirds paired on v2.2.0
-
-### 2018-04-08 - v2.2.0
-- UPDATE: rewritten some parts to be compatible with the new Doorbird API (DoorBird firmware 0110 and higher, read the app store description for more details)
+### 2018-08-22 - v2.2.2
+* DOCS: updated the description to explain in more detail how to configure the door relay trigger
+* UPDATE: updated app manifest to include id of new forum support topic
+* UPDATE: updated node packages to latest versions

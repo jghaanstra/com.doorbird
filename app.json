@@ -11,7 +11,7 @@
 		"nl": [ "slimme deurbel", "IP camera", "DoorBird" ],
 		"de": [ "intelligente türklingel", "IP camera", "DoorBird" ]
 	},
-	"version": "2.2.1",
+	"version": "2.2.2",
 	"compatibility": "1.x >=1.5.0",
 	"author": {
 		"name": "Jelger Haanstra",
@@ -29,6 +29,7 @@
     "url": "https://github.com/jghaanstra/com.doorbird/issues"
   },
   "athomForumDiscussionId": 2713,
+  "homeyCommunityTopicId": 115,
 	"images": {
 		"large": "./assets/images/large.png",
 		"small": "./assets/images/small.png"
