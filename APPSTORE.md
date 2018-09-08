@@ -43,7 +43,7 @@ For support please use the official support topic on the forum [here](https://co
 
 ## Changelog
 ### 2018-09-08 - v2.2.3
-* REFACTORING: switched from request node module to node-fetch (reduced footprint from 9MB to 1MB)
+* REFACTORING: switched from request node module to node-fetch (reduced footprint from 9MB to 1,5MB)
 * UPDATE: removed settings for scheduling relay notifications, this can now be set in the DoorBird smartphone app
 
 ### 2018-08-22 - v2.2.2
