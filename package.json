@@ -1,13 +1,11 @@
 {
   "name": "com.doorbird",
-  "version": "2.2.2",
+  "version": "2.2.3",
   "description": "Homey app for DoorBird Smart Doorbell",
-  "main": "api.js",
+  "main": "app.js",
   "dependencies": {
-    "hoek": "^5.0.4",
-    "nodemailer": "^4.6.8",
-    "request": "^2.88.0",
-    "request-promise-native": "^1.0.5"
+    "node-fetch": "^2.2.0",
+    "nodemailer": "^4.6.8"
   },
   "devDependencies": {},
   "scripts": {

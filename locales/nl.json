@@ -20,7 +20,6 @@
   "settings": {
     "title": "DoorBird Instellingen",
     "notificationsettings": "Notificatie instellingen",
-    "intro-notification": "DoorBirds moeten worden ingesteld om notificaties naar Homey te versturen voor de triggers van de deurbel, bewegingsensor en deur open events. Zorg ervoor dat je de user waarmee je je DoorBird apparaat hebt toegevoegd hebt voorzien van API-operator rechten. Gebruik vervolgens onderstaande knop voor het toevoegen van de HTTP favorite URLs aan je DoorBird config en volg de instructies uit de beschrijving in de app store voor het configueren van je DoorBirds om events naar Homey te sturen.",
     "intro-relay": "Momenteeel heeft de laatste versie van de DoorBird smartphone app geen mogelijkheden voor het configureren voor het verzenden van relay (deur open) events naar een HTTP favorite URL. De knop hieronder gebruikt de API om je DoorBird rechtstreeks te configureren om relay (deur open) events naar Homey te versturen.",
     "notificationlabels": "Relaxation tijd tussen notificaties van DoorBird naar Homey",
     "seconds": "Seconden",

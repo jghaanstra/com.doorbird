@@ -21,7 +21,6 @@
     "title": "DoorBird Settings",
     "notificationsettings": "Notification Settings",
     "intro-notification": "DoorBirds needs to be configured to send notifications to Homey for the doorbell, motionsensor and door open triggers. Make sure you have given API-operator permissions to the user which was used to add the DoorBird device to Homey. Use the button below to add the HTTP favorite URLs to your DoorBird config and follow the instructions from the app store page on how to configure your DoorBird(s) to send notifications to Homey.",
-    "intro-relay": "Currently the latest DoorBird smartphone app does not offer an option to send the relay (door open) event to a HTTP favorite. The button below will use the API to directly configure your DoorBird to send relay (door open) events to Homey.",
     "notificationlabels": "Relaxation time between notification from DoorBird to Homey",
     "seconds": "Seconds",
     "enabled": "Enabled?",

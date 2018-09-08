@@ -35,14 +35,6 @@
     <p class="doorbird-notifications-ok doorbird-status" style="color: #008C23;"><i class="fa fa-check"></i> <span class="doorbird-notifications-ok-msg" data-i18n="settings.notificationssuccess">Notifications have been set succesfully.</span></p>
     <p class="doorbird-notifications-error doorbird-status" style="color: #ff6300;"><i class="fa fa-times"></i> <span class="doorbird-notifications-error-msg"></span></p>
     </div>
-    <p data-i18n="settings.intro-relay">Currently the latest DoorBird smartphone app does not offer an option to send the relay (door open) event to a HTTP favorite. The button below will use the API to directly configure your DoorBird to send relay (door open) events to Homey.</p>
-    <div class="form-group buttons">
-    <button id="set-relay" class="button" data-i18n="settings.setrelay">Set relay trigger events</button>
-    </div>
-    <div class="messages messages-relay">
-    <p class="doorbird-relay-ok doorbird-status" style="color: #008C23;"><i class="fa fa-check"></i> <span class="doorbird-relay-ok-msg" data-i18n="settings.relayssuccess">Relay trigger succesfully scheduled.</span></p>
-    <p class="doorbird-relay-error doorbird-status" style="color: #ff6300;"><i class="fa fa-times"></i> <span class="doorbird-relay-error-msg"></span></p>
-    </div>
   </fieldset>
 
   <fieldset class="doorbird-email">
@@ -114,10 +106,6 @@
       setNotifications(Homey);
       return false;
     });
-    document.getElementById("set-relay").addEventListener("click", function(elem) {
-      setRelay(Homey);
-      return false;
-    });
     document.getElementById("test-email").addEventListener("click", function(elem) {
       testEmail(Homey);
       return false;
@@ -139,19 +127,6 @@
       } else if (result) {
       document.getElementsByClassName('doorbird-notifications-ok')[0].style.display = 'block';
       document.getElementsByClassName('doorbird-notifications-error')[0].style.display = 'none';
-      }
-    });
-    }
-
-    function setRelay(Homey) {
-    Homey.api('PUT', '/relay/', {}, function(error, result) {
-      if(error){
-      document.getElementsByClassName('doorbird-relay-ok')[0].style.display = 'none';
-      document.getElementsByClassName('doorbird-relay-error')[0].style.display = 'block';
-      document.getElementsByClassName('doorbird-relay-error-msg')[0].innerHTML = error;
-      } else if (result) {
-      document.getElementsByClassName('doorbird-relay-ok')[0].style.display = 'block';
-      document.getElementsByClassName('doorbird-relay-error')[0].style.display = 'none';
       }
     });
     }
