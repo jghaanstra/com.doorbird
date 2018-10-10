@@ -42,11 +42,6 @@ To be able to send snapshots through email you will need to configure an email a
 For support please use the official support topic on the forum [here](https://community.athom.com/t/115).
 
 ## Changelog
-### 2018-09-08 - v2.2.3
-* REFACTORING: switched from request node module to node-fetch (reduced footprint from 9MB to 1,5MB)
-* UPDATE: removed settings for scheduling relay notifications, this can now be set in the DoorBird smartphone app
-
-### 2018-08-22 - v2.2.2
-* DOCS: updated the description to explain in more detail how to configure the door relay trigger
-* UPDATE: updated app manifest to include id of new forum support topic
-* UPDATE: updated node packages to latest versions
+### 2018-10-10 - v2.2.4
+* NEW: extended the "open door" action card with a dropdown where you can select the desired relay (for DoorBird devices with more than 1 relay)
+* FIX: fixed the "ask to open door" action card

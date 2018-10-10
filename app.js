@@ -42,7 +42,17 @@ class DoorbirdApp extends Homey.App {
 
     new Homey.FlowCardAction('door')
       .register()
-      .registerRunListener((args) => { return Promise.resolve(util.sendCommand('/bha-api/open-door.cgi', args.device.getSetting('address'), args.device.getSetting('username'), args.device.getSetting('password'))) });
+      .registerRunListener((args) => {
+        if(args.relay.id) {
+          return Promise.resolve(util.sendCommand('/bha-api/open-door.cgi?r='+ args.relay.id, args.device.getSetting('address'), args.device.getSetting('username'), args.device.getSetting('password')))
+        } else {
+          return Promise.resolve(util.sendCommand('/bha-api/open-door.cgi', args.device.getSetting('address'), args.device.getSetting('username'), args.device.getSetting('password'), args.relay.id))
+        }
+      })
+      .getArgument('relay')
+        .registerAutocompleteListener(( query, args ) => {
+          return util.getRelays(args.device.getSetting('address'), args.device.getSetting('username'), args.device.getSetting('password'));
+        })
 
     new Homey.FlowCardAction('ask_door')
       .register()

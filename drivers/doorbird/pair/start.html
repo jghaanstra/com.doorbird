@@ -35,6 +35,8 @@ $(function() {
 					$('.doorbird-error-msg').html( __('pair.unknownerror') );
 				} else if(data) {
 					$('#mac').val(data.info.WIFI_MAC_ADDR);
+          $('#type').val(data.info.DEVICE-TYPE);
+          $('#relay').val(data.info.RELAYS);
 
 					var doorbirdinfo = "<div class='info-row'><span class='info-label' data-i18n='pair.firmware'>DoorBird Firmware:</span><span class='info-value'> "+ data.info.FIRMWARE +"</span></div><div class='info-row'><span class='info-label' data-i18n='pair.mac'>DoorBird MAC Address:</span><span class='info-value'> "+ data.info.WIFI_MAC_ADDR +"</span></div>";
 					$('.doorbird-info').show();
@@ -68,6 +70,8 @@ $(function() {
 		var inputusername = $('#username').val();
 		var inputpassword = $('#password').val();
 		var intercomid = inputpassword.substr(0, 6);
+    var type = $('#type').val();
+    var relay = $('#relay').val();
 
 		if(inputmac != '' && inputaddress != '' && inputusername != '' && inputpassword != '') {
 			var device_data = {
@@ -79,7 +83,9 @@ $(function() {
 				password : inputpassword
 			};
 			var store = {
-				intercomid: intercomid
+				type: type,
+        intercomid: intercomid,
+        relay: relay
 			};
 
 			Homey.addDevice({
@@ -114,6 +120,10 @@ $(function() {
 		justify-content: space-between;
 		flex-wrap: wrap;
 	}
+  .doorbird-pairing .form-group input[type="text"], .doorbird-pairing .form-group input[type="password"], .doorbird-pairing .form-group textarea {
+    max-width: 250px;
+    width: 100%;
+  }
 	.doorbird-pairing .col1, .doorbird-pairing .col2 {
 		width: 48%;
 	}
@@ -157,6 +167,8 @@ $(function() {
 			<input type="password" class="form-control" id="password">
 		</div>
 		<input type="hidden" id="mac" value="">
+    <input type="hidden" id="type" value="">
+    <input type="hidden" id="relay" value="">
 		<div class="form-group buttons">
 			<button id="test-connection" class="button" data-i18n="pair.test">Test Connection</button>
 			<button id="connect" class="button" data-i18n="pair.connect" disabled>Connect</button>
