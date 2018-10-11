@@ -218,8 +218,22 @@
 					"nl": "Trigger een flow wanneer de deur opener relais van je DoorBird is geactiveerd.",
 					"de": "Triggert einen flow wenn das türöffnerrelais Ihrer DoorBird aktiviert ist."
 				},
+        "tokens": [
+          {
+            "name": "relay",
+            "type": "string",
+            "title": {
+              "en": "Relay",
+              "nl": "Relais"
+            },
+            "example": {
+              "en": "1",
+              "nl": "1"
+            }
+          }
+        ],
 				"args": [
-					{
+          {
 						"name": "device",
 						"type": "device",
 						"placeholder": {

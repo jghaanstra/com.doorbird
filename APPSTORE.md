@@ -44,4 +44,5 @@ For support please use the official support topic on the forum [here](https://co
 ## Changelog
 ### 2018-10-10 - v2.2.4
 * NEW: extended the "open door" action card with a dropdown where you can select the desired relay (for DoorBird devices with more than 1 relay)
+* NEW: added a token with the relay name to the "door has been opened" trigger card allowing you to identify which relay has been triggered (for DoorBird devices with more than 1 relay, this requires you to re-add the notifications from the DoorBird Homey app settings page)
 * FIX: fixed the "ask to open door" action card

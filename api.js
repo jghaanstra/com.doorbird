@@ -29,6 +29,15 @@ module.exports = [
 			triggerDoorbird(args, 'dooropen', callback);
 		}
 	},
+  {
+		description: 'Relay trigger',
+		method   : 'GET',
+		path     : '/relays/:mac/:relay',
+		public   : true,
+		fn: function(args, callback) {
+			triggerDoorbird(args, 'relay', callback);
+		}
+	},
 	{
 		description: 'Set Doorbird notification URLs',
 		method   : 'PUT',
@@ -49,28 +58,6 @@ module.exports = [
         }
       }
       setNotifications();
-		}
-	},
-  {
-		description: 'Schedule Doorbird relay trigger',
-		method   : 'PUT',
-		path     : '/relay/',
-		public   : false,
-		fn: function(args, callback) {
-      const setRelay = async () => {
-        try {
-          const homeyaddress = await util.getHomeyIp();
-          if(homeyaddress) {
-            util.scheduleRelay(
-              homeyaddress,
-              callback
-            );
-          }
-        } catch (error) {
-          callback(error, false);
-        }
-      }
-      setRelay();
 		}
 	},
 	{
@@ -129,8 +116,17 @@ function triggerDoorbird(args, trigger, callback) {
             doorbirds[key].setCapabilityValue('alarm_motion', false);
           }, timerms * 1000);
         }
+
+      } else if (trigger == 'relay') {
+        Homey.ManagerFlow.getCard('trigger', 'dooropen').trigger(doorbirds[key], {relay: args.params.relay}, {})
+          .then(result => {
+            callback(null, 'OK');
+          })
+          .catch(error => {
+            callback(error, false);
+          })
       } else {
-        Homey.ManagerFlow.getCard('trigger', trigger).trigger(doorbirds[key], {}, {})
+        Homey.ManagerFlow.getCard('trigger', trigger).trigger(doorbirds[key], {relay: '1'}, {})
           .then(result => {
             callback(null, 'OK');
           })
