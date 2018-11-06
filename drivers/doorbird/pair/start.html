@@ -35,7 +35,7 @@ $(function() {
 					$('.doorbird-error-msg').html( __('pair.unknownerror') );
 				} else if(data) {
 					$('#mac').val(data.info.WIFI_MAC_ADDR);
-          $('#type').val(data.info.DEVICE-TYPE);
+          $('#type').val(data.info["DEVICE-TYPE"]);
           $('#relay').val(data.info.RELAYS);
 
 					var doorbirdinfo = "<div class='info-row'><span class='info-label' data-i18n='pair.firmware'>DoorBird Firmware:</span><span class='info-value'> "+ data.info.FIRMWARE +"</span></div><div class='info-row'><span class='info-label' data-i18n='pair.mac'>DoorBird MAC Address:</span><span class='info-value'> "+ data.info.WIFI_MAC_ADDR +"</span></div>";

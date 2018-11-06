@@ -42,7 +42,5 @@ To be able to send snapshots through email you will need to configure an email a
 For support please use the official support topic on the forum [here](https://community.athom.com/t/115).
 
 ## Changelog
-### 2018-10-10 - v2.2.4
-* NEW: extended the "open door" action card with a dropdown where you can select the desired relay (for DoorBird devices with more than 1 relay)
-* NEW: added a token with the relay name to the "door has been opened" trigger card allowing you to identify which relay has been triggered (for DoorBird devices with more than 1 relay, this requires you to re-add the notifications from the DoorBird Homey app settings page)
-* FIX: fixed the "ask to open door" action card
+### 2018-11-06 - v2.2.5
+* FIX: fix issue with pairing wizard preventing new DoorBirds to be added to Homey
