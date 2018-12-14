@@ -42,5 +42,5 @@ To be able to send snapshots through email you will need to configure an email a
 For support please use the official support topic on the forum [here](https://community.athom.com/t/115).
 
 ## Changelog
-### 2018-11-06 - v2.2.5
-* FIX: fix issue with pairing wizard preventing new DoorBirds to be added to Homey
+### v2.2.6 - 2018-12-14
+* FIX: update compatibility to enable install on Homey firmware v2.x

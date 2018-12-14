@@ -1,6 +1,6 @@
 {
   "name": "com.doorbird",
-  "version": "2.2.5",
+  "version": "2.2.6",
   "description": "Homey app for DoorBird Smart Doorbell",
   "main": "app.js",
   "dependencies": {
