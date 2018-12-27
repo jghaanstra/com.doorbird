@@ -42,5 +42,5 @@ To be able to send snapshots through email you will need to configure an email a
 For support please use the official support topic on the forum [here](https://community.athom.com/t/115).
 
 ## Changelog
-### v2.2.6 - 2018-12-14
-* FIX: update compatibility to enable install on Homey firmware v2.x
+### v2.2.7 - 2018-12-27
+* FIX: removed incoming IP address security validation in api.js due to Athom removing the request object in firmware 2.x
