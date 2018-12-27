@@ -132,7 +132,7 @@ function triggerDoorbird(args, trigger, callback) {
 					})
 			}
 		} else {
-			callback(null, 'Not authorised to use trigger "'+ trigger +'", incoming IP address ('+ ipv4 +') does not match DoorBird IP address ('+ doorbirds[key].getSetting('address') +') or MAC address of incoming request does not match DoorBird MAC address.');
+			callback(null, 'MAC address of incoming request does not match DoorBird MAC address.');
 		}
 	});
 }
