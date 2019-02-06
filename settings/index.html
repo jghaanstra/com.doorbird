@@ -21,6 +21,17 @@
     .buttons, .messages {
     padding-top: 10px;
     }
+    .button {
+      width: 100%;
+      margin-bottom: 4px !important;
+    }
+    .button:disabled {
+      color: #ccc;
+    }
+    .button:enabled {
+      background-color: #00c139 !important;
+      color: #fff;
+    }
 		</style>
   </head>
   <body>
@@ -64,14 +75,14 @@
     <label for="secure" data-i18n="settings.secure">Encrypted Connection</label>
     <input type="checkbox" class="form-control" id="secure">
     </div>
-    <div class="form-group buttons">
-    <button id="test-email" class="button" data-i18n="settings.testemail">Test Email Settings</button>
-    <button id="save-email" class="button" data-i18n="settings.saveemail" disabled>Save Email Settings</button>
-    </div>
     <div class="messages messages-email">
     <p class="doorbird-email-test doorbird-status" style="color: #008C23;"><i class="fa fa-check"></i> <span class="doorbird-email-test-msg" data-i18n="settings.testing">Settings have been tested succesfully. You should have received a test email.</span></p>
     <p class="doorbird-email-ok doorbird-status" style="color: #008C23;"><i class="fa fa-check"></i> <span class="doorbird-email-ok-msg" data-i18n="settings.success">Settings have been saved succesfully.</span></p>
     <p class="doorbird-email-error doorbird-status" style="color: #ff6300;"><i class="fa fa-times"></i> <span class="doorbird-email-error-msg"></span></p>
+    </div>
+    <div class="form-group buttons">
+    <button id="test-email" class="button" data-i18n="settings.testemail">Test Email Settings</button>
+    <button id="save-email" class="button" data-i18n="settings.saveemail" disabled>Save Email Settings</button>
     </div>
   </fieldset>
 

@@ -18,13 +18,19 @@ class DoorbirdDevice extends Homey.Device {
 
     // LIVE SNAPSHOT TOKEN
     let doorbirdSnapShot = new Homey.Image('jpg');
-    doorbirdSnapShot.setBuffer((args, callback) => {
+    doorbirdSnapShot.setBuffer(() => {
+      this.log('setting buffer');
       const createSnapshot = async () => {
-        const image = await util.createSnapshot(this.getSetting('address'), this.getSetting('username'), this.getSetting('password'))
-        if (image) {
-          callback(null,image);
-        } else {
-          callback(false,null);
+        try {
+          const image = await util.createSnapshot(this.getSetting('address'), this.getSetting('username'), this.getSetting('password'))
+          if (image) {
+            return image;
+          } else {
+            throw new Error('Invalid Response');
+          }
+        } catch(error) {
+          this.error(error);
+          throw new Error('Invalid Response');
         }
       }
       createSnapshot();
@@ -49,17 +55,22 @@ class DoorbirdDevice extends Homey.Device {
 
     // DOORBELL SNAPSHOT TOKEN
     let doorbellSnapShot = new Homey.Image('jpg');
-    doorbellSnapShot.setBuffer((args, callback) => {
-      var data = {
-        source: 'doorbell',
-        history: '1'
-      }
+    doorbellSnapShot.setBuffer(() => {
       const createDoorbellSnapshot = async () => {
-        const image = await util.retrieveHistorySnapshot(this.getSetting('address'), this.getSetting('username'), this.getSetting('password'), data)
-        if (image) {
-          callback(null,image);
-        } else {
-          callback(false,null);
+        try {
+          var data = {
+            source: 'doorbell',
+            history: '1'
+          }
+          const image = await util.retrieveHistorySnapshot(this.getSetting('address'), this.getSetting('username'), this.getSetting('password'), data)
+          if (image) {
+            return image;
+          } else {
+            throw new Error('Invalid Response');
+          }
+        } catch(error) {
+          this.error(error);
+          throw new Error('Invalid Response');
         }
       }
       createDoorbellSnapshot();
@@ -84,17 +95,22 @@ class DoorbirdDevice extends Homey.Device {
 
     // MOTION SNAPSHOT TOKEN
     let motionsensorSnapShot = new Homey.Image('jpg');
-    motionsensorSnapShot.setBuffer((args, callback) => {
-      var data = {
-        source: 'motionsensor',
-        history: '1'
-      }
+    motionsensorSnapShot.setBuffer(() => {
       const createMotionsensorSnapshot = async () => {
-        const image = await util.retrieveHistorySnapshot(this.getSetting('address'), this.getSetting('username'), this.getSetting('password'), data)
-        if (image) {
-          callback(null,image);
-        } else {
-          callback(false,null);
+        try {
+          var data = {
+            source: 'motionsensor',
+            history: '1'
+          }
+          const image = await util.retrieveHistorySnapshot(this.getSetting('address'), this.getSetting('username'), this.getSetting('password'), data)
+          if (image) {
+            return image;
+          } else {
+            throw new Error('Invalid Response');
+          }
+        } catch(error) {
+          this.error(error);
+          throw new Error('Invalid Response');
         }
       }
       createMotionsensorSnapshot();
