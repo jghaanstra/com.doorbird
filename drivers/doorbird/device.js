@@ -10,12 +10,6 @@ class DoorbirdDevice extends Homey.Device {
     new Homey.FlowCardTriggerDevice('motionsensor').register();
     new Homey.FlowCardTriggerDevice('dooropen').register();
 
-    // ADD NEW STORE VALUE FOR DEVICE PAIRED BEFORE APP VERSION 2.2.0
-    if (!this.getStoreValue('intercomid')) {
-      var username = this.getSetting('username');
-      this.setStoreValue('intercomid', username.substr(0, 6));
-    }
-
     // LIVE SNAPSHOT TOKEN
     let doorbirdSnapShot = new Homey.Image('jpg');
     doorbirdSnapShot.setBuffer(async () => {

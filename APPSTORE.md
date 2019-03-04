@@ -42,5 +42,6 @@ To be able to send snapshots through email you will need to configure an email a
 For support please use the official support topic on the forum [here](https://community.athom.com/t/115).
 
 ## Changelog
-### v2.2.8 - 2019-02-xx
+### v2.2.8 - 2019-03-04
 * FIX: improvements to pairing and settings template for firmware 2.x
+* FIX: code improvements to avoid continous spinner on email snapshot action cards

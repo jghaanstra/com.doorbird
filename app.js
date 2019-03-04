@@ -10,30 +10,24 @@ class DoorbirdApp extends Homey.App {
 
     new Homey.FlowCardAction('emailsnapshot')
       .register()
-      .registerRunListener((args) => {
-        const emailSnapshot = async () => {
-          const image = await util.createSnapshot(args.device.getSetting('address'), args.device.getSetting('username'), args.device.getSetting('password'))
-          if (image) {
-            return Promise.resolve(util.sendSnapshot(image, args));
-          } else {
-            throw new Error('Snapshot not created succesfully');
-          }
+      .registerRunListener(async (args) => {
+        const image = await util.createSnapshot(args.device.getSetting('address'), args.device.getSetting('username'), args.device.getSetting('password'))
+        if (image) {
+          return util.sendSnapshot(image, args);
+        } else {
+          throw new Error('Snapshot not created succesfully');
         }
-        emailSnapshot();
       });
 
     new Homey.FlowCardAction('emailsnapshothistory')
       .register()
-      .registerRunListener((args) => {
-        const emailHistorySnapshot = async () => {
-          const image = await util.retrieveHistorySnapshot(args.device.getSetting('address'), args.device.getSetting('username'), args.device.getSetting('password'), args)
-          if (image) {
-            return Promise.resolve(util.sendHistorySnapshot(image, args));
-          } else {
-            throw new Error('Snapshot not retrieved succesfully');
-          }
+      .registerRunListener(async (args) => {
+        const image = await util.retrieveHistorySnapshot(args.device.getSetting('address'), args.device.getSetting('username'), args.device.getSetting('password'), args)
+        if (image) {
+          return util.sendHistorySnapshot(image, args);
+        } else {
+          throw new Error('Snapshot not retrieved succesfully');
         }
-        emailHistorySnapshot();
       });
 
     new Homey.FlowCardAction('light')
@@ -44,9 +38,9 @@ class DoorbirdApp extends Homey.App {
       .register()
       .registerRunListener((args) => {
         if(args.relay.id) {
-          return Promise.resolve(util.sendCommand('/bha-api/open-door.cgi?r='+ args.relay.id, args.device.getSetting('address'), args.device.getSetting('username'), args.device.getSetting('password')))
+          return util.sendCommand('/bha-api/open-door.cgi?r='+ args.relay.id, args.device.getSetting('address'), args.device.getSetting('username'), args.device.getSetting('password'));
         } else {
-          return Promise.resolve(util.sendCommand('/bha-api/open-door.cgi', args.device.getSetting('address'), args.device.getSetting('username'), args.device.getSetting('password'), args.relay.id))
+          return util.sendCommand('/bha-api/open-door.cgi', args.device.getSetting('address'), args.device.getSetting('username'), args.device.getSetting('password'), args.relay.id);
         }
       })
       .getArgument('relay')
@@ -56,7 +50,7 @@ class DoorbirdApp extends Homey.App {
 
     new Homey.FlowCardAction('ask_door')
       .register()
-      .registerRunListener((args) => { return Promise.resolve(util.ask_door(args)) });
+      .registerRunListener((args) => { return util.ask_door(args) });
 
   }
 
