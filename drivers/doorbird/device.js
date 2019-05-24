@@ -11,103 +11,88 @@ class DoorbirdDevice extends Homey.Device {
     new Homey.FlowCardTriggerDevice('dooropen').register();
 
     // LIVE SNAPSHOT TOKEN
-    let doorbirdSnapShot = new Homey.Image('jpg');
-    doorbirdSnapShot.setBuffer(async () => {
-      try {
-        const image = await util.createSnapshot(this.getSetting('address'), this.getSetting('username'), this.getSetting('password'))
-        if (image) {
-          return image;
-        } else {
-          throw new Error('Invalid Response');
-        }
-      } catch(error) {
-        this.error(error);
+    this.doorbirdSnapShot = new Homey.Image();
+    this.doorbirdSnapShot.setStream(async (stream) => {
+      const res = await util.streamSnapshot('http://'+ this.getSetting('address') +'/bha-api/image.cgi', this.getSetting('username'), this.getSetting('password'));
+      if(!res.ok)
         throw new Error('Invalid Response');
-      }
-    });
 
-    doorbirdSnapShot.register()
+      return res.body.pipe(stream);
+    });
+    this.doorbirdSnapShot.register()
       .then(() => {
         let doorbirdSnapShotToken = new Homey.FlowToken('doorbird_snapshot', {
           type: 'image',
           title: Homey.__('Live Snapshot')
         })
-
         doorbirdSnapShotToken
           .register()
           .then(() => {
-            doorbirdSnapShotToken.setValue(doorbirdSnapShot);
+            doorbirdSnapShotToken.setValue(this.doorbirdSnapShot);
           })
           .catch(this.error.bind(this, 'doorbirdSnapShotToken.register'));
+
+        return this.setCameraImage('doorbird',  Homey.__('Live Snapshot'), this.doorbirdSnapShot);
 
       })
       .catch(this.error.bind(this, 'doorbirdSnapShot.register'));
 
     // DOORBELL SNAPSHOT TOKEN
-    let doorbellSnapShot = new Homey.Image('jpg');
-    doorbellSnapShot.setBuffer(async () => {
-      try {
-        const image = await util.retrieveHistorySnapshot(this.getSetting('address'), this.getSetting('username'), this.getSetting('password'), {source: 'doorbell', history: '1'})
-        if (image) {
-          return image;
-        } else {
-          throw new Error('Invalid Response');
-        }
-      } catch(error) {
-        this.error(error);
+    this.doorbellSnapShot = new Homey.Image();
+    this.doorbellSnapShot.setStream(async (stream) => {
+      const res = await util.streamSnapshot('http://'+ this.getSetting('address') +'/bha-api/history.cgi?event=doorbell&index=1', this.getSetting('username'), this.getSetting('password'));
+      if(!res.ok)
         throw new Error('Invalid Response');
-      }
+
+      return res.body.pipe(stream);
     });
 
-    doorbellSnapShot.register()
+    this.doorbellSnapShot.register()
       .then(() => {
         let doorbellSnapShotToken = new Homey.FlowToken('doorbell_snapshot', {
           type: 'image',
           title: Homey.__('Latest Doorbell Snapshot')
         })
-
         doorbellSnapShotToken
           .register()
           .then(() => {
-            doorbellSnapShotToken.setValue(doorbellSnapShot);
+            doorbellSnapShotToken.setValue(this.doorbellSnapShot);
           })
           .catch(this.error.bind(this, 'doorbellSnapShotToken.register'));
+
+        return this.setCameraImage('doorbell',  Homey.__('Latest Doorbell Snapshot'), this.doorbellSnapShot);
 
       })
       .catch(this.error.bind(this, 'doorbellSnapShot.register'));
 
     // MOTION SNAPSHOT TOKEN
-    let motionsensorSnapShot = new Homey.Image('jpg');
-    motionsensorSnapShot.setBuffer(async () => {
-      try {
-        const image = await util.retrieveHistorySnapshot(this.getSetting('address'), this.getSetting('username'), this.getSetting('password'), {source: 'motionsensor', history: '1'})
-        if (image) {
-          return image;
-        } else {
-          throw new Error('Invalid Response');
-        }
-      } catch(error) {
-        this.error(error);
+    this.motionsensorSnapShot = new Homey.Image();
+    this.motionsensorSnapShot.setStream(async (stream) => {
+      const res = await util.streamSnapshot('http://'+ this.getSetting('address') +'/bha-api/history.cgi?event=motionsensor&index=1', this.getSetting('username'), this.getSetting('password'));
+      if(!res.ok)
         throw new Error('Invalid Response');
-      }
+
+      return res.body.pipe(stream);
     });
 
-    motionsensorSnapShot.register()
+    this.motionsensorSnapShot.register()
       .then(() => {
         let motionsensorSnapShotToken = new Homey.FlowToken('motionsensor_snapshot', {
           type: 'image',
           title: Homey.__('Latest Motionsensor Snapshot')
         })
-
         motionsensorSnapShotToken
           .register()
           .then(() => {
-            motionsensorSnapShotToken.setValue(motionsensorSnapShot);
+            motionsensorSnapShotToken.setValue(this.motionsensorSnapShot);
           })
           .catch(this.error.bind(this, 'motionsensorSnapShotToken.register'));
 
+        return this.setCameraImage('motion',  Homey.__('Latest Motionsensor Snapshot'), this.motionsensorSnapShot);
+
       })
       .catch(this.error.bind(this, 'motionsensorSnapShot.register'));
+
   }
 
 }

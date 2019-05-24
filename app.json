@@ -12,8 +12,8 @@
 		"nl": [ "slimme deurbel", "IP camera", "DoorBird" ],
 		"de": [ "intelligente türklingel", "IP camera", "DoorBird" ]
 	},
-	"version": "2.2.8",
-	"compatibility": ">=2.0.0",
+	"version": "2.3.0",
+	"compatibility": ">=2.2.0",
 	"author": {
 		"name": "Jelger Haanstra",
 		"email": "homey@solidewebservices.com",
@@ -71,21 +71,6 @@
 					"id": "start"
 				}
 			],
-      "mobile": {
-        "components": [
-          {
-            "id": "icon"
-          },
-          {
-            "id": "sensor",
-            "capabilities": [ "alarm_generic" ]
-          },
-          {
-            "id": "sensor",
-            "capabilities": [ "alarm_motion" ]
-          }
-        ]
-      },
 			"settings": [
 				{
 					"type": "group",
