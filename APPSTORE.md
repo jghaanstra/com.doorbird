@@ -43,5 +43,5 @@ For support please use the official support topic on the forum [here](https://co
 
 ## Changelog
 ### v2.3.0 - 2019-05-24
-IMPORTANT NOTE: this update will break the snapshot tokens on the **DoorBird trigger cards** (not the global snapshot tokens). The snapshot tokens have been updated to an official image token and you will have to update your flows where these tokens are in use.
+BREAKING CHANGES: this update will break the snapshot tokens, both the global and the trigger card tokens. The snapshot tokens have been updated to an officially supported image token that has been made available with firmware 2.2.0 and smartphone app version 2.4.0. You will have to update your flows where these snapshot tokens are in use.
 * IMPROVEMENT: support for the new devices / driver images

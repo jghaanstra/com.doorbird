@@ -44,7 +44,7 @@ module.exports = [
 		path     : '/notifications/',
 		public   : false,
 		fn: function(args, callback) {
-			const setNotifications = async () => {
+			(async () => {
 				try {
 					const homeyaddress = await util.getHomeyIp();
 					if(homeyaddress) {
@@ -56,8 +56,7 @@ module.exports = [
 				} catch (error) {
 					callback(error, false);
 				}
-			}
-			setNotifications();
+			});
 		}
 	},
 	{
@@ -79,25 +78,36 @@ function triggerDoorbird(args, trigger, callback) {
 			if (trigger == 'doorbell' || trigger == 'motionsensor') {
 
         (async () => {
+          var snapshot = {};
 
   				/* trigger alarms */
   				if (trigger == 'doorbell') {
   					doorbirds[key].setCapabilityValue('alarm_generic', true);
-            const res = await doorbirds[key].doorbellSnapShot.update();
-            const snapshot = doorbirds[key].doorbellSnapShot;
+            await new Promise(resolve => setTimeout(resolve, 3000));
+            await doorbirds[key].doorbellSnapShot.update()
+              .then(result => {
+                snapshot = doorbirds[key].doorbellSnapShot;
+              })
+              .catch(error => {
+                callback(error, false);
+              })
 
-  					setTimeout(function(){
+  					setTimeout(function() {
   						doorbirds[key].setCapabilityValue('alarm_generic', false);
   					}, 10000);
 
   				} else if (trigger == 'motionsensor') {
   					doorbirds[key].setCapabilityValue('alarm_motion', true);
-            const snapshot = await doorbirds[key].doorbirdSnapShot.getStream();
+            await new Promise(resolve => setTimeout(resolve, 3000));
+            await doorbirds[key].motionsensorSnapShot.update()
+              .then(result => {
+                snapshot = doorbirds[key].motionsensorSnapShot;
+              })
+              .catch(error => {
+                callback(error, false);
+              })
 
-            //to do: performance wise this does not seem to be a smart thing
-            //doorbirds[key].motionsensorSnapShot.update();
-
-  					setTimeout(function(){
+  					setTimeout(function() {
   						doorbirds[key].setCapabilityValue('alarm_motion', false);
   					}, 5000);
   				}

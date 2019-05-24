@@ -11,7 +11,7 @@ class DoorbirdApp extends Homey.App {
     new Homey.FlowCardAction('emailsnapshot')
       .register()
       .registerRunListener(async (args) => {
-        const image = await util.createSnapshot(args.device.getSetting('address'), args.device.getSetting('username'), args.device.getSetting('password'))
+        const image = await util.getBufferSnapshot('http://'+ args.device.getSetting('address') +'/bha-api/image.cgi', args.device.getSetting('username'), args.device.getSetting('password'));
         if (image) {
           return util.sendSnapshot(image, args);
         } else {
@@ -22,7 +22,8 @@ class DoorbirdApp extends Homey.App {
     new Homey.FlowCardAction('emailsnapshothistory')
       .register()
       .registerRunListener(async (args) => {
-        const image = await util.retrieveHistorySnapshot(args.device.getSetting('address'), args.device.getSetting('username'), args.device.getSetting('password'), args)
+        const image = await util.getBufferSnapshot('http://'+ args.device.getSetting('address') +'/bha-api/history.cgi?event='+ args.source +'&index='+ args.history +'', args.device.getSetting('username'), args.device.getSetting('password'));
+
         if (image) {
           return util.sendHistorySnapshot(image, args);
         } else {

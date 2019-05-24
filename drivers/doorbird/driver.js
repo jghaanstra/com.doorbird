@@ -10,7 +10,7 @@ class DoorbirdDriver extends Homey.Driver {
       return new Promise(function (resolve, reject) {
         util.sendCommand('/bha-api/info.cgi', data.address, data.username, data.password)
           .then(body => {
-            util.createSnapshot(data.address, data.username, data.password)
+            util.getBufferSnapshot('http://'+ data.address +'/bha-api/image.cgi', data.username, data.password)
               .then(image => {
                 callback(false, { image: image.toString('base64'), info: body.BHA.VERSION[0] });
               })
