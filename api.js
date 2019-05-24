@@ -78,41 +78,42 @@ function triggerDoorbird(args, trigger, callback) {
 		if (doorbirds[key].getData().id == args.params.mac) {
 			if (trigger == 'doorbell' || trigger == 'motionsensor') {
 
-				/* create snapshot */
-				const snapShot = async () => {
-					try {
-						const image = await util.createSnapshot(doorbirds[key].getSetting('address'), doorbirds[key].getSetting('username'), doorbirds[key].getSetting('password'))
-						if (image) {
-							var snapshot = image.toString('base64');
-							Homey.ManagerFlow.getCard('trigger', trigger).trigger(doorbirds[key], {snapshot: snapshot}, {})
-								.then(result => {
-									callback(null, 'OK');
-								})
-								.catch(error => {
-									callback(error, false);
-								})
-						}
-					} catch (error) {
-						callback(error, false);
-					}
-				}
-				snapShot();
+        (async () => {
 
-				/* trigger alarms */
-				if (trigger == 'doorbell') {
-					doorbirds[key].setCapabilityValue('alarm_generic', true);
+  				/* trigger alarms */
+  				if (trigger == 'doorbell') {
+  					doorbirds[key].setCapabilityValue('alarm_generic', true);
+            const res = await doorbirds[key].doorbellSnapShot.update();
+            const snapshot = doorbirds[key].doorbellSnapShot;
 
-					setTimeout(function(){
-						doorbirds[key].setCapabilityValue('alarm_generic', false);
-					}, 10000);
+  					setTimeout(function(){
+  						doorbirds[key].setCapabilityValue('alarm_generic', false);
+  					}, 10000);
 
-				} else if (trigger == 'motionsensor') {
-					doorbirds[key].setCapabilityValue('alarm_motion', true);
+  				} else if (trigger == 'motionsensor') {
+  					doorbirds[key].setCapabilityValue('alarm_motion', true);
+            const snapshot = await doorbirds[key].doorbirdSnapShot.getStream();
 
-					setTimeout(function(){
-						doorbirds[key].setCapabilityValue('alarm_motion', false);
-					}, 5000);
-				}
+            //to do: performance wise this does not seem to be a smart thing
+            //doorbirds[key].motionsensorSnapShot.update();
+
+  					setTimeout(function(){
+  						doorbirds[key].setCapabilityValue('alarm_motion', false);
+  					}, 5000);
+  				}
+
+          /* trigger cards with snapshot */
+          Homey.ManagerFlow.getCard('trigger', trigger).trigger(doorbirds[key], {snapshot: snapshot}, {})
+            .then(result => {
+              callback(null, 'OK');
+            })
+            .catch(error => {
+              callback(error, false);
+            })
+
+        })().catch(error => {
+          callback(error, false);
+        });
 
 			} else if (trigger == 'relay') {
 				Homey.ManagerFlow.getCard('trigger', 'dooropen').trigger(doorbirds[key], {relay: args.params.relay}, {})
