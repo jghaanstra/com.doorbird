@@ -80,13 +80,12 @@ function triggerDoorbird(args, trigger, callback) {
         (async () => {
           var snapshot = {};
 
-  				/* trigger alarms */
+  				/* trigger alarms and use live snapshots instead of history snapshots because DoorBird is too slow in refreshing them */
   				if (trigger == 'doorbell') {
   					doorbirds[key].setCapabilityValue('alarm_generic', true);
-            await new Promise(resolve => setTimeout(resolve, 3000));
-            await doorbirds[key].doorbellSnapShot.update()
+            await doorbirds[key].doorbirdSnapShot.update()
               .then(result => {
-                snapshot = doorbirds[key].doorbellSnapShot;
+                snapshot = doorbirds[key].doorbirdSnapShot;
               })
               .catch(error => {
                 callback(error, false);
@@ -98,10 +97,9 @@ function triggerDoorbird(args, trigger, callback) {
 
   				} else if (trigger == 'motionsensor') {
   					doorbirds[key].setCapabilityValue('alarm_motion', true);
-            await new Promise(resolve => setTimeout(resolve, 3000));
-            await doorbirds[key].motionsensorSnapShot.update()
+            await doorbirds[key].doorbirdSnapShot.update()
               .then(result => {
-                snapshot = doorbirds[key].motionsensorSnapShot;
+                snapshot = doorbirds[key].doorbirdSnapShot;
               })
               .catch(error => {
                 callback(error, false);
@@ -120,6 +118,13 @@ function triggerDoorbird(args, trigger, callback) {
             .catch(error => {
               callback(error, false);
             })
+
+          /* update image tokens */
+          if (trigger == 'doorbell') {
+            await doorbirds[key].doorbellSnapShot.update();
+          } else if (trigger == 'motionsensor') {
+            await doorbirds[key].motionsensorSnapShot.update();
+          }
 
         })().catch(error => {
           callback(error, false);
