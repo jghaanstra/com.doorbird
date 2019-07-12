@@ -11,8 +11,14 @@ class DoorbirdDevice extends Homey.Device {
     new Homey.FlowCardTriggerDevice('dooropen').register();
 
     // LISTENERS FOR UPDATING CAPABILITIES
-    this.registerCapabilityListener('button', (value, opts) => {
-      return util.sendCommand('/bha-api/open-door.cgi?r=1', this.getSetting('address'), this.getSetting('username'), this.getSetting('password'));
+    this.registerCapabilityListener('button', async (value, opts) => {
+      try {
+        await util.sendCommand('/bha-api/open-door.cgi?r=1', this.getSetting('address'), this.getSetting('username'), this.getSetting('password'));
+        Homey.ManagerFlow.getCard('trigger', 'opendoor').trigger(this, {relay: '1'}, {});
+        return Promise.resolve(true);
+      } catch (error) {
+        return Promise.reject(error);
+      }
     });
 
     // LIVE SNAPSHOT TOKEN
