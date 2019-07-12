@@ -12,7 +12,7 @@
 		"nl": [ "slimme deurbel", "IP camera", "DoorBird" ],
 		"de": [ "intelligente türklingel", "IP camera", "DoorBird" ]
 	},
-	"version": "2.3.1",
+	"version": "2.3.2",
 	"compatibility": ">=2.2.0",
 	"author": {
 		"name": "Jelger Haanstra",
@@ -63,8 +63,18 @@
 			"class": "doorbell",
 			"capabilities": [
         "alarm_generic",
-        "alarm_motion"
+        "alarm_motion",
+        "button"
       ],
+      "capabilitiesOptions": {
+        "button": {
+          "title": {
+            "en": "Trigger default relay",
+            "nl": "Trigger standaard relay",
+            "de": "Standardrelais auslösen"
+          }
+        }
+      },
 			"gtin": ["4260423860001"],
 			"pair": [
 				{
