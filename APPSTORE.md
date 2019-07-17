@@ -42,5 +42,5 @@ To be able to send snapshots through email you will need to configure an email a
 For support please use the official support topic on the forum [here](https://community.athom.com/t/115).
 
 ## Changelog
-### v2.3.2 - 2019-07-12
-* NEW: add default relay as button capability so it shows up as button in the mobile app under the device
+### v2.3.3 - 2019-07-17
+* FIX: small fix for relay as button capability
