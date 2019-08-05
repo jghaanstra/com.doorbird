@@ -44,19 +44,17 @@ module.exports = [
 		path     : '/notifications/',
 		public   : false,
 		fn: function(args, callback) {
-			(async () => {
-				try {
-					const homeyaddress = await util.getHomeyIp();
-					if(homeyaddress) {
-						util.updateNotifications(
-							homeyaddress,
-							callback
-						);
-					}
-				} catch (error) {
-					callback(error, false);
-				}
-			});
+      (async () => {
+        const homeyaddress = await util.getHomeyIp();
+        if(homeyaddress) {
+          util.updateNotifications(
+            homeyaddress,
+            callback
+          );
+        }
+      })().catch(error => {
+        callback(error, false);
+      });
 		}
 	},
 	{
