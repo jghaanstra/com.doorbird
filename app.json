@@ -12,7 +12,7 @@
 		"nl": [ "slimme deurbel", "IP camera", "DoorBird" ],
 		"de": [ "intelligente türklingel", "IP camera", "DoorBird" ]
 	},
-	"version": "2.3.4",
+	"version": "2.4.0",
 	"compatibility": ">=2.2.0",
 	"author": {
 		"name": "Jelger Haanstra",
@@ -48,9 +48,31 @@
     "homey:manager:speech-input",
     "homey:manager:speech-output"
   ],
+  "discovery": {
+    "doorbird": {
+      "type": "mdns-sd",
+      "mdns-sd": {
+        "name": "axis-video",
+        "protocol": "tcp"
+      },
+      "id": "{{txt.macaddress}}",
+      "conditions": [
+        [
+          {
+            "field": "host",
+            "match": {
+              "type": "regex",
+              "value": "^bha-"
+            }
+          }
+        ]
+      ]
+    }
+  },
 	"drivers": [
 		{
 			"id": "doorbird",
+      "discovery": "doorbird",
 			"name": {
 				"en": "DoorBird",
 				"nl": "DoorBird",
@@ -76,11 +98,31 @@
         }
       },
 			"gtin": ["4260423860001"],
-			"pair": [
-				{
-					"id": "start"
-				}
-			],
+      "pair": [
+        {
+          "id": "list_devices",
+          "template": "list_devices",
+          "options": {
+            "singular": true
+          },
+          "navigation": {
+            "next": "login_credentials"
+          }
+        },
+        {
+          "id": "login_credentials",
+          "template": "login_credentials",
+          "options": {
+            "logo": "../assets/doorbird-logo.png"
+          },
+          "navigation": {
+            "next": "add_device"
+          }
+        },
+        {
+          "id": "add_device"
+        }
+      ],
 			"settings": [
 				{
 					"type": "group",
