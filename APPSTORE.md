@@ -37,5 +37,5 @@ To be able to send snapshots through email you will need to configure an email a
 For support please use the official support topic on the forum [here](https://community.athom.com/t/115).
 
 ## Changelog
-### v2.4.0 - 2019-08-08
-* IMPROVEMENT: implemented device discovery
+### v2.4.1 - 2019-08-10
+* FIX: small fix for quirky pairing wizard template
