@@ -9,6 +9,7 @@ class DoorbirdDevice extends Homey.Device {
     new Homey.FlowCardTriggerDevice('doorbell').register();
     new Homey.FlowCardTriggerDevice('motionsensor').register();
     new Homey.FlowCardTriggerDevice('dooropen').register();
+    this.setAvailable();
 
     // LISTENERS FOR UPDATING CAPABILITIES
     this.registerCapabilityListener('button', async (value, opts) => {
