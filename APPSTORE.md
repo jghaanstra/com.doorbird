@@ -37,5 +37,5 @@ To be able to send snapshots through email you will need to configure an email a
 For support please use the official support topic on the forum [here](https://community.athom.com/t/115).
 
 ## Changelog
-### v2.4.2 - 2019-08-11
-* FIX: small fix for devices being unavailable
+### v2.4.3 - 2019-08-13
+* FIX: fix for motion snapshot token (it displayed the live snapshot)

@@ -67,7 +67,7 @@ class DoorbirdDevice extends Homey.Device {
 
     this.motionsensorSnapShot.register()
       .then(() => {
-        return this.setCameraImage('motion', Homey.__('Latest Motionsensor Snapshot'), this.doorbirdSnapShot);
+        return this.setCameraImage('motion', Homey.__('Latest Motionsensor Snapshot'), this.motionsensorSnapShot);
       })
       .catch(this.error.bind(this, 'motionsensorSnapShot.register'));
 
