@@ -39,3 +39,4 @@ For support please use the official support topic on the forum [here](https://co
 ## Changelog
 ### v2.4.3 - 2019-08-13
 * FIX: fix for motion snapshot token (it displayed the live snapshot)
+* IMPROVEMENT: better error handling when permissions have not been configured correcty

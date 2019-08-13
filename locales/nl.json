@@ -55,5 +55,6 @@
   "No action has been taken": "Er is geen actie ondernomen.",
   "Live Snapshot": "Live snapshot",
   "Latest Doorbell Snapshot": "Laatste deurbel snapshot",
-  "Latest Motionsensor Snapshot": "Laatste bewegingsensor snapshot"
+  "Latest Motionsensor Snapshot": "Laatste bewegingsensor snapshot",
+  "Incorrect permissions DoorBird user": "Incorrecte permissies DoorBird gebruiker"
 }

@@ -31,6 +31,9 @@ class DoorbirdDevice extends Homey.Device {
       if(!res.ok)
         throw new Error('Invalid Response');
 
+      if(res.status == 204)
+        throw new Error(Homey.__('Incorrect permissions DoorBird user'));
+
       return res.body.pipe(stream);
     });
     this.doorbirdSnapShot.register()
@@ -45,6 +48,9 @@ class DoorbirdDevice extends Homey.Device {
       const res = await util.getStreamSnapshot('http://'+ this.getSetting('address') +'/bha-api/history.cgi?event=doorbell&index=1', this.getSetting('username'), this.getSetting('password'));
       if(!res.ok)
         throw new Error('Invalid Response');
+
+      if(res.status == 204)
+        throw new Error(Homey.__('Incorrect permissions DoorBird user'));
 
       return res.body.pipe(stream);
     });
@@ -61,6 +67,9 @@ class DoorbirdDevice extends Homey.Device {
       const res = await util.getStreamSnapshot('http://'+ this.getSetting('address') +'/bha-api/history.cgi?event=motionsensor&index=1', this.getSetting('username'), this.getSetting('password'));
       if(!res.ok)
         throw new Error('Invalid Response');
+
+      if(res.status == 204)
+        throw new Error(Homey.__('Incorrect permissions DoorBird user'));
 
       return res.body.pipe(stream);
     });
