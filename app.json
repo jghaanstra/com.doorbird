@@ -12,8 +12,8 @@
 		"nl": [ "slimme deurbel", "IP camera", "DoorBird" ],
 		"de": [ "intelligente türklingel", "IP camera", "DoorBird" ]
 	},
-	"version": "2.4.3",
-	"compatibility": ">=2.5.1",
+	"version": "2.4.4",
+	"compatibility": ">=3.0.0",
 	"author": {
 		"name": "Jelger Haanstra",
 		"email": "homey@solidewebservices.com",
@@ -29,16 +29,17 @@
   "bugs": {
     "url": "https://github.com/jghaanstra/com.doorbird/issues"
   },
-  "athomForumDiscussionId": 2713,
   "homeyCommunityTopicId": 115,
+  "source": "https://github.com/jghaanstra/com.doorbird",
+  "homepage": "https://community.athom.com/t/115",
 	"images": {
 		"large": "./assets/images/large.png",
 		"small": "./assets/images/small.png"
 	},
 	"category": "appliances",
 	"description": {
-		"en": "Control your DoorBird",
-		"nl": "Bestuur je DoorBird",
+		"en": "Control your DoorBird using Homey",
+		"nl": "Bedien je DoorBird via Homey",
 		"de": "Steuern Sie Ihre DoorBird"
 	},
 	"dependencies": {
