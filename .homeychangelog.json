@@ -1,5 +1,8 @@
 {
   "2.4.4": {
     "en": "Moved installation instructions from app store to community support topic."
+  },
+  "2.4.5": {
+    "en": "Small code improvements, no functional changes."
   }
 }
