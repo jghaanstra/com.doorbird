@@ -1,18 +1,11 @@
 <script type="text/javascript">
-  Homey.emit('get_device', null, function(error, result) {
-    if (error) {
-      Homey.alert(error, null, function() {
-        Homey.done()
-    	});
-    } else {
-      Homey.addDevice(result, function(error, result) {
-        if (error) {
-          Homey.alert(error, null, function() {
-            Homey.done()
-        	});
-        }
-        Homey.done();
-      })
-    }
-  })
+  Homey.emit('add_device', {})
+    .then(device => {
+      Homey.createDevice(device);
+      setTimeout(() => { Homey.done(); }, 5000);
+    })
+    .catch(error => {
+      Homey.alert(error);
+      Homey.done()
+    })
 </script>

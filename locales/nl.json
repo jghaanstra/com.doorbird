@@ -19,18 +19,6 @@
 	},
   "settings": {
     "title": "DoorBird Instellingen",
-    "notificationsettings": "Notificatie instellingen",
-    "intro-relay": "Momenteeel heeft de laatste versie van de DoorBird smartphone app geen mogelijkheden voor het configureren voor het verzenden van relay (deur open) events naar een HTTP favorite URL. De knop hieronder gebruikt de API om je DoorBird rechtstreeks te configureren om relay (deur open) events naar Homey te versturen.",
-    "notificationlabels": "Relaxation tijd tussen notificaties van DoorBird naar Homey",
-    "seconds": "Seconden",
-    "enabled": "Ingeschakeld?",
-    "relaxationdoorbell": "Relaxation deurbel",
-    "relaxationmotionsensor": "Relaxation bewegingssensor",
-    "relaxationdooropen": "Relaxation deur opener",
-    "setnotifications": "Instellen DoorBird notificatie HTTP URLs",
-    "setrelay": "Instellen relay trigger events",
-    "notificationssuccess": "Notificaties zijn succesvol ingesteld.",
-    "relayssuccess": "Relay trigger succesvol ingesteld.",
     "intro-email": "Deze instellingen zijn nodig voor het versturen van snapshots via email. Indien je via Gmail SMTP servers wil versturen en je maakt gebruik van 2-traps authenticatie moet je eerst een <a href='https://support.google.com/accounts/answer/185833' target='_blank'>app wachtwoord</a> instellen in je Google Account.",
     "emailsettings": "Email instellingen",
     "username": "Email gebruikersnaam",
@@ -44,17 +32,25 @@
     "testing": "Instellingen zijn succesvol getest. Je zou een test email moeten hebben ontvangen.",
     "success": "Instellingen zijn succesvol opgeslagen."
   },
-  "This is a test email which confirms your email settings in the Homey DoorBird App are correct.": "Dit is een test email die bevestigd dat je instellingen voor email in de Homey DoorBird App correct zijn.",
-  "<h1>Homey DoorBird App</h1><p>This is a test email which confirms your email settings in the Homey DoorBird App are correct.</p>": "<h1>Homey DoorBird App</h1><p>Dit is een test email die bevestigd dat je instellingen voor email in de Homey DoorBird App correct zijn.</p>",
-  "<h1>Homey DoorBird App</h1><p>This snapshot was taken at ": "<h1>Homey DoorBird App</h1><p>Deze snapshot is genomen op ",
-  "<h1>Homey DoorBird App - History Snapshot</h1><p>This is history snapshot": "<h1>Homey DoorBird App - Geschiedenis Snapshot</h1><p>Dit is geschiedenis snapshot",
-  "Do you want me to open the door?": "Wil je dat ik de deur open doe?",
-  "Something went wrong": "Er is iets mis gegaan.",
-  "I did not understand you correctly, please try again": "Ik heb je niet goed begrepen, probeer het nog eens.",
-  "OK, the door relay has been triggered": "OK, de deur relais is getriggerd.",
-  "No action has been taken": "Er is geen actie ondernomen.",
-  "Live Snapshot": "Live snapshot",
-  "Latest Doorbell Snapshot": "Laatste deurbel snapshot",
-  "Latest Motionsensor Snapshot": "Laatste bewegingsensor snapshot",
-  "Incorrect permissions DoorBird user": "Incorrecte permissies DoorBird gebruiker"
+  "util": {
+    "test_email_body_text": "Dit is een test email die bevestigd dat je instellingen voor email in de Homey DoorBird App correct zijn.",
+    "test_email_body_html": "<h1>Homey DoorBird App</h1><p>Dit is een test email die bevestigd dat je instellingen voor email in de Homey DoorBird App correct zijn.</p>",
+    "email_snapshot_html": "<h1>Homey DoorBird App</h1><p>Deze snapshot is genomen op ",
+    "email_history_snapshot_html": "<h1>Homey DoorBird App - Geschiedenis Snapshot</h1><p>Dit is geschiedenis snapshot ",
+    "open_door": "Wil je dat ik de deur open doe?",
+    "not_understand": "Ik heb je niet goed begrepen, probeer het nog eens.",
+    "relay_triggered": "OK, de deur relais is getriggerd.",
+    "something_wrong": "Er is iets mis gegaan.",
+    "no_action_taken": "Er is geen actie ondernomen.",
+    "inconclusive_response": "Onduidelijke reactie",
+    "unauthorized": "Error 401: de gebruiker is niet geautoriseerd, zorg ervoor dat je de gebruiker hebt aangemaakt in de app en de juiste inloggegevens hebt ingevuld.",
+    "servererror": "Error 500: internal server error",
+    "timeout": "Timeout error: zorg ervoor dat je een stabiele netwerkverbinding hebt met je DoorBird."
+  },
+  "device": {
+    "incorrect_permissions": "Incorrecte permissies DoorBird gebruiker.",
+    "live_snapshot": "Live Snapshot",
+    "latest_doorbell_snapshot": "Laatste deurbel snapshot",
+    "latest_motionsensor_snapshot": "Laatste bewegingsensor snapshot"
+  }
 }

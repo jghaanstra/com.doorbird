@@ -1,6 +1,6 @@
 {
   "id": "com.doorbird",
-  "sdk": 2,
+  "sdk": 3,
   "brandColor": "#20B0E5",
 	"name": {
 		"en": "DoorBird",
@@ -12,8 +12,8 @@
 		"nl": [ "slimme deurbel", "IP camera", "DoorBird" ],
 		"de": [ "intelligente türklingel", "IP camera", "DoorBird" ]
 	},
-	"version": "2.4.5",
-	"compatibility": ">=3.0.0",
+	"version": "3.0.0",
+	"compatibility": ">=5.0.0",
 	"author": {
 		"name": "Jelger Haanstra",
 		"email": "homey@solidewebservices.com",
@@ -49,6 +49,18 @@
     "homey:manager:speech-input",
     "homey:manager:speech-output"
   ],
+  "api": {
+    "testEmail": {
+      "method": "put",
+      "path": "/testemail",
+      "public": false
+    },
+    "eventTrigger": {
+      "method": "get",
+      "path": "/event/:event/:mac/:relay",
+      "public": true
+    }
+  },
   "discovery": {
     "doorbird": {
       "type": "mdns-sd",
@@ -70,6 +82,22 @@
       ]
     }
   },
+  "capabilities": {
+    "open_action": {
+      "type": "number",
+      "title": {
+        "en": "Trigger default relay (\u2191swipe up\u2191)",
+        "nl": "Trigger standaard relay (\u2191omhoog scrollen\u2191)",
+        "de": "Standardrelais auslösen (\u2191swipe up\u2191)"
+      },
+      "getable": true,
+      "setable": true,
+      "uiComponent": "slider",
+      "min": 0,
+      "max": 1,
+      "step": 1
+    }
+  },
 	"drivers": [
 		{
 			"id": "doorbird",
@@ -85,16 +113,33 @@
 			},
 			"class": "doorbell",
 			"capabilities": [
+        "open_action",
         "alarm_generic",
         "alarm_motion",
-        "button"
+        "button.notificationevents",
+        "button.removenotificationevents"
       ],
       "capabilitiesOptions": {
-        "button": {
+        "button.notificationevents": {
+          "maintenanceAction": true,
           "title": {
-            "en": "Trigger default relay",
-            "nl": "Trigger standaard relay",
-            "de": "Standardrelais auslösen"
+            "en": "Set URL's for notifications",
+            "nl": "Instellen URL's voor notificaties"
+          },
+          "desc": {
+            "en": "Use this option to add notification URLs to your DoorBird for use with trigger cards like doorbell and motion events.",
+            "nl": "Gebruik deze optie om notificatie URL's toe te voegen aan jouw DoorBird, deze worden gebruikt voor trigger cards zoals deurbel en bewegings acties."
+          }
+        },
+        "button.removenotificationevents": {
+          "maintenanceAction": true,
+          "title": {
+            "en": "Remove notification URL's",
+            "nl": "Verwijderen notificatie URL's"
+          },
+          "desc": {
+            "en": "Use this option to remove notification URLs from your DoorBird.",
+            "nl": "Gebruik deze optie om notificatie URL's te verwijderen voor jouw DoorBird."
           }
         }
       },
@@ -347,7 +392,6 @@
                   "de": "Bewegungssensor"
                 }
               }
-
             ]
           },
           {

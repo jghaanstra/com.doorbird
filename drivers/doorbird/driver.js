@@ -1,17 +1,25 @@
 'use strict';
 
 const Homey = require('homey');
-const util = require('/lib/util.js');
+const Util = require('/lib/util.js');
 
 class DoorbirdDriver extends Homey.Driver {
 
-  onPair(socket) {
+  onInit() {
+    if (!this.util) this.util = new Util({homey: this.homey});
+
+    this.homey.flow.getDeviceTriggerCard('doorbell');
+    this.homey.flow.getDeviceTriggerCard('motionsensor');
+    this.homey.flow.getDeviceTriggerCard('dooropen');
+  }
+
+  onPair(session) {
     const discoveryStrategy = this.getDiscoveryStrategy();
     const discoveryResults = discoveryStrategy.getDiscoveryResults();
     let selectedDeviceId;
     let deviceArray = {};
 
-    socket.on('list_devices', (data, callback) => {
+    session.setHandler('list_devices', async (data) => {
       const devices = Object.values(discoveryResults).map(discoveryResult => {
         return {
           name: 'DoorBird ['+ discoveryResult.address +']',
@@ -20,20 +28,16 @@ class DoorbirdDriver extends Homey.Driver {
           }
         };
       });
-      callback(null, devices);
+      return devices;
     });
 
-    socket.on('list_devices_selection', (data, callback) => {
-      callback();
-      selectedDeviceId = data[0].data.id;
-    });
+    session.setHandler('login', async (data) => {
+      try {
+        const discoveryResult = discoveryResults[selectedDeviceId];
+        if(!discoveryResult) throw new Error('Something went wrong');
 
-    socket.on('login', (data, callback) => {
-      const discoveryResult = discoveryResults[selectedDeviceId];
-      if(!discoveryResult) return callback(new Error('Something went wrong'));
-
-      util.sendCommand('/bha-api/info.cgi', discoveryResult.address, data.username, data.password)
-        .then(body => {
+        const result = await this.util.sendCommand('/bha-api/info.cgi', discoveryResult.address, data.username, data.password);
+        if (result) {
           var password = data.password;
           deviceArray = {
             name: 'DoorBird ['+ discoveryResult.address +']',
@@ -46,20 +50,24 @@ class DoorbirdDriver extends Homey.Driver {
               password : data.password
             },
             store: {
-              type: body.BHA.VERSION[0]["DEVICE-TYPE"],
+              type: result.BHA.VERSION[0]["DEVICE-TYPE"],
               intercomid: password.substr(0, 6),
-              relay: body.BHA.VERSION[0].RELAYS
+              relay: result.BHA.VERSION[0].RELAYS
             }
           }
-          callback(null, true);
-        })
-        .catch(error => {
-          callback(error, false);
-        });
+        }
+        return Promise.resolve(true);
+      } catch (error) {
+        return Promise.reject(error);
+      }
     });
 
-    socket.on('get_device', (data, callback) => {
-      callback(false, deviceArray);
+    session.setHandler('list_devices_selection', async (data) => {
+      return selectedDeviceId = data[0].data.id;
+    });
+
+    session.setHandler('add_device', async (data) => {
+      return Promise.resolve(deviceArray);
     });
 
   }

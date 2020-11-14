@@ -35,150 +35,139 @@
 		</style>
   </head>
   <body>
-  <h1 data-i18n="settings.title">DoorBird Settings</h1>
-  <fieldset class="doorbird-notification">
-    <legend data-i18n="settings.notificationsettings">Notification Settings</legend>
-    <p data-i18n="settings.intro-notification">DoorBirds needs to be configured to send notifications to Homey for the doorbell, motionsensor and door open triggers. Use the button below to add the HTTP favorite URLs to your DoorBird config and follow the instructions from the app store page on how to configure your DoorBird(s) to send notifications to Homey.</p>
-    <div class="form-group buttons">
-    <button id="set-notification" class="button" data-i18n="settings.setnotifications">Set DoorBird Notification HTTP URLs</button>
-    </div>
-    <div class="messages messages-notifications">
-    <p class="doorbird-notifications-ok doorbird-status" style="color: #008C23;"><i class="fa fa-check"></i> <span class="doorbird-notifications-ok-msg" data-i18n="settings.notificationssuccess">Notifications have been set succesfully.</span></p>
-    <p class="doorbird-notifications-error doorbird-status" style="color: #ff6300;"><i class="fa fa-times"></i> <span class="doorbird-notifications-error-msg"></span></p>
-    </div>
-  </fieldset>
+    <h1 data-i18n="settings.title">DoorBird Settings</h1>
+    
+    <fieldset class="doorbird-email">
+      <legend data-i18n="settings.emailsettings">Email Settings</legend>
+      <p data-i18n="settings.intro-email">These settings are needed for sending snapshot images through email. If you wish to send emails through Gmail SMTP servers and you are using 2-step authentication you first need to create an <a href='https://support.google.com/accounts/answer/185833' target='_blank'>app password</a> in your Google Account.</p>
+      <div class="form-group">
+      <label for="username" data-i18n="settings.username">Email Username</label>
+      <input type="text" class="form-control" id="username">
+      </div>
+      <div class="form-group">
+      <label for="password" data-i18n="settings.password">Email Password</label>
+      <input type="password" class="form-control" id="password">
+      </div>
+      <div class="form-group">
+      <label for="hostname" data-i18n="settings.hostname">SMTP Server</label>
+      <input type="text" class="form-control" id="hostname" placeholder="mail.yourdomain.com">
+      </div>
+      <div class="form-group">
+      <label for="port" data-i18n="settings.port">SMTP Port</label>
+      <input type="text" class="form-control" id="port" placeholder="25 or 587">
+      </div>
+      <div class="form-group">
+      <label for="sender" data-i18n="settings.sender">Sender Email Address</label>
+      <input type="text" class="form-control" id="sender" placeholder="name@yourdomain.com">
+      </div>
+      <div class="form-group">
+      <label for="secure" data-i18n="settings.secure">Encrypted Connection</label>
+      <input type="checkbox" class="form-control" id="secure">
+      </div>
+      <div class="messages messages-email">
+      <p class="doorbird-email-test doorbird-status" style="color: #008C23;"><i class="fa fa-check"></i> <span class="doorbird-email-test-msg" data-i18n="settings.testing">Settings have been tested succesfully. You should have received a test email.</span></p>
+      <p class="doorbird-email-ok doorbird-status" style="color: #008C23;"><i class="fa fa-check"></i> <span class="doorbird-email-ok-msg" data-i18n="settings.success">Settings have been saved succesfully.</span></p>
+      <p class="doorbird-email-error doorbird-status" style="color: #ff6300;"><i class="fa fa-times"></i> <span class="doorbird-email-error-msg"></span></p>
+      </div>
+      <div class="form-group buttons">
+      <button id="test-email" class="button" data-i18n="settings.testemail">Test Email Settings</button>
+      <button id="save-email" class="button" data-i18n="settings.saveemail" disabled>Save Email Settings</button>
+      </div>
+    </fieldset>
 
-  <fieldset class="doorbird-email">
-    <legend data-i18n="settings.emailsettings">Email Settings</legend>
-    <p data-i18n="settings.intro-email">These settings are needed for sending snapshot images through email. If you wish to send emails through Gmail SMTP servers and you are using 2-step authentication you first need to create an <a href='https://support.google.com/accounts/answer/185833' target='_blank'>app password</a> in your Google Account.</p>
-    <div class="form-group">
-    <label for="username" data-i18n="settings.username">Email Username</label>
-    <input type="text" class="form-control" id="username">
-    </div>
-    <div class="form-group">
-    <label for="password" data-i18n="settings.password">Email Password</label>
-    <input type="password" class="form-control" id="password">
-    </div>
-    <div class="form-group">
-    <label for="hostname" data-i18n="settings.hostname">SMTP Server</label>
-    <input type="text" class="form-control" id="hostname" placeholder="mail.yourdomain.com">
-    </div>
-    <div class="form-group">
-    <label for="port" data-i18n="settings.port">SMTP Port</label>
-    <input type="text" class="form-control" id="port" placeholder="25 or 587">
-    </div>
-    <div class="form-group">
-    <label for="sender" data-i18n="settings.sender">Sender Email Address</label>
-    <input type="text" class="form-control" id="sender" placeholder="name@yourdomain.com">
-    </div>
-    <div class="form-group">
-    <label for="secure" data-i18n="settings.secure">Encrypted Connection</label>
-    <input type="checkbox" class="form-control" id="secure">
-    </div>
-    <div class="messages messages-email">
-    <p class="doorbird-email-test doorbird-status" style="color: #008C23;"><i class="fa fa-check"></i> <span class="doorbird-email-test-msg" data-i18n="settings.testing">Settings have been tested succesfully. You should have received a test email.</span></p>
-    <p class="doorbird-email-ok doorbird-status" style="color: #008C23;"><i class="fa fa-check"></i> <span class="doorbird-email-ok-msg" data-i18n="settings.success">Settings have been saved succesfully.</span></p>
-    <p class="doorbird-email-error doorbird-status" style="color: #ff6300;"><i class="fa fa-times"></i> <span class="doorbird-email-error-msg"></span></p>
-    </div>
-    <div class="form-group buttons">
-    <button id="test-email" class="button" data-i18n="settings.testemail">Test Email Settings</button>
-    <button id="save-email" class="button" data-i18n="settings.saveemail" disabled>Save Email Settings</button>
-    </div>
-  </fieldset>
+    <script type="text/javascript">
+      function onHomeyReady(Homey) {
+        Homey.get('email_username')
+          .then(username => {
+            document.getElementById('username').value = username;
+          })
+          .catch(error => {
+            return console.error('Could not get username', error);
+          })
+        Homey.get('email_password')
+          .then(password => {
+            document.getElementById('password').value = password;
+          })
+          .catch(error => {
+            return console.error('Could not get password', error);
+          })
+        Homey.get('email_hostname')
+          .then(hostname => {
+            document.getElementById('hostname').value = hostname;
+          })
+          .catch(error => {
+            return console.error('Could not get hostname', error);
+          })
+        Homey.get('email_port')
+          .then(port => {
+            document.getElementById('port').value = port;
+          })
+          .catch(error => {
+            return console.error('Could not get port', error);
+          })
+        Homey.get('email_sender')
+          .then(sender => {
+            document.getElementById('sender').value = sender;
+          })
+          .catch(error => {
+            return console.error('Could not get sender', error);
+          })
+        Homey.get('email_secure')
+          .then(secure => {
+            document.getElementById('secure').checked = secure;
+          })
+          .catch(error => {
+            return console.error('Could not get secure connection setting', error);
+          })
 
-  <script type="text/javascript">
-    function onHomeyReady(Homey) {
-  	  Homey.get('email_username', function(error, username) {
-  		   if(error) return console.error('Could not get username', error);
-  		   document.getElementById('username').value = username;
-  		  });
-  		  Homey.get('email_password', function(error, password) {
-  		   if(error) return console.error('Could not get password', error);
-  		   document.getElementById('password').value = password;
-  		  });
-  		  Homey.get('email_hostname', function(error, hostname) {
-  		   if(error) return console.error('Could not get hostname', error);
-  		   document.getElementById('hostname').value = hostname;
-  		  });
-  		  Homey.get('email_port', function(error, port) {
-  		   if(error) return console.error('Could not get port', error);
-  		   document.getElementById('port').value = port;
-  		  });
-  		  Homey.get('email_sender', function(error, sender) {
-  		   if(error) return console.error('Could not get sender', error);
-  		   document.getElementById('sender').value = sender;
-  		  });
-  		  Homey.get('email_secure', function(error, secure) {
-  		   if(error) return console.error('Could not get secure connection setting', error);
-  		   document.getElementById('secure').checked = secure;
-  		  });
+        document.getElementById("test-email").addEventListener("click", function(elem) {
+          testEmail(Homey);
+          return false;
+        });
+        document.getElementById("save-email").addEventListener("click", function(elem) {
+          saveEmail(Homey);
+          return false;
+        });
 
-    document.getElementById("set-notification").addEventListener("click", function(elem) {
-      setNotifications(Homey);
-      return false;
-    });
-    document.getElementById("test-email").addEventListener("click", function(elem) {
-      testEmail(Homey);
-      return false;
-    });
-    document.getElementById("save-email").addEventListener("click", function(elem) {
-      saveEmail(Homey);
-      return false;
-    });
-
-    Homey.ready();
-    }
-
-    function setNotifications(Homey) {
-    Homey.api('PUT', '/notifications/', {}, function(error, result) {
-      if(error){
-      document.getElementsByClassName('doorbird-notifications-ok')[0].style.display = 'none';
-      document.getElementsByClassName('doorbird-notifications-error')[0].style.display = 'block';
-      document.getElementsByClassName('doorbird-notifications-error-msg')[0].innerHTML = error;
-      } else if (result) {
-      document.getElementsByClassName('doorbird-notifications-ok')[0].style.display = 'block';
-      document.getElementsByClassName('doorbird-notifications-error')[0].style.display = 'none';
+        Homey.ready();
       }
-    });
-    }
 
-    function testEmail(Homey) {
-    document.getElementsByClassName('doorbird-email-test')[0].style.display = 'none';
-    document.getElementsByClassName('doorbird-email-error')[0].style.display = 'none';
+      function testEmail(Homey) {
+        document.getElementsByClassName('doorbird-email-test')[0].style.display = 'none';
+        document.getElementsByClassName('doorbird-email-error')[0].style.display = 'none';
 
-    Homey.api('PUT', '/testemail/', {
-      "email_username": document.getElementById('username').value,
-      "email_password": document.getElementById('password').value,
-      "email_hostname": document.getElementById('hostname').value,
-      "email_port": document.getElementById('port').value,
-      "email_sender": document.getElementById('sender').value,
-      "email_secure": document.getElementById('secure').checked
-    }, function(error, result) {
-      if(error){
-      document.getElementsByClassName('doorbird-email-error')[0].style.display = 'block';
-      document.getElementsByClassName('doorbird-email-error-msg')[0].innerHTML = error;
-      } else if (result) {
-      document.getElementsByClassName('doorbird-email-error')[0].style.display = 'none';
-      document.getElementsByClassName('doorbird-email-test')[0].style.display = 'block';
+        Homey.api('PUT', '/testemail/', {
+          "email_username": document.getElementById('username').value,
+          "email_password": document.getElementById('password').value,
+          "email_hostname": document.getElementById('hostname').value,
+          "email_port": document.getElementById('port').value,
+          "email_sender": document.getElementById('sender').value,
+          "email_secure": document.getElementById('secure').checked
+        })
+          .then(result => {
+            document.getElementsByClassName('doorbird-email-error')[0].style.display = 'none';
+            document.getElementsByClassName('doorbird-email-test')[0].style.display = 'block';
+            document.getElementById('save-email').disabled = false;
+          })
+          .catch(error => {
+            document.getElementsByClassName('doorbird-email-error')[0].style.display = 'block';
+            document.getElementsByClassName('doorbird-email-error-msg')[0].innerHTML = error;
+          });
+      };
 
-      document.getElementById('save-email').disabled = false;
-      }
-    });
-    };
+      function saveEmail(Homey) {
+        document.getElementsByClassName('doorbird-email-test')[0].style.display = 'none';
+        document.getElementsByClassName('doorbird-email-error')[0].style.display = 'none';
 
-    function saveEmail(Homey) {
-    document.getElementsByClassName('doorbird-email-test')[0].style.display = 'none';
-    document.getElementsByClassName('doorbird-email-error')[0].style.display = 'none';
+        Homey.set('email_username', document.getElementById('username').value);
+        Homey.set('email_password', document.getElementById('password').value);
+        Homey.set('email_hostname', document.getElementById('hostname').value);
+        Homey.set('email_port', document.getElementById('port').value);
+        Homey.set('email_sender', document.getElementById('sender').value);
+        Homey.set('email_secure', document.getElementById('secure').checked);
 
-    Homey.set('email_username', document.getElementById('username').value);
-    Homey.set('email_password', document.getElementById('password').value);
-    Homey.set('email_hostname', document.getElementById('hostname').value);
-    Homey.set('email_port', document.getElementById('port').value);
-    Homey.set('email_sender', document.getElementById('sender').value);
-    Homey.set('email_secure', document.getElementById('secure').checked);
-
-    document.getElementsByClassName('doorbird-email-ok')[0].style.display = 'block';
-    };
-  </script>
+        document.getElementsByClassName('doorbird-email-ok')[0].style.display = 'block';
+      };
+    </script>
   </body>
 </html>

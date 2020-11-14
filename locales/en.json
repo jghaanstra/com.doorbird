@@ -19,18 +19,6 @@
 	},
   "settings": {
     "title": "DoorBird Settings",
-    "notificationsettings": "Notification Settings",
-    "intro-notification": "DoorBirds needs to be configured to send notifications to Homey for the doorbell, motionsensor and door open triggers. Make sure you have given API-operator permissions to the user which was used to add the DoorBird device to Homey. Use the button below to add the HTTP favorite URLs to your DoorBird config and follow the instructions from the app store page on how to configure your DoorBird(s) to send notifications to Homey.",
-    "notificationlabels": "Relaxation time between notification from DoorBird to Homey",
-    "seconds": "Seconds",
-    "enabled": "Enabled?",
-    "relaxationdoorbell": "Relaxation doorbell",
-    "relaxationmotionsensor": "Relaxation motionsensor",
-    "relaxationdooropen": "Relaxation door opener",
-    "setnotifications": "Set DoorBird Notification HTTP URLs",
-    "setrelay": "Set relay trigger events",
-    "notificationssuccess": "Notifications have been set succesfully.",
-    "relayssuccess": "Relay trigger succesfully scheduled.",
     "intro-email": "These settings are needed for sending snapshot images through email. If you wish to send emails through Gmail SMTP servers and you are using 2-step authentication you first need to create an <a href='https://support.google.com/accounts/answer/185833' target='_blank'>app password</a> in your Google Account.",
     "emailsettings": "Email Settings",
     "username": "Email Username",
@@ -44,17 +32,38 @@
     "testing": "Settings have been tested succesfully. You should have received a test email.",
     "success": "Settings have been saved succesfully."
   },
-  "This is a test email which confirms your email settings in the Homey DoorBird App are correct.": "This is a test email which confirms your email settings in the Homey DoorBird App are correct.",
-  "<h1>Homey DoorBird App</h1><p>This is a test email which confirms your email settings in the Homey DoorBird App are correct.</p>": "<h1>Homey DoorBird App</h1><p>This is a test email which confirms your email settings in the Homey DoorBird App are correct.</p>",
-  "<h1>Homey DoorBird App</h1><p>This snapshot was taken at ": "<h1>Homey DoorBird App</h1><p>This snapshot was taken at ",
-  "<h1>Homey DoorBird App - History Snapshot</h1><p>This is history snapshot": "<h1>Homey DoorBird App - History Snapshot</h1><p>This is history snapshot",
-  "Do you want me to open the door?": "Do you want me to open the door?",
-  "Something went wrong": "Something went wrong.",
-  "I did not understand you correctly, please try again": "I did not understand you correctly, please try again.",
-  "OK, the door relay has been triggered": "OK, the door relay has been triggered.",
-  "No action has been taken": "No action has been taken.",
-  "Live Snapshot": "Live Snapshot",
-  "Latest Doorbell Snapshot": "Latest Doorbell Snapshot",
-  "Latest Motionsensor Snapshot": "Latest Motionsensor Snapshot",
-  "Incorrect permissions DoorBird user": "Incorrect permissions DoorBird user"
+  "util": {
+    "test_email_body_text": "This is a test email which confirms your email settings in the Homey DoorBird App are correct.",
+    "test_email_body_html": "<h1>Homey DoorBird App</h1><p>This is a test email which confirms your email settings in the Homey DoorBird App are correct.</p>",
+    "email_snapshot_html": "<h1>Homey DoorBird App</h1><p>This snapshot was taken at ",
+    "email_history_snapshot_html": "<h1>Homey DoorBird App - History Snapshot</h1><p>This is history snapshot ",
+    "open_door": "Do you want me to open the door?",
+    "not_understand": "I did not understand you correctly, please try again.",
+    "relay_triggered": "OK, the door relay has been triggered.",
+    "something_wrong": "Something went wrong.",
+    "no_action_taken": "No action has been taken.",
+    "inconclusive_response": "Inconclusive response",
+    "unauthorized": "Error 401: this user is not authorized, make sure you have created the user in the app and entered the correct details.",
+    "servererror": "Error 500: internal server error",
+    "timeout": "Timeout error: make sure you have a stable network connection with your DoorBird."
+  },
+  "device": {
+    "incorrect_permissions": "Incorrect permissions DoorBird user.",
+    "live_snapshot": "Live Snapshot",
+    "latest_doorbell_snapshot": "Latest Doorbell Snapshot",
+    "latest_motionsensor_snapshot": "Latest Motionsensor Snapshot"
+  }
+
+
+
+
+
+
+
+
+
+
+
+
+
 }
