@@ -1,0 +1,112 @@
+<script type="text/javascript">
+
+Homey.setTitle(Homey.__('pair.title'));
+
+$(function() {
+
+	$('#test-connection').click(function() {
+		$('.doorbird-test').hide();
+		$('.doorbird-ok').hide();
+		$('.doorbird-error').hide();
+		$('.doorbird-info').hide();
+
+		var inputaddress = $('#address').val();
+		var inputusername = $('#username').val();
+		var inputpassword = $('#password').val();
+
+		if (inputaddress != '' && inputusername != '' && inputpassword != '') {
+			var data = {
+				address: inputaddress,
+				username: inputusername,
+				password: inputpassword
+			};
+
+      Homey.emit('manual_pairing', data)
+        .then(result => {
+          var doorbirdinfo = "<div class='info-row'><span class='info-label' data-i18n='pair.mac'>DoorBird MAC:</span><span class='info-value'> "+ result.data.id +"</span></div><div class='info-row'><span class='info-label' data-i18n='pair.type'>DoorBird Type:</span><span class='info-value'> "+ result.store.type +"</span></div>";
+          $('.doorbird-info').show();
+          $('.doorbird-info').html(doorbirdinfo);
+          $('.doorbird-test').show();
+          $('#connect').prop('disabled', false);
+        })
+        .catch(error => {
+          $('.doorbird-error').show();
+					$('.doorbird-error-msg').html(error);
+        });
+		} else {
+			$('.doorbird-error').show();
+			$('.doorbird-error-msg').html( Homey.__('pair.nosettings') );
+		}
+
+	});
+
+	$('#connect').click(function() {
+    Homey.showView('add_device');
+	});
+})
+</script>
+
+<style type="text/css">
+  .form-group {
+    width: 100%;
+    display: block;
+    margin-bottom: 12px;
+  }
+  .form-group label {
+    display: block;
+  }
+  .doorbird-status, .doorbird-info {
+		display: none;
+	}
+  .doorbird-info {
+    margin-top: 10px;
+    font-size: 12px;
+  }
+  .doorbird-info .info-row {
+    min-width: 150px;
+    padding-bottom: 4px;
+  }
+  .doorbird-info .info-label {
+    display: inline-block;
+    min-width: 100px;
+    font-weight: 700;
+  }
+  .buttons, .messages {
+    padding-top: 14px;
+  }
+  .button:disabled {
+    color: #ccc;
+  }
+  .button:enabled {
+    background-color: #00c139 !important;
+    color: #fff;
+  }
+</style>
+
+<p data-i18n="pair.intro">Enter the IP address and, if configured, your username and password for your DoorBird device.</p>
+<div class="doorbird-pairing">
+	<div class="form-group">
+		<label for="address" data-i18n="pair.address">IP address</label>
+		<input type="text" class="form-control" id="address" placeholder="0.0.0.0">
+	</div>
+	<div class="form-group">
+		<label for="username" data-i18n="pair.username">Username</label>
+		<input type="text" class="form-control" id="username">
+	</div>
+	<div class="form-group">
+		<label for="password" data-i18n="pair.password">Password</label>
+		<input type="password" class="form-control" id="password">
+	</div>
+	<div class="form-group buttons">
+		<button id="test-connection" class="button" data-i18n="pair.test">Test Connection</button>
+		<button id="connect" class="button" data-i18n="pair.connect" disabled>Connect</button>
+	</div>
+</div>
+
+<div class="doorbird-info"></div>
+
+<div class="messages">
+	<p class="doorbird-status doorbird-test" style="color: #008C23;"><i class="fa fa-check"></i> <span class="doorbird-test-msg" data-i18n="pair.testing">Connection test succesfull</span></p>
+	<p class="doorbird-status doorbird-ok" style="color: #008C23;"><i class="fa fa-check"></i> <span class="doorbird-ok-msg" data-i18n="pair.success">DoorBird device added succesfully</span></p>
+	<p class="doorbird-status doorbird-error" style="color: #ff6300;"><i class="fa fa-times"></i> <span class="doorbird-error-msg"></span></p>
+</div>

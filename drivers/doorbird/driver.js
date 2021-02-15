@@ -28,7 +28,11 @@ class DoorbirdDriver extends Homey.Driver {
           }
         };
       });
-      return devices;
+      if (devices.length) {
+        return devices;
+      } else {
+        session.showView('select_pairing');
+      }
     });
 
     session.setHandler('login', async (data) => {
@@ -39,6 +43,11 @@ class DoorbirdDriver extends Homey.Driver {
         const result = await this.util.sendCommand('/bha-api/info.cgi', discoveryResult.address, data.username, data.password);
         if (result) {
           var password = data.password;
+          if (result.BHA.VERSION[0]["DEVICE-TYPE"] === 'DoorBird D2101V') {
+            var capabilities = ["open_action", "open_action_2", "alarm_generic", "alarm_motion", "button.notificationevents", "button.removenotificationevents"];
+          } else {
+            var capabilities = ["open_action", "alarm_generic", "alarm_motion", "button.notificationevents", "button.removenotificationevents"];
+          }
           deviceArray = {
             name: 'DoorBird ['+ discoveryResult.address +']',
             data: {
@@ -49,6 +58,7 @@ class DoorbirdDriver extends Homey.Driver {
               username : data.username,
               password : data.password
             },
+            capabilities: capabilities,
             store: {
               type: result.BHA.VERSION[0]["DEVICE-TYPE"],
               intercomid: password.substr(0, 6),
@@ -64,6 +74,40 @@ class DoorbirdDriver extends Homey.Driver {
 
     session.setHandler('list_devices_selection', async (data) => {
       return selectedDeviceId = data[0].data.id;
+    });
+
+    session.setHandler('manual_pairing', async (data) => {
+      try {
+        const result = await this.util.sendCommand('/bha-api/info.cgi', data.address, data.username, data.password);
+        if (result) {
+          var password = data.password;
+          if (result.BHA.VERSION[0]["DEVICE-TYPE"] === 'DoorBird D2101V') {
+            var capabilities = ["open_action", "open_action_2", "alarm_generic", "alarm_motion", "button.notificationevents", "button.removenotificationevents"];
+          } else {
+            var capabilities = ["open_action", "alarm_generic", "alarm_motion", "button.notificationevents", "button.removenotificationevents"];
+          }
+          deviceArray = {
+            name: 'DoorBird',
+            data: {
+              id: result.BHA.VERSION[0].WIFI_MAC_ADDR,
+            },
+            settings: {
+              address  : data.address,
+              username : data.username,
+              password : data.password
+            },
+            capabilities: capabilities,
+            store: {
+              type: result.BHA.VERSION[0]["DEVICE-TYPE"],
+              intercomid: password.substr(0, 6),
+              relay: result.BHA.VERSION[0].RELAYS
+            }
+          }
+        }
+        return Promise.resolve(deviceArray);
+      } catch (error) {
+        return Promise.reject(error);
+      }
     });
 
     session.setHandler('add_device', async (data) => {

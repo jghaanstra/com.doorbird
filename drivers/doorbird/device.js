@@ -29,6 +29,9 @@ class DoorbirdDevice extends Homey.Device {
     if (!this.hasCapability('open_action')) {
       this.addCapability('open_action');
     }
+    if (!this.hasCapability('open_action_2') && this.getStoreValue('type') === 'DoorBird D2101V') {
+      this.addCapability('open_action_2');
+    }
 
     // LISTENERS FOR UPDATING CAPABILITIES
     this.registerCapabilityListener('open_action', async (value) => {
@@ -38,6 +41,22 @@ class DoorbirdDevice extends Homey.Device {
           await this.homey.flow.getDeviceTriggerCard('dooropen').trigger(this, {relay: '1'}, {});
           setTimeout(async () => {
             return this.setCapabilityValue('open_action', 0);
+          }, 1000);
+        } else {
+          return Promise.resolve(true);
+        }
+      } catch (error) {
+        return Promise.reject(error);
+      }
+    });
+
+    this.registerCapabilityListener('open_action_2', async (value) => {
+      try {
+        if (value === 1) {
+          const result = await this.util.sendCommand('/bha-api/open-door.cgi?r=2', this.getSetting('address'), this.getSetting('username'), this.getSetting('password'))
+          await this.homey.flow.getDeviceTriggerCard('dooropen').trigger(this, {relay: '2'}, {});
+          setTimeout(async () => {
+            return this.setCapabilityValue('open_action_2', 0);
           }, 1000);
         } else {
           return Promise.resolve(true);

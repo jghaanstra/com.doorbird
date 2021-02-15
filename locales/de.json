@@ -12,10 +12,17 @@
     "password": "Passwort",
     "firmware": "DoorBird Firmware:",
     "mac": "DoorBird MAC Adresse:",
-    "success": "DoorBird IP Video Station hinzugef\u00fcgt",
+    "success": "DoorBird hinzugef\u00fcgt",
     "test": "Test Verbindung",
-    "testing": "DoorBird IP Video Station Verbindungstest erfolgreich, k\u00f6nnen Sie nun die DoorBird verbinden.",
-    "connect": "Verbinden"
+    "testing": "DoorBird Verbindungstest erfolgreich, k\u00f6nnen Sie nun die DoorBird verbinden.",
+    "connect": "Verbinden",
+    "titleselection": "What do you want to do?",
+    "nodevices": "No devices have been discovered. You can try again or use manual pairing if you know the IP address of your DoorBird device.",
+    "again": "Try Again",
+    "manual": "Manual Pairing",
+    "type": "DoorBird Type:",
+    "mac": "DoorBird MAC:",
+    "intro": "Enter the IP address, username and password for your DoorBird device."
   },
   "settings": {
     "title": "DoorBird einstellungen",

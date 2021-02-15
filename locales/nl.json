@@ -12,10 +12,17 @@
     "password": "Wachtwoord",
     "firmware": "DoorBird firmware:",
     "mac": "DoorBird MAC adres:",
-    "success": "DoorBird IP Video Station succesvol toegevoegd",
+    "success": "DoorBird succesvol toegevoegd",
     "test" : "Test connectie",
-    "testing" : "DoorBird IP Video Station connectietest succesvol, je kan de DoorBird nu verbinden.",
-    "connect": "Verbind"
+    "testing" : "DoorBird connectietest succesvol, je kan de DoorBird nu verbinden.",
+    "connect": "Verbind",
+    "titleselection": "Wat wil je doen?",
+    "nodevices": "Geen apparaten gevonden. Je kan het nog een keer proberen of je DoorBird handmatig toevoegen als je het IP adres weet.",
+    "again": "Probeer opnieuw",
+    "manual": "Handmatig koppelen",
+    "type": "DoorBird type:",
+    "mac": "DoorBird MAC:",
+    "intro": "Voer het IP adres, de gebruikersnaam en het wachtwoord van je DoorBird in."
 	},
   "settings": {
     "title": "DoorBird Instellingen",

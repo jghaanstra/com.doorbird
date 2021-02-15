@@ -7,5 +7,8 @@
   },
   "3.0.0": {
     "en": "Update to SDK3 (requires Homey firmware 5.x). Change the relay functionality from a button to a slider under the device to avoid accidentally opening the door. Moved the functionality for adding the HTTP notifications from the app settings to the individual device settings for a more robust configuration. This requires you to re-configure your notifications though. See the support forum for more information."
+  },
+  "3.0.1": {
+    "en": "Please see the support forum for the change log. The release contains too much changes to be added in the changelog here."
   }
 }
