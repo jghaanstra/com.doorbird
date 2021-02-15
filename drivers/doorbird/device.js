@@ -12,6 +12,14 @@ class DoorbirdDevice extends Homey.Device {
     // TODO: REMOVE AFTER 3.1.0
     await this.util.updateNotifications(this.getSetting('address'), this.getSetting('username'), this.getSetting('password'), this.getData().id, 'add');
 
+    // UPDATE STORE VALUE RELAYS FOR DEVICES THAT WHERE PAIRED A LONG TIME AGO
+    // TODO: REMOVE AFTER 3.1.0
+    if (!this.getStoreValue('relays')) {
+      const result = await this.util.sendCommand('/bha-api/info.cgi', this.getSetting('address'), this.getSetting('username'), this.getSetting('password'));
+      var relays = result.BHA.VERSION[0].RELAYS;
+      this.setStoreValue('relays', relays);
+    }
+
     // INITIALLY SET DEVICE AS AVAILABLE
     this.setAvailable();
 
@@ -32,13 +40,21 @@ class DoorbirdDevice extends Homey.Device {
     if (!this.hasCapability('open_action_2') && this.getStoreValue('type') === 'DoorBird D2101V') {
       this.addCapability('open_action_2');
     }
+    if (this.getStoreValue('relays').length === 2 && !this.hasCapability('open_action_2')) {
+      this.addCapability('open_action_2');
+    } else if (this.getStoreValue('relays').length === 3 && !this.hasCapability('open_action_2') && !this.hasCapability('open_action_3')) {
+      this.addCapability('open_action_2');
+      this.addCapability('open_action_3');
+    } else if (this.getStoreValue('relays').length === 3 && this.hasCapability('open_action_2') && !this.hasCapability('open_action_3')) {
+      this.addCapability('open_action_3');
+    }
 
     // LISTENERS FOR UPDATING CAPABILITIES
     this.registerCapabilityListener('open_action', async (value) => {
       try {
         if (value === 1) {
-          const result = await this.util.sendCommand('/bha-api/open-door.cgi?r=1', this.getSetting('address'), this.getSetting('username'), this.getSetting('password'))
-          await this.homey.flow.getDeviceTriggerCard('dooropen').trigger(this, {relay: '1'}, {});
+          const result = await this.util.sendCommand('/bha-api/open-door.cgi?r='+ this.getStoreValue('relays')[0], this.getSetting('address'), this.getSetting('username'), this.getSetting('password'))
+          await this.homey.flow.getDeviceTriggerCard('dooropen').trigger(this, {relay: this.getStoreValue('relays')[0]}, {});
           setTimeout(async () => {
             return this.setCapabilityValue('open_action', 0);
           }, 1000);
@@ -53,10 +69,26 @@ class DoorbirdDevice extends Homey.Device {
     this.registerCapabilityListener('open_action_2', async (value) => {
       try {
         if (value === 1) {
-          const result = await this.util.sendCommand('/bha-api/open-door.cgi?r=2', this.getSetting('address'), this.getSetting('username'), this.getSetting('password'))
-          await this.homey.flow.getDeviceTriggerCard('dooropen').trigger(this, {relay: '2'}, {});
+          const result = await this.util.sendCommand('/bha-api/open-door.cgi?r='+ this.getStoreValue('relays')[1], this.getSetting('address'), this.getSetting('username'), this.getSetting('password'))
+          await this.homey.flow.getDeviceTriggerCard('dooropen').trigger(this, {relay: this.getStoreValue('relays')[1]}, {});
           setTimeout(async () => {
             return this.setCapabilityValue('open_action_2', 0);
+          }, 1000);
+        } else {
+          return Promise.resolve(true);
+        }
+      } catch (error) {
+        return Promise.reject(error);
+      }
+    });
+
+    this.registerCapabilityListener('open_action_3', async (value) => {
+      try {
+        if (value === 1) {
+          const result = await this.util.sendCommand('/bha-api/open-door.cgi?r='+ this.getStoreValue('relays')[2], this.getSetting('address'), this.getSetting('username'), this.getSetting('password'))
+          await this.homey.flow.getDeviceTriggerCard('dooropen').trigger(this, {relay: this.getStoreValue('relays')[2]}, {});
+          setTimeout(async () => {
+            return this.setCapabilityValue('open_action_3', 0);
           }, 1000);
         } else {
           return Promise.resolve(true);

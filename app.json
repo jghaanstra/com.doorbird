@@ -12,7 +12,7 @@
 		"nl": [ "slimme deurbel", "IP camera", "DoorBird" ],
 		"de": [ "intelligente türklingel", "IP camera", "DoorBird" ]
 	},
-	"version": "3.0.1",
+	"version": "3.0.2",
 	"compatibility": ">=5.0.0",
 	"author": {
 		"name": "Jelger Haanstra",
@@ -104,6 +104,20 @@
         "en": "Trigger second relay (\u2191swipe up\u2191)",
         "nl": "Trigger tweede relay (\u2191omhoog scrollen\u2191)",
         "de": "Zweiten relais auslösen (\u2191swipe up\u2191)"
+      },
+      "getable": true,
+      "setable": true,
+      "uiComponent": "slider",
+      "min": 0,
+      "max": 1,
+      "step": 1
+    },
+    "open_action_3": {
+      "type": "number",
+      "title": {
+        "en": "Trigger third relay (\u2191swipe up\u2191)",
+        "nl": "Trigger derde relay (\u2191omhoog scrollen\u2191)",
+        "de": "Dritte relais auslösen (\u2191swipe up\u2191)"
       },
       "getable": true,
       "setable": true,

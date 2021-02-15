@@ -43,7 +43,10 @@ class DoorbirdDriver extends Homey.Driver {
         const result = await this.util.sendCommand('/bha-api/info.cgi', discoveryResult.address, data.username, data.password);
         if (result) {
           var password = data.password;
-          if (result.BHA.VERSION[0]["DEVICE-TYPE"] === 'DoorBird D2101V') {
+          var relays = result.BHA.VERSION[0]["RELAYS"];
+          if (relays.length === 3) {
+            var capabilities = ["open_action", "open_action_2", "open_action_3", "alarm_generic", "alarm_motion", "button.notificationevents", "button.removenotificationevents"];
+          } else if (relays.length === 2) {
             var capabilities = ["open_action", "open_action_2", "alarm_generic", "alarm_motion", "button.notificationevents", "button.removenotificationevents"];
           } else {
             var capabilities = ["open_action", "alarm_generic", "alarm_motion", "button.notificationevents", "button.removenotificationevents"];
@@ -81,7 +84,10 @@ class DoorbirdDriver extends Homey.Driver {
         const result = await this.util.sendCommand('/bha-api/info.cgi', data.address, data.username, data.password);
         if (result) {
           var password = data.password;
-          if (result.BHA.VERSION[0]["DEVICE-TYPE"] === 'DoorBird D2101V') {
+          var relays = result.BHA.VERSION[0]["RELAYS"];
+          if (relays.length === 3) {
+            var capabilities = ["open_action", "open_action_2", "open_action_3", "alarm_generic", "alarm_motion", "button.notificationevents", "button.removenotificationevents"];
+          } else if (relays.length === 2) {
             var capabilities = ["open_action", "open_action_2", "alarm_generic", "alarm_motion", "button.notificationevents", "button.removenotificationevents"];
           } else {
             var capabilities = ["open_action", "alarm_generic", "alarm_motion", "button.notificationevents", "button.removenotificationevents"];
