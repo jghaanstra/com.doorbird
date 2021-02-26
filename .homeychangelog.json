@@ -13,5 +13,8 @@
   },
   "3.0.2": {
     "en": "Please see the support forum for the change log. The release contains too much changes to be added in the changelog here."
+  },
+  "3.0.3": {
+    "en": "Please see the support forum for the change log. For some users the new v3.x releases contain some breaking changes which require user interaction which is explained on the support forum."
   }
 }

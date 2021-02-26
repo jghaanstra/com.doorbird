@@ -1,7 +1,7 @@
 {
   "id": "com.doorbird",
   "sdk": 3,
-  "brandColor": "#20B0E5",
+  "brandColor": "#758ca6",
 	"name": {
 		"en": "DoorBird",
 		"nl": "DoorBird",
@@ -12,26 +12,26 @@
 		"nl": [ "slimme deurbel", "IP camera", "DoorBird" ],
 		"de": [ "intelligente türklingel", "IP camera", "DoorBird" ]
 	},
-	"version": "3.0.2",
+	"version": "3.0.3",
 	"compatibility": ">=5.0.0",
 	"author": {
-		"name": "Jelger Haanstra",
-		"email": "homey@solidewebservices.com",
+		"name": "Bird Home Automation GmbH",
+		"email": "homey@doorbird.com",
 		"website": "https://github.com/jghaanstra/com.doorbird"
 	},
-  "contributing": {
-    "donate": {
-      "paypal": {
-        "username": "jghaanstra"
+  "contributors": {
+    "developers": [
+      {
+        "name": "Jelger Haanstra"
       }
-    }
+    ]
   },
   "bugs": {
     "url": "https://github.com/jghaanstra/com.doorbird/issues"
   },
   "homeyCommunityTopicId": 115,
   "source": "https://github.com/jghaanstra/com.doorbird",
-  "homepage": "https://community.athom.com/t/115",
+  "homepage": "https://www.doorbird.com/",
 	"images": {
 		"small": "./assets/images/small.png",
     "large": "./assets/images/large.png",
