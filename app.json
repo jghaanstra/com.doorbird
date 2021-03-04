@@ -12,7 +12,7 @@
 		"nl": [ "slimme deurbel", "IP camera", "DoorBird" ],
 		"de": [ "intelligente türklingel", "IP camera", "DoorBird" ]
 	},
-	"version": "3.0.3",
+	"version": "3.0.4",
 	"compatibility": ">=5.0.0",
 	"author": {
 		"name": "Bird Home Automation GmbH",
@@ -39,9 +39,9 @@
 	},
 	"category": "appliances",
 	"description": {
-		"en": "Control your DoorBird using Homey",
-		"nl": "Bedien je DoorBird via Homey",
-		"de": "Steuern Sie Ihre DoorBird"
+		"en": "Answer your door anywhere",
+		"nl": "Beantwoord de deur overal",
+		"de": "Beantworten Sie Ihre Tür überall"
 	},
 	"dependencies": {
 		"net": "*"
