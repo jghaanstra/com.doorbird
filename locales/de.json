@@ -22,7 +22,11 @@
     "manual": "Manual Pairing",
     "type": "DoorBird Type:",
     "mac": "DoorBird MAC:",
-    "intro": "Enter the IP address, username and password for your DoorBird device."
+    "intro": "Enter the IP address, username and password for your DoorBird device.",
+    "title_http_callbacks": "Set notification schedule",
+    "intro_http_callbacks": "For DoorBird events to work with in Homey the DoorBird needs to be configured to send notifications for each event. Keeping this checkbox checked will update your DoorBird configuration by adding the notification URL's and setting a schedule to always send all events to Homey. If you previously configured HTTP events uncheck this to keep your current configuration, Homey wont be able to receive DoorBird events though.",
+    "next": "Next",
+    "http_callbacks": "Update DoorBird configuration"
   },
   "settings": {
     "title": "DoorBird einstellungen",

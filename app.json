@@ -12,7 +12,7 @@
 		"nl": [ "slimme deurbel", "IP camera", "DoorBird" ],
 		"de": [ "intelligente türklingel", "IP camera", "DoorBird" ]
 	},
-	"version": "3.0.4",
+	"version": "3.0.5",
 	"compatibility": ">=5.0.0",
 	"author": {
 		"name": "Bird Home Automation GmbH",
@@ -191,7 +191,8 @@
           "template": "login_credentials",
           "options": {
             "logo": "../assets/doorbird-logo.png"
-          }
+          },
+          "next": "http_callbacks"
         },
         {
           "id": "add_device"
@@ -201,6 +202,9 @@
         },
         {
           "id": "manual_pairing"
+        },
+        {
+          "id": "http_callbacks"
         }
       ],
 			"settings": [

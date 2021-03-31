@@ -22,7 +22,11 @@
     "manual": "Handmatig koppelen",
     "type": "DoorBird type:",
     "mac": "DoorBird MAC:",
-    "intro": "Voer het IP adres, de gebruikersnaam en het wachtwoord van je DoorBird in."
+    "intro": "Voer het IP adres, de gebruikersnaam en het wachtwoord van je DoorBird in.",
+    "title_http_callbacks": "Instellen notificatie schema",
+    "intro_http_callbacks": "Om Homey te laten reageren op DoorBird gebeurtenissen moet de configuratie van jouw DoorBird worden bijgewerkt zodat deze een notificatie verzend bij elke gebeurtenis. Deze checkbox aangevinkt houden zorgt ervoor dat jouw DoorBird wordt bijgewerkt met notificatie URL's (HTTP calls) en er een schema word ingsteld om altijd notificaties naar Homey te versturen. Indien je al eerder HTTP calles heb ingesteld en je huidige configuratie wilt behouden schakel deze optie dan uit. Homey zal dan niet in staat zijn om te reageren op DoorBird gebeurtenissen.",
+    "next": "Volgende",
+    "http_callbacks": "Bijwerken DoorBird configuratie"
 	},
   "settings": {
     "title": "DoorBird Instellingen",

@@ -79,6 +79,15 @@ class DoorbirdDriver extends Homey.Driver {
       return selectedDeviceId = data[0].data.id;
     });
 
+    session.setHandler('schedule_http_calls', async (data) => {
+      try {
+        const http_calls = await this.util.updateNotifications(deviceArray.settings.address, deviceArray.settings.username, deviceArray.settings.password, deviceArray.settings.address, deviceArray.data.id. 'add');
+        return Promise.resolve(deviceArray);
+      } catch (error) {
+        return Promise.reject(error);
+      }
+    });
+
     session.setHandler('manual_pairing', async (data) => {
       try {
         const result = await this.util.sendCommand('/bha-api/info.cgi', data.address, data.username, data.password);

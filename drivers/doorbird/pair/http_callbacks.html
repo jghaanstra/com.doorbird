@@ -1,0 +1,58 @@
+<script type="text/javascript">
+
+Homey.setTitle(Homey.__('pair.title_http_callbacks'));
+
+$(function() {
+
+  $('#next').click(function() {
+    if (document.getElementById('http_callbacks').checked) {
+      Homey.emit('schedule_http_calls', data)
+        .then(result => {
+          Homey.showView('add_device');
+        })
+        .catch(error => {
+          $('.doorbird-messages').show();
+          $('.doorbird-error-msg').html(error);
+        });
+    } else {
+      Homey.showView('add_device');
+    }
+  });
+
+})
+</script>
+
+<style type="text/css">
+  .form-group {
+    width: 100%;
+    display: block;
+    margin-bottom: 12px;
+  }
+  .buttons {
+    text-align: center;
+    padding-top: 14px;
+  }
+  .messages {
+    display: none;
+    padding-top: 10px;
+  }
+  .button {
+    display: block;
+    min-width: 100%;
+    margin-bottom: 8px !important;
+  }
+</style>
+
+<p data-i18n="pair.intro_http_callbacks">For DoorBird events to work with in Homey the DoorBird needs to be configured to send notifications for each event. Keeping this checkbox checked will update your DoorBird configuration by adding the notification URL's and setting a schedule to always send all events to Homey. If you previously configured HTTP events uncheck this to keep your current configuration, Homey wont be able to receive DoorBird events though.</p>
+<div class="doorbird-pairing">
+  <div class="form-group">
+    <label for="http_callbacks" data-i18n="pair.http_callbacks">Update DoorBird configuration</label>
+    <input type="checkbox" class="form-control" id="http_callbacks">
+    </div>
+	<div class="form-group buttons">
+		<button id="next" class="button" data-i18n="pair.next">Next</button>
+	</div>
+  <div class="messages">
+    <p class="doorbird-error doorbird-status" style="color: #ff6300;"><i class="fa fa-times"></i> <span class="doorbird-error-msg"></span></p>
+  </div>
+</div>
