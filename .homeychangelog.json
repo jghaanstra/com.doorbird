@@ -19,5 +19,8 @@
   },
   "3.0.4": {
     "en": "Minor branding improvements, no functional changes."
+  },
+  "3.0.5": {
+    "en": "Added an opt-out option for scheduling notification events during pairing to make setup more user friendly."
   }
 }

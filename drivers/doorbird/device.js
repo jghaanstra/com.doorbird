@@ -8,10 +8,6 @@ class DoorbirdDevice extends Homey.Device {
   async onInit() {
     if (!this.util) this.util = new Util({homey: this.homey});
 
-    // FIX NOTIFICATION URLS FOR A MORE GENERIC SETUP, REMOVES THIS AFTER SOME UPDATES
-    // TODO: REMOVE AFTER 3.1.0
-    await this.util.updateNotifications(this.getSetting('address'), this.getSetting('username'), this.getSetting('password'), this.getData().id, 'add');
-
     // UPDATE STORE VALUE RELAYS FOR DEVICES THAT WHERE PAIRED A LONG TIME AGO
     // TODO: REMOVE AFTER 3.1.0
     if (!this.getStoreValue('relays')) {
@@ -150,8 +146,8 @@ class DoorbirdDevice extends Homey.Device {
 
   }
 
-  async onAdded() {
-    return await this.util.updateNotifications(this.getSetting('address'), this.getSetting('username'), this.getSetting('password'), this.getData().id, 'add');
+  async onDeleted() {
+    return await this.util.updateNotifications(this.getSetting('address'), this.getSetting('username'), this.getSetting('password'), this.getData().id, 'remove');
   }
 
   async processEventTrigger(source, relay) {

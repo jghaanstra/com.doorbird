@@ -81,7 +81,7 @@ class DoorbirdDriver extends Homey.Driver {
 
     session.setHandler('schedule_http_calls', async (data) => {
       try {
-        const http_calls = await this.util.updateNotifications(deviceArray.settings.address, deviceArray.settings.username, deviceArray.settings.password, deviceArray.settings.address, deviceArray.data.id. 'add');
+        const http_calls = await this.util.updateNotifications(deviceArray.settings.address, deviceArray.settings.username, deviceArray.settings.password, deviceArray.data.id, 'add');
         return Promise.resolve(deviceArray);
       } catch (error) {
         return Promise.reject(error);

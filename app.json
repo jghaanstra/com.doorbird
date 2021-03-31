@@ -192,7 +192,12 @@
           "options": {
             "logo": "../assets/doorbird-logo.png"
           },
-          "next": "http_callbacks"
+          "navigation": {
+            "next": "http_callbacks"
+          }
+        },
+        {
+          "id": "http_callbacks"
         },
         {
           "id": "add_device"
@@ -202,9 +207,6 @@
         },
         {
           "id": "manual_pairing"
-        },
-        {
-          "id": "http_callbacks"
         }
       ],
 			"settings": [
@@ -373,6 +375,11 @@
 					"nl": "Email live snapshot",
 					"de": "Email live schnappschuss"
 				},
+        "titleFormatted": {
+          "en": "Email live snapshot to [[mailto]]",
+          "nl": "Email live snapshot naar [[mailto]]",
+          "de": "Email live schnappschuss zum [[mailto]]"
+        },
 				"hint": {
 					"en": "Take a snapshot and send it with email (make sure email is configured in the app settings).",
 					"nl": "Maak een  snapshot en verstuur deze per email (zorg ervoor dat email is geconfigureerd in de app instellingen).",
@@ -407,6 +414,11 @@
 					"nl": "Email geschiedenis snapshot",
 					"de": "Email geschichte schnappschuss"
 				},
+        "titleFormatted": {
+          "en": "Email history snapshot [[history]] from [[source]] to [[mailto]]",
+          "nl": "Email geschiedenis snapshot [[history]] van [[source]] naar [[mailto]]",
+          "de": "Email geschichte schnappschuss [[history]] von [[source]] zum [[mailto]]"
+        },
 				"hint": {
 					"en": "Send a history snaphot with email (make sure email is configured in the app settings).",
 					"nl": "Verstuur een geschiedenis snapshot per email (zorg ervoor dat email is geconfigureerd in de app instellingen).",
@@ -899,6 +911,11 @@
 					"nl": "Open een verbonden deur opener via de deur opener / alarm relais van de DoorBird.",
 					"de": "Öffnen Sie einen angeschlossenen türöffner über das Türöffner- / Alarmausgangsrelais der DoorBird."
 				},
+        "titleFormatted": {
+          "en": "Open the door with relay [[relay]]",
+					"nl": "Open de deur met relay [[relay]]",
+					"de": "Öffne die tür mit relay [[relay]]"
+        },
 				"args": [
           {
             "type": "autocomplete",

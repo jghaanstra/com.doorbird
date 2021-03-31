@@ -4,14 +4,20 @@ Homey.setTitle(Homey.__('pair.title_http_callbacks'));
 
 $(function() {
 
-  $('#next').click(function() {
+  $('#add_schedule').click(function() {
+    $('.messages').show();
+    $('.doorbird-processing').show();
+    Homey.showLoadingOverlay();
+
     if (document.getElementById('http_callbacks').checked) {
-      Homey.emit('schedule_http_calls', data)
+      Homey.emit('schedule_http_calls', {})
         .then(result => {
           Homey.showView('add_device');
         })
         .catch(error => {
-          $('.doorbird-messages').show();
+          Homey.hideLoadingOverlay();
+          $('.doorbird-processing').hide();
+          $('.doorbird-error').show();
           $('.doorbird-error-msg').html(error);
         });
     } else {
@@ -36,7 +42,12 @@ $(function() {
     display: none;
     padding-top: 10px;
   }
+  .doorbird-error, .doorbird-processing {
+    display: none;
+  }
   .button {
+    background-color: #00c139 !important;
+    color: #ffffff !important;
     display: block;
     min-width: 100%;
     margin-bottom: 8px !important;
@@ -47,12 +58,13 @@ $(function() {
 <div class="doorbird-pairing">
   <div class="form-group">
     <label for="http_callbacks" data-i18n="pair.http_callbacks">Update DoorBird configuration</label>
-    <input type="checkbox" class="form-control" id="http_callbacks">
+    <input type="checkbox" class="form-control" id="http_callbacks" checked>
     </div>
 	<div class="form-group buttons">
-		<button id="next" class="button" data-i18n="pair.next">Next</button>
+		<button id="add_schedule" class="button" data-i18n="pair.next">Next</button>
 	</div>
   <div class="messages">
+    <p class="doorbird-processing doorbird-status" style="color: #008C23;"><i class="fa fa-check"></i> <span class="doorbird-processing-msg" data-i18n="pair.processing">Notification schedule is being configured ...</span></p>
     <p class="doorbird-error doorbird-status" style="color: #ff6300;"><i class="fa fa-times"></i> <span class="doorbird-error-msg"></span></p>
   </div>
 </div>
