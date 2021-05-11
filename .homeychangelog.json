@@ -22,5 +22,8 @@
   },
   "3.0.5": {
     "en": "Added an opt-out option for scheduling notification events during pairing to make setup more user friendly."
+  },
+  "3.0.6": {
+    "en": "Update of underlying library to patch a security vunerability, no functional changes."
   }
 }
