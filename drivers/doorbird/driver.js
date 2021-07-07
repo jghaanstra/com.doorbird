@@ -14,7 +14,7 @@ class DoorbirdDriver extends Homey.Driver {
   }
 
   onPair(session) {
-    const discoveryStrategy = this.getDiscoveryStrategy();
+    const discoveryStrategy = this.homey.discovery.getStrategy("doorbird");
     const discoveryResults = discoveryStrategy.getDiscoveryResults();
     let selectedDeviceId;
     let deviceArray = {};

@@ -25,5 +25,11 @@
   },
   "3.0.6": {
     "en": "Update of underlying library to patch a security vunerability, no functional changes."
+  },
+  "3.0.7": {
+    "en": "Switched to manual discovery strategy as Homey firmware 7.x marks devices as offline when mDNS is not working on the users network and the device has been paired manually."
+  },
+  "3.0.8": {
+    "en": "Switched to manual discovery strategy as Homey firmware 7.x marks devices as offline when mDNS is not working on the users network and the device has been paired manually."
   }
 }
